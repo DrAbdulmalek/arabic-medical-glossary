@@ -1,0 +1,91 @@
+name: Bilingual Data Collector
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Every 12 hours
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 huggingface_hub datasets
+
+      - name: Run bilingual collector
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/bilingual_collector.py
+
+      - name: Commit and push new data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ collection.log
+          git diff --cached --quiet || git commit -m "data: auto-collect bilingual pairs [skip ci]"
+          git push
+
+      - name: Upload to HuggingFace (if token available)
+        if: env.HF_TOKEN != ''
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          pip install huggingface_hub
+          python -c "
+          from huggingface_hub import HfApi, create_repo
+          import os
+
+          api = HfApi(token=os.environ['HF_TOKEN'])
+          repo_id = 'DrAbdulmalek/arabic-bilingual-medical-glossary'
+
+          # Ensure repo exists
+          create_repo(repo_id=repo_id, repo_type='dataset', exist_ok=True, private=False)
+
+          # Upload files
+          files = [
+              ('data/all_pairs.jsonl', 'all_pairs.jsonl'),
+              ('data/all_pairs.csv', 'all_pairs.csv'),
+              ('data/terms.csv', 'terms.csv'),
+              ('data/sentences.csv', 'sentences.csv'),
+              ('data/dataset_card.md', 'README.md'),
+          ]
+
+          for local, remote in files:
+              import os as _os
+              if _os.path.exists(local):
+                  api.upload_file(
+                      path_or_fileobj=local,
+                      path_in_repo=remote,
+                      repo_id=repo_id,
+                      repo_type='dataset',
+                  )
+                  print(f'Uploaded {remote}')
+
+          # Upload cleaned glossary files
+          for f in ['cleaned/cleaned_glossary.csv', 'cleaned/terms.csv', 'cleaned/sentences.csv', 'cleaned/section_headers.csv']:
+              if _os.path.exists(f):
+                  api.upload_file(
+                      path_or_fileobj=f,
+                      path_in_repo=f,
+                      repo_id=repo_id,
+                      repo_type='dataset',
+                  )
+                  print(f'Uploaded {f}')
+
+          print('Done! Dataset at: https://huggingface.co/datasets/' + repo_id)
+          "

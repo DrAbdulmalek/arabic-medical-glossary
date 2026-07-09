@@ -1,0 +1,69 @@
+2026-07-09 23:45:05,181 [INFO] collector: ============================================================
+2026-07-09 23:45:05,182 [INFO] collector: Bilingual Medical Glossary Collector - Starting
+2026-07-09 23:45:05,182 [INFO] collector: Timestamp: 2026-07-09T23:45:05.182070
+2026-07-09 23:45:05,182 [INFO] collector: ============================================================
+2026-07-09 23:45:05,188 [INFO] collector: Loaded 619 pairs from cleaned_glossary.csv
+2026-07-09 23:45:05,188 [INFO] collector: Collecting from WHO Essential Medicines (121 entries)...
+2026-07-09 23:45:05,188 [INFO] collector: WHO Essential Medicines: collected 120 new pairs
+2026-07-09 23:45:05,188 [INFO] collector: Collecting curated medical phrases (74 entries)...
+2026-07-09 23:45:05,189 [INFO] collector: Curated phrases: collected 74 new pairs
+2026-07-09 23:45:05,189 [INFO] collector: Collecting from Wikipedia medical categories...
+2026-07-09 23:45:05,594 [INFO] collector:   Category:Medical_terms: 0 titles
+2026-07-09 23:45:06,388 [INFO] collector:   Category:Pharmacology: 75 titles
+2026-07-09 23:45:07,193 [INFO] collector:   Category:Drugs: 57 titles
+2026-07-09 23:45:07,983 [INFO] collector:   Category:Diseases: 0 titles
+2026-07-09 23:45:08,780 [INFO] collector:   Category:Symptoms: 56 titles
+2026-07-09 23:45:09,784 [INFO] collector:   Category:Medical_treatments: 200 titles
+2026-07-09 23:45:10,589 [INFO] collector:   Category:Anatomy: 135 titles
+2026-07-09 23:45:11,595 [INFO] collector:   Category:Medical_signs: 200 titles
+2026-07-09 23:45:12,095 [INFO] collector: Total unique titles: 718
+2026-07-09 23:45:12,095 [INFO] collector: Fetching Arabic translations via langlinks...
+2026-07-09 23:45:51,872 [INFO] collector:   Progress: 100/718
+2026-07-09 23:46:32,696 [INFO] collector:   Progress: 200/718
+2026-07-09 23:47:13,882 [INFO] collector:   Progress: 300/718
+2026-07-09 23:47:15,867 [INFO] collector: ============================================================
+2026-07-09 23:47:15,867 [INFO] collector: Bilingual Medical Glossary Collector - Starting
+2026-07-09 23:47:15,867 [INFO] collector: Timestamp: 2026-07-09T23:47:15.867222
+2026-07-09 23:47:15,867 [INFO] collector: ============================================================
+2026-07-09 23:47:15,872 [INFO] collector: Loaded 619 pairs from cleaned_glossary.csv
+2026-07-09 23:47:15,872 [INFO] collector: Collecting from WHO Essential Medicines (121 entries)...
+2026-07-09 23:47:15,872 [INFO] collector: WHO Essential Medicines: collected 120 new pairs
+2026-07-09 23:47:15,872 [INFO] collector: Collecting curated medical phrases (74 entries)...
+2026-07-09 23:47:15,873 [INFO] collector: Curated phrases: collected 74 new pairs
+2026-07-09 23:47:15,873 [INFO] collector: Collecting from Wikipedia medical categories...
+2026-07-09 23:47:16,272 [INFO] collector:   Category:Medical_terms: 0 titles
+2026-07-09 23:47:17,087 [INFO] collector:   Category:Pharmacology: 75 titles
+2026-07-09 23:47:17,890 [INFO] collector:   Category:Drugs: 57 titles
+2026-07-09 23:47:18,696 [INFO] collector:   Category:Diseases: 0 titles
+2026-07-09 23:47:19,500 [INFO] collector:   Category:Symptoms: 56 titles
+2026-07-09 23:47:20,736 [INFO] collector:   Category:Medical_treatments: 200 titles
+2026-07-09 23:47:21,553 [INFO] collector:   Category:Anatomy: 135 titles
+2026-07-09 23:47:22,367 [INFO] collector:   Category:Medical_signs: 200 titles
+2026-07-09 23:47:22,867 [INFO] collector: Total unique titles: 718
+2026-07-09 23:47:22,867 [INFO] collector: Fetching Arabic translations via langlinks...
+2026-07-09 23:48:05,253 [INFO] collector:   Progress: 400/718
+2026-07-09 23:48:13,141 [INFO] collector:   Progress: 100/718
+2026-07-09 23:49:05,004 [INFO] collector:   Progress: 500/718
+2026-07-09 23:49:13,906 [INFO] collector:   Progress: 200/718
+2026-07-09 23:49:21,987 [INFO] collector: ============================================================
+2026-07-09 23:49:21,987 [INFO] collector: Bilingual Medical Glossary Collector - Starting
+2026-07-09 23:49:21,987 [INFO] collector: Timestamp: 2026-07-09T23:49:21.987752
+2026-07-09 23:49:21,987 [INFO] collector: ============================================================
+2026-07-09 23:49:21,993 [INFO] collector: Loaded 619 pairs from cleaned_glossary.csv
+2026-07-09 23:49:21,993 [INFO] collector: Collecting from WHO Essential Medicines (121 entries)...
+2026-07-09 23:49:21,993 [INFO] collector: WHO Essential Medicines: collected 120 new pairs
+2026-07-09 23:49:21,993 [INFO] collector: Collecting curated medical phrases (74 entries)...
+2026-07-09 23:49:21,994 [INFO] collector: Curated phrases: collected 74 new pairs
+2026-07-09 23:49:21,994 [INFO] collector: Collecting from Wikipedia medical categories...
+2026-07-09 23:49:22,385 [INFO] collector:   Category:Medical_terms: 0 titles
+2026-07-09 23:49:23,169 [INFO] collector:   Category:Pharmacology: 75 titles
+2026-07-09 23:49:23,966 [INFO] collector:   Category:Drugs: 57 titles
+2026-07-09 23:49:24,772 [INFO] collector:   Category:Diseases: 0 titles
+2026-07-09 23:49:25,566 [INFO] collector:   Category:Symptoms: 56 titles
+2026-07-09 23:49:26,583 [INFO] collector:   Category:Medical_treatments: 200 titles
+2026-07-09 23:49:27,380 [INFO] collector:   Category:Anatomy: 135 titles
+2026-07-09 23:49:28,206 [INFO] collector:   Category:Medical_signs: 200 titles
+2026-07-09 23:49:28,707 [INFO] collector: Total unique titles: 718
+2026-07-09 23:49:28,707 [INFO] collector: Fetching Arabic translations via langlinks...
+2026-07-09 23:50:32,946 [INFO] collector:   Progress: 100/718
+2026-07-09 23:51:13,356 [INFO] collector:   Progress: 200/718

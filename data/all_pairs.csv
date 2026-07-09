@@ -1,0 +1,784 @@
+en,ar,source,type,section,confidence,hash
+Composition & Excipients,التركيب والسواغات,ABESTOL,term,header,high,0ea432783187
+Composition,التركيب,ABESTOL,term,header,high,2f7bd823ce5a
+Excipients,السواغات,pricksage_gemini,term,gemini_curated,very_high,3a384817b918
+Clinical Pharmacology,الصيدلة السريرية,ABESTOL,term,header,high,e8bbafab6f76
+Indications,الاستطبابات,ABESTOL,term,header,high,e0e27b4ee29a
+Contraindications,مضادات الاستطبابات,pricksage_gemini,term,gemini_curated,very_high,a373a621a45d
+Dosage And Administration,الجرعة وطريقة الاستعمال,ABESTOL,term,header,high,71a4af13861f
+Dosage,الجرعة,ABESTOL,term,header,high,2f0c6865961b
+Side Effects,الآثار الجانبية,ABESTOL,term,header,high,bddd3a9d4e56
+Warnings,التحذيرات,ABESTOL,term,header,high,6e63ce6631f2
+Precautions,الاحتياطات,ABESTOL,term,header,high,182584500a12
+Drug Interactions,التداخلات الدوائية,ABESTOL,term,header,high,df594f285f25
+Interactions,التداخلات,ABESTOL,term,header,high,0b9b7251c825
+Storage,التخزين,ABESTOL,term,header,high,4605f2184b21
+Packaging,التعبئة,ABESTOL,term,header,high,7f2658219067
+Renal Impairment,الاعتلال الكلوي,ABESTOL,term,header,high,40a31d7fe35b
+tablets,أقراص,ABESTOL,term,medical_term,high,1733ec05be2a
+each tablet contains,يحتوي كل قرص على,ABESTOL,term,medical_term,high,ef10edc2b878
+once daily,مرة واحدة يومياً,ABESTOL,term,medical_term,high,6485cb81e611
+store at room temperature,يحفظ في درجة حرارة الغرفة,ABESTOL,term,medical_term,high,4f6ab5395f9b
+hypersensitivity,فرط التحسس,ABESTOL,term,medical_term,high,12dd30f55896
+allergic reaction,رد فعل تحسسي,ABESTOL,term,medical_term,high,1d071162f4b4
+nausea,غثيان,ABESTOL,term,medical_term,high,a1d7fd5fc6f7
+vomiting,إقياء,ABESTOL,term,medical_term,high,e9de339cb2bf
+diarrhea,إسهال,ABESTOL,term,medical_term,high,ca3df49ce8ce
+constipation,إمساك,ABESTOL,term,medical_term,high,4e6bf9b180fa
+dizziness,دوار,ABESTOL,term,medical_term,high,523117adecbf
+headache,صداع,ABESTOL,term,medical_term,high,d29805f212df
+fatigue,تعب,ABESTOL,term,medical_term,high,ac3e02987cbf
+dry mouth,جفاف الفم,ABESTOL,term,medical_term,high,77fa0b79e30b
+rash,طفح جلدي,ABESTOL,term,medical_term,high,4602114004f5
+swelling,وذمة,ABESTOL,term,medical_term,high,abd1eefd36b6
+hypotension,انخفاض ضغط الدم,ABESTOL,term,medical_term,high,a67b6439b8fa
+hypertension,ارتفاع ضغط الدم,ABESTOL,term,medical_term,high,c8786ff66897
+tachycardia,تسارع نبض القلب,ABESTOL,term,medical_term,high,0bb2e68cdd66
+bradycardia,بطء نبض القلب,ABESTOL,term,medical_term,high,37a9e8677729
+renal function,وظائف الكلى,ABESTOL,term,medical_term,high,1f1058bbbbdd
+pregnancy,الحمل,ABESTOL,term,medical_term,high,a6423222236f
+half-life,عمر النصف,ABESTOL,term,medical_term,high,eb64bd8ae01c
+absorption,الامتصاص,ABESTOL,term,medical_term,high,238554da0585
+contraindicated,مضاد استطباب,ABESTOL,term,medical_term,high,af974b28a5e6
+indicated,مستطب,ABESTOL,term,medical_term,high,a78f859f1710
+maintenance dose,الجرعة الصيانة,ABESTOL,term,medical_term,high,80f2d6c3f05b
+overdose,فرط الجرعة,ABESTOL,term,medical_term,high,c7567931498f
+safety,السلامة,ABESTOL,term,medical_term,high,3396f2fa3f88
+concomitant use,الاستعمال المتزامن,ABESTOL,term,medical_term,high,e7fe596607f1
+Composition & Excipients,التركيب,ABESTOL,term,header,high,a2871ef885c9
+Contraindications,مضادات,ABESTOL,term,header,high,b2a678efa821
+Dosage and Administration,الجرعة,ABESTOL,term,header,high,155a203fead6
+Side Effects,الآثار,ABESTOL,term,header,high,acb931375b76
+Overdosage,فرط,ABESTOL,term,header,high,62765f9d9e43
+Mechanism of action,آلية التأثير,pricksage_gemini,term,gemini_curated,very_high,c10320e7d6e6
+Overdosage,فرط الجرعة,AGILOMOX,term,header,high,97897767bf34
+Hepatic Impairment,الاعتلال الكبدي,AGILOMOX,term,header,high,5a95f00406bd
+Undesirable Effects,الآثار غير المرغوبة,AGILOMOX,term,header,high,761c631f2949
+keep out of reach of children,يحفظ بعيداً عن متناول الأطفال,AGILOMOX,term,medical_term,high,f1360ad7b609
+drowsiness,نعاس,AGILOMOX,term,medical_term,high,c89c4831eec7
+abdominal pain,ألم بطني,AGILOMOX,term,medical_term,high,29378415e960
+itching,حكة,AGILOMOX,term,medical_term,high,5e13de34d271
+shortness of breath,ضيق التنفس,AGILOMOX,term,medical_term,high,3d1b1fce7cc5
+liver function tests,اختبارات وظائف الكبد,AGILOMOX,term,medical_term,high,bdfef4c2815c
+breastfeeding,الإرضاع,AGILOMOX,term,medical_term,high,8daccb34f2f8
+metabolism,الاستقلاب,AGILOMOX,term,medical_term,high,ced52cb528e2
+adverse effect,الأثر الضار,AGILOMOX,term,medical_term,high,89d9f5f505ea
+Pharmacokinetics,الحرائك الدوائية,pricksage_gemini,term,gemini_curated,very_high,81dc26367d44
+Adverse Reactions,التفاعلات الضارة,ALOGLIPTIN,term,header,high,c9a5e894a324
+Film-Coated Tablets,أقراص ملبسة بالفيلم,pricksage_gemini,term,gemini_curated,very_high,c3a2ad877051
+without food,بدون طعام,ALOGLIPTIN,term,medical_term,high,50056158f5ec
+excretion,الإطراح,ALOGLIPTIN,term,medical_term,high,0dd7b594b425
+distribution,التوزع,ALOGLIPTIN,term,medical_term,high,bcf5063c2eed
+recommended dose,الجرعة الموصى بها,ALOGLIPTIN,term,medical_term,high,6a4fd792426e
+Pharmacokinetics,الحرائك,ALOGLIPTIN,term,header,high,62d0f147ddfe
+Mechanism of Action,آلية,ALOGLIPTIN,term,header,high,4d166f406f80
+Contraindications,مضادات الاستطباب,ALOGLIPTIN,term,header,high,7419d0ca3145
+Special Warnings,تحذيرات خاصة,ANTI-STONE,term,header,high,13b71faeb8d3
+twice daily,مرتين يومياً,ANTI-STONE,term,medical_term,high,420b3912e240
+capsules,كبسولات,ANTI-TUSSIVE_HAMA_PHARMA,term,medical_term,high,8e262bff1df5
+Presentation,التغليف,ARIPIPRAZOLE_HAMA_PHARMA,term,header,high,a26cf369cba8
+insomnia,أرق,ARIPIPRAZOLE_HAMA_PHARMA,term,medical_term,high,7d8f1d30b3c6
+elderly patients,المرضى المسنين,ARIPIPRAZOLE_HAMA_PHARMA,term,medical_term,high,b3267313c9e9
+placebo,دواء وهمي,ARIPIPRAZOLE_HAMA_PHARMA,term,medical_term,high,1b27a124008c
+efficacy,الفاعلية,ARIPIPRAZOLE_HAMA_PHARMA,term,medical_term,high,435cead0397b
+oral administration,يعطى عن طريق الفم,ARTHROBYE,term,medical_term,high,98ed85915081
+active ingredient,المادة الفعالة,ARTHROBYE,term,medical_term,high,a1b4b25a0014
+Bioavailability,التوافر الحيوي,pricksage_gemini,term,gemini_curated,very_high,94d99decb4b1
+Pediatric Population,الأطفال,CIPROFLOXACIN_HAMA_PARMA,term,header,high,e45732f5a999
+gel,جل,CIPROFLOXACIN_HAMA_PARMA,term,medical_term,high,e9db5f6a8ea6
+solution,محلول,CLOZAPINE_HAMA_PHARMA,term,medical_term,high,447d5c84ddd8
+chest pain,ألم صدري,CLOZAPINE_HAMA_PHARMA,term,medical_term,high,bee297301a1d
+blood count,تعداد الدم,CLOZAPINE_HAMA_PHARMA,term,medical_term,high,31a3441f22b7
+maximum dose,الجرعة القصوى,CLOZAPINE_HAMA_PHARMA,term,medical_term,high,1dd951c5ab7d
+at bedtime,قبل النوم,DICLOFENAC_HAMA_PHARMA,term,medical_term,high,3fdf913fdb92
+Pregnancy and lactation,الحمل والإرضاع,pricksage_gemini,term,gemini_curated,very_high,aafc5b618763
+before meals,قبل الوجبات,FAST-VOL,term,medical_term,high,aa00659c3c00
+palpitations,خفقان,FAST-VOL,term,medical_term,high,ed87875d5a29
+protein binding,الارتباط بالبروتين,FAST-VOL,term,medical_term,high,0cb74e7c355c
+drug interaction,التداخل الدوائي,FAST-VOL,term,medical_term,high,cc4cbb323d3f
+with food,مع الطعام,FEDROFEN,term,medical_term,high,260aca28b134
+as directed,حسب التوجيهات,FERULA,term,medical_term,high,9ed3e26c809b
+Posology And Method Of Administration,الجرعة وطريقة الاستعمال,FUROLACT,term,header,high,508992f8674d
+injection,حقن,FUROLACT,term,medical_term,high,8c98fed992b5
+three times daily,ثلاث مرات يومياً,GLUCOBYE,term,medical_term,high,ad154dff5dd7
+consult your doctor,استشر طبيبك,HAMA_PHARMA_C_and_Z,term,medical_term,high,75945c5f74e7
+withdrawal symptoms,أعراض الانسحاب,IMPROMOOD_SR,term,medical_term,high,7c0d6daff07f
+Effects On Ability To Drive,التأثير على القدرة على القيادة,KETOTIFEN_HAMA_PHARMA,term,header,high,d2ecae8e81a4
+Use In Pregnancy,الاستعمال خلال الحمل,METRONIDAZOLE_HAMA_PHARMA,term,header,high,f2952f4239ce
+Pharmacological Properties,الخصائص الصيدلانية,MULER,term,header,high,97824bf7a41d
+patch,لصقة,MULER,term,medical_term,high,32a56cc0afc4
+side effect,الأثر الجانبي,NODEMENT,term,medical_term,high,8a7cfe5635f3
+cream,كريم,ORLISTAT_HAMA_PHARMA,term,medical_term,high,5364e11c758a
+paediatric patients,المرضى الأطفال,PLEXADOL,term,medical_term,high,c33bb6c9496f
+Overdosage/Toxicity,فرط الجرعة/السمية,PRICKSAGE,term,header,high,71614422ed4a
+Use In Paediatric,الاستعمال عند الأطفال,PRICKSAGE,term,header,high,4ab055af0c0d
+therapeutic effect,التأثير العلاجي,ROVALTRO,term,medical_term,high,fc3131f086b2
+after meals,بعد الوجبات,TRIOVITABIN,term,medical_term,high,df49adc34f03
+tolerability,التحمل,VALSABITRIL,term,medical_term,high,ef7495128e13
+store below 25°c,يحفظ تحت 25 درجة مئوية,WELL_FER,term,medical_term,high,1ce4d26ceaef
+PRICKSAGE (Agomelatine 25mg) (Film-Coated Tablets),بريكسيج (أقراص ملبسة بالفيلم) (أجوميلاتين ٢٥ ملغ),pricksage_gemini,term,gemini_curated,very_high,e011a004e921
+Composition & Excipients: Each film-coated tablet contains Agomelatine 25 mg.,التركيب والسواغات: يحوي كل قرص ملبس بالفيلم على: أجوميلاتين ٢٥ ملغ.,pricksage_gemini,sentence,gemini_curated,very_high,4ae73d1c77b5
+Mechanism of action: Agomelatine is a melatonergic agonist (MT1 and MT2 receptors) and 5-HT2C antagonist.,آلية التأثير: أجوميلاتين هو شاد المستقبلات الميلاتونين MT1 و MT2 وضاد المستقبلات 5-HT2C.,pricksage_gemini,sentence,gemini_curated,very_high,42c2e61848d5
+Pharmacokinetics: Agomelatine is rapidly and well absorbed after oral administration.,الحرائك الدوائية: يمتص أجوميلاتين بشكل جيد وسريع بعد تناوله عن طريق الفم.,pricksage_gemini,sentence,gemini_curated,very_high,81d72afadf69
+Indications: PRICKSAGE is used for the treatment of major depressive episodes in adults.,الاستطبابات: يستخدم بريكسيج لمعالجة حوادث الاكتئاب الرئيسي عند البالغين.,pricksage_gemini,sentence,gemini_curated,very_high,70c374139ad6
+Contraindications: Hypersensitivity to the drug or its components.,مضادات الاستطبابات: فرط التحس للمادة الفعالة أو أي من مكونات الدواء.,pricksage_gemini,sentence,gemini_curated,very_high,e171ff5138f7
+The most common adverse reactions were nausea and dizziness.,كانت ردود الفعل السلبية الأكثر شيوعا الغثيان والدوار.,pricksage_gemini,sentence,gemini_curated,very_high,b6577aca8309
+Monitoring of liver function: Cases of liver injury have been reported.,رصد وظائف الكبد: حالات إصابة الكبد... وقد تم الإبلاغ عنها.,pricksage_gemini,sentence,gemini_curated,very_high,640d1738c28c
+Dosage and Administration: The recommended dose is one tablet (25 mg) once daily taken orally at bedtime.,الجرعة وطريقة الاستعمال: الجرعة الموصى بها هي قرص في اليوم (٢٥ ملغ) تؤخذ قبل النوم.,pricksage_gemini,sentence,gemini_curated,very_high,de10e3ff8378
+No dosage tapering is needed on treatment discontinuation.,لا حاجة لتخفيض الجرعة عند التوقف عن العلاج.,pricksage_gemini,sentence,gemini_curated,very_high,bdcde3dac5d5
+"Store away from humidity and direct light, in a place of a temperature between 15 -30° C.",شروط الحفظ: يحفظ بعيدا عن الرطوبة والضوء المباشر في مكان لا تتجاوز حرارته ٣٠ درجة.,pricksage_gemini,sentence,gemini_curated,very_high,b766c1972d37
+Agomelatine,أجوميلاتين,pricksage_gemini,term,gemini_curated,very_high,e9cca5a06572
+Hepatic impairment,قصور كبدي / اعتلال كبدي,pricksage_gemini,term,gemini_curated,very_high,eb2d87c272cc
+Adverse reactions,ردود الفعل السلبية,pricksage_gemini,term,gemini_curated,very_high,8ace4424632a
+Liver injury,إصابة الكبد,pricksage_gemini,term,gemini_curated,very_high,6e3d73aa9795
+Suicidal thoughts,أفكار انتحارية,pricksage_gemini,term,gemini_curated,very_high,c0da7df4e18e
+Paediatric population,الأطفال,pricksage_gemini,term,gemini_curated,very_high,16af80ea02ff
+Renal impairment,اعتلال كلوي,pricksage_gemini,term,gemini_curated,very_high,3600ad4fd622
+Overdosage/Toxicity,فرط الجرعة / السمية,pricksage_gemini,term,gemini_curated,very_high,90132e7ba10b
+"**Adverse reactions: Palpitation, tachycardia, hypotension, dizziness, headache, somnolence, nausea, vomiting, constipation, dry mouth**",**الآثار الجانبية: خفقان، تسارع القلب، انخفاض ضغط الدم، دوخة، صداع، نعاس، غثيان، قيء، إمساك، جفاف الفم**,side_effects,sentence,medical_term,high,10d24c080665
+"**Adverse reactions: Diarrhea, sweating, pruritus, rash, urticaria, fatigue**",**الآثار الجانبية: إسهال، تعرق، حكة، طفح جلدي، شرى، إرهاق**,side_effects,sentence,medical_term,high,1d0301f72608
+"**Adverse reactions: Cardiovascular regulation (palpitation, tachycardia, postural hypotension or cardiovascular collapse)**",**الآثار الجانبية: تنظيم القلب والأوعية (خفقان، تسارع القلب، انخفاض ضغط الدم الوضعي أو وهط قلب وعائي)**,side_effects,sentence,medical_term,high,f7c014bfc903
+"**Adverse reactions: Gastrointestinal irritation (a feeling of pressure in the stomach, bloating)**",**الآثار الجانبية: تهيج الجهاز الهضمي (شعور بالضغط في المعدة، انتفاخ)**,side_effects,sentence,medical_term,high,572422e94e7f
+"**The most commonly reported side-effects are: feeling of sickness, skin reddening, allergic reactions, shortness of breath, swollen facial features, and liver damage**",**كانت ردود الفعل السلبية الأكثر شيوعًا: شعور بالمرض، احمرار الجلد، ردود فعل تحسسية، ضيق في التنفس، تورم في الوجه، وتلف الكبد**,side_effects,sentence,medical_term,high,5fe43c7d5ac1
+**Film-Coated Tablets**,**أقراص ملبسة بالفيلم**,updated_dosage_forms,term,medical_term,high,278be444a191
+**Dispersible tablets**,**أقراص قابلة للتشتت**,updated_dosage_forms,term,medical_term,high,1f5f830cbc5a
+"**Each film-coated tablet contains Rivaroxaban 2.5, 10, 15 or 20 mg**",**يحوي كل قرص ملبس بالفيلم ريفاروكسبان ٢.٥، ١٠، ١٥ أو ٢٠ ملغ**,updated_dosage_forms,sentence,medical_term,high,49df5fd3d410
+**Each dispersible tablet contains Diclofenac Sodium 50 mg**,**يحوي كل قرص قابل للتشتت ديكلوفيناك صوديوم ٥٠ ملغ**,updated_dosage_forms,sentence,medical_term,high,fc500189d20d
+**Clopidogrel (as Hydrogen Sulphate) 75 mg / Aspirin 75 mg**,**كلوبيدوغريل (على شكل كبريتات الهيدروجين) ٧٥ ملغ / أسبرين ٧٥ ملغ**,updated_dosage_forms,sentence,medical_term,high,a3191754c3e5
+**Clopidogrel (as Hydrogen Sulphate) 75 mg / Aspirin 100 mg**,**كلوبيدوغريل (على شكل كبريتات الهيدروجين) ٧٥ ملغ / أسبرين ١٠٠ ملغ**,updated_dosage_forms,sentence,medical_term,high,36016429a5ec
+**Clopidogrel (as Hydrogen Sulphate) 75 mg / Aspirin 150 mg**,**كلوبيدوغريل (على شكل كبريتات الهيدروجين) ٧٥ ملغ / أسبرين ١٥٠ ملغ**,updated_dosage_forms,sentence,medical_term,high,35b58f1f8bbf
+**Absorption: The absolute bioavailability of Rivaroxaban is dose-dependent**,**الامتصاص: التوافر الحيوي المطلق لريفاروكسبان يعتمد على الجرعة**,updated_pharmacokinetics,sentence,medical_term,high,233a92e66bca
+"**For 2.5 or 10 mg dose, it is estimated to be 80% to 100% and is not affected by food**",**لجرعة ٢.٥ أو ١٠ ملغ، يقدر ب٨٠٪ إلى ١٠٠٪ ولا يتأثر بالطعام**,updated_pharmacokinetics,sentence,medical_term,high,d04b869db54f
+"**For 20 mg dose, the absolute bioavailability is approximately 66% in the fasted state**",**لجرعة ٢٠ ملغ، التوافر الحيوي المطلق حوالي ٦٦٪ في حالة الصيام**,updated_pharmacokinetics,sentence,medical_term,high,3bce1515009b
+**Coadministration with food increases the bioavailability (mean AUC and Cmax increasing by 39% and 76%)**,**الإعطاء المتزامن مع الطعام يزيد التوافر الحيوي (متوسط AUC وCmax يزدادان بنسبة ٣٩٪ و٧٦٪)**,updated_pharmacokinetics,sentence,medical_term,high,7777d833e5ee
+**Maximum concentrations (Cmax) appear 2 to 4 hours after tablet intake**,**التركيزات القصوى (Cmax) تظهر بعد ٢ إلى ٤ ساعات من تناول القرص**,updated_pharmacokinetics,sentence,medical_term,high,b1a993314224
+**Plasma protein binding of Rivaroxaban is approximately 92% to 95%**,**الارتباط ببروتينات البلازما لريفاروكسبان حوالي ٩٢٪ إلى ٩٥٪**,updated_pharmacokinetics,sentence,medical_term,high,591bb2c54dee
+**66% of the dose was recovered in urine (36% as unchanged drug) and 7% in feces**,**تم استعادة ٦٦٪ من الجرعة في البول (٣٦٪ على شكل دواء غير متغير) و٧٪ في البراز**,updated_pharmacokinetics,sentence,medical_term,high,65b3836b4667
+**Terminal elimination half-life of Rivaroxaban is 5 to 9 hours**,**نصف عمر الإطراح النهائي لريفاروكسبان هو ٥ إلى ٩ ساعات**,updated_pharmacokinetics,sentence,medical_term,high,d8235c02979e
+**Clopidogrel is rapidly absorbed. Absorption is at least 50%**,**يمتص كلوبيدوغريل بسرعة. الامتصاص لا يقل عن ٥٠٪**,updated_pharmacokinetics,sentence,medical_term,high,4cbc0b849d03
+**Clopidogrel is extensively metabolized by two main metabolic pathways**,**يستقلب كلوبيدوغريل بشكل واسع عبر مسارين استقلابين رئيسيين**,updated_pharmacokinetics,sentence,medical_term,high,5053aeccb15b
+**Half-life of clopidogrel is approximately 6 hours. The half-life of the active metabolite is about 30 minutes**,**نصف عمر كلوبيدوغريل حوالي ٦ ساعات. نصف عمر المستقلب الفعال حوالي ٣٠ دقيقة**,updated_pharmacokinetics,sentence,medical_term,high,df7a94fcc098
+**Aspirin appears rapidly in all body tissues. It crosses the placenta and appears in breast milk**,**يظهر الأسبرين بسرعة في جميع أنسجة الجسم. يعبر المشيمة ويظهر في حليب الثدي**,updated_pharmacokinetics,sentence,medical_term,high,569e49e7ba30
+**Absorption of diclofenac from Fast-Vol sets in immediately after administration**,**يبدأ امتصاص ديكلوفيناك من فاست فول فورًا بعد الإعطاء**,updated_pharmacokinetics,sentence,medical_term,high,7710f967fd4c
+**Bioavailability of diclofenac is 82% of that achieved with gastro-resistant tablets**,**التوافر الحيوي لديكلوفيناك هو ٨٢٪ من ذلك الذي يتم تحقيقه مع الأقراص المقاومة للمعدة**,updated_pharmacokinetics,sentence,medical_term,high,00bc8c7df166
+"**99.7% of diclofenac is bound to serum proteins, mainly to albumin**",**ترتبط ٩٩.٧٪ من ديكلوفيناك ببروتينات المصل، خاصة الألبومين**,updated_pharmacokinetics,sentence,medical_term,high,346c02f289ad
+**Manufactured by: HAMA PHARMA Hama - Syria**,**تصنيع: حماة فارما - حماة - سوريا**,updated_general,sentence,medical_term,high,21b2ef4b4734
+**Tel.: +963 33 8673941 Fax: +963 33 8673943**,**هاتف: +٩٦٣ ٣٣ ٨٦٧٣٩٤١ فاكس: +٩٦٣ ٣٣ ٨٦٧٣٩٤٣**,updated_general,sentence,medical_term,high,355d7644beab
+**A medicament is a product which affects your health**,**الدواء منتج يؤثر على صحتك**,updated_general,sentence,medical_term,high,558c2af99d4f
+**its consumption contrary to instructions is dangerous for you**,**استخدامه خلاف التعليمات يعرضك للخطر**,updated_general,sentence,medical_term,high,d2a6f1666a60
+**Do not by yourself interrupt the period of treatment prescribed for you**,**لا تقاطع فترة العلاج الموصوفة لك من تلقاء نفسك**,updated_general,sentence,medical_term,high,6e7fbe015db8
+**KEEP MEDICAMENTS OUT OF REACH OF CHILDREN**,**يحفظ الدواء بعيدًا عن متناول الأطفال**,updated_general,sentence,medical_term,high,0b5872be5623
+**(Council of Arab Health Ministers)**,**(مجلس وزراء الصحة العرب)**,updated_general,term,medical_term,high,2276e603e40f
+**(Arab Pharmacists Association)**,**(اتحاد الصيدليين العرب)**,updated_general,term,medical_term,high,a3d901b8aaa6
+"**Store at room temperature, 15° - 30° C**",**يحفظ في درجة حرارة الغرفة، ١٥-٣٠ درجة مئوية**,updated_general,sentence,medical_term,high,ef5f0da296d7
+"**Store at room temperature, 20° -25° C**",**يحفظ في درجة حرارة الغرفة، ٢٠-٢٥ درجة مئوية**,updated_general,sentence,medical_term,high,0947bcc9417c
+**Agomelatine**,**أجوميلاتين**,medical_terms_extended,term,medical_term,high,fe597b39ee09
+**Aripiprazole**,**أريبيبرازول**,medical_terms_extended,term,medical_term,high,55703c4a1108
+**Paracetamol / Acetaminophen**,**باراسيتامول**,medical_terms_extended,term,medical_term,high,98290bd30b76
+**Diclofenac Potassium**,**ديكلوفيناك بوتاسيوم**,medical_terms_extended,term,medical_term,high,eee06cf7c3cc
+**Diclofenac Sodium**,**ديكلوفيناك صوديوم**,medical_terms_extended,term,medical_term,high,ce7c8d9b6271
+**Tramadol Hydrochloride**,**ترامادول هيدروكلوريد**,medical_terms_extended,term,medical_term,high,0cc65c01c9ca
+**Armodafinil**,**أرمودافينيل**,medical_terms_extended,term,medical_term,high,adf7d02b7218
+**Clozapine**,**كلوزابين**,medical_terms_extended,term,medical_term,high,3bbdff1196ad
+**Misoprostol**,**ميزوبروستول**,medical_terms_extended,term,medical_term,high,d3358136bcbc
+**Diltiazem Hydrochloride**,**ديلتيازيم هيدروكلوريد**,medical_terms_extended,term,medical_term,high,fa2f3aa94d7e
+**Enalapril Maleate**,**ينالابريل مالات**,medical_terms_extended,term,medical_term,high,0183eac6f1bb
+**Hydrochlorothiazide**,**هايدروكلوروثيازيد**,medical_terms_extended,term,medical_term,high,47d3f40e9a46
+**Spironolactone**,**سبيرونولاكتون**,medical_terms_extended,term,medical_term,high,32956c28c0c9
+**Furosemide**,**فوروسمايد**,medical_terms_extended,term,medical_term,high,af11d5d18cd2
+**Metronidazole**,**مترونيدازول**,medical_terms_extended,term,medical_term,high,ffb8b8e24410
+**Spiramycin**,**سبيرامايسين**,medical_terms_extended,term,medical_term,high,a3156f0c3043
+**Oxomemazine**,**أوكسوميمازين**,medical_terms_extended,term,medical_term,high,b93d054bfb78
+**Guaifenesin**,**غوايفينيسين**,medical_terms_extended,term,medical_term,high,bb96d48622eb
+**Pseudoephedrine Hydrochloride**,**سودوإيفيدرين هيدروكلوريد**,medical_terms_extended,term,medical_term,high,7cf93376c2a5
+**Triprolidine Hydrochloride**,**تريبوليدين هيدروكلوريد**,medical_terms_extended,term,medical_term,high,ee8f8c8e03f2
+**Pizotifen (as Hydrogen Maleate)**,**بيزوتيفين (على شكل ماليات هيدروجين)**,medical_terms_extended,term,medical_term,high,6e7aab2bb2ea
+**Ketotifen (as Hydrogen Fumarate)**,**كيتوتيفين (على شكل فومارات هيدروجين)**,medical_terms_extended,term,medical_term,high,56599e4b328a
+**Vitamin C / Ascorbic Acid**,**فيتامين C / حمض الأسكوربيك**,medical_terms_extended,term,medical_term,high,6861bf3357b8
+**Vitamin B1 (Thiamine)**,**فيتامين B1 (ثيامين)**,medical_terms_extended,term,medical_term,high,195a51c24b76
+**Vitamin B6 (Pyridoxine)**,**فيتامين B6 (بيريدوكسين)**,medical_terms_extended,term,medical_term,high,3357e03e0e31
+**Vitamin B12 (Cyanocobalamin)**,**فيتامين B12 (سيانوكوبالامين)**,medical_terms_extended,term,medical_term,high,fcdc27c2a076
+**Sustained-Release Capsules**,**كبسولات ممتدة المفعول**,medical_terms_extended,term,medical_term,high,89a5472997bf
+**Excipients**,**السواغات**,medical_terms_extended,term,medical_term,high,3c1a37263a90
+**Microcrystalline Cellulose**,**السليلوز البلوري المجهري**,medical_terms_extended,term,medical_term,high,69fc2399de8a
+**Lactose Monohydrate**,**لاكتوز أحادي الماء**,medical_terms_extended,term,medical_term,high,7f681b066605
+**Magnesium Stearate**,**ستيرات المغنيسيوم**,medical_terms_extended,term,medical_term,high,b161c6ed44d2
+**Sodium Starch Glycolate**,**نشاء الصوديوم غليكولات**,medical_terms_extended,term,medical_term,high,fa4337fb4a01
+**Pregelatinized Starch**,**نشاء مسبق التجلط**,medical_terms_extended,term,medical_term,high,df2491ac0d69
+**Corn Starch**,**نشاء الذرة**,medical_terms_extended,term,medical_term,high,20f3a41b1e48
+**HPMC (Hydroxypropyl Methylcellulose)**,**هيدروكسيبروبيل ميثيل سيلولوز**,medical_terms_extended,term,medical_term,high,e012ebd2b630
+**Polysorbate 80**,**بوليسوربات ٨٠**,medical_terms_extended,term,medical_term,high,84be2753df35
+**Carnauba Wax**,**شمع كارناوبا**,medical_terms_extended,term,medical_term,high,df23635fbf03
+**Iron Oxide Yellow/Red**,**أكسيد الحديد الأصفر/الأحمر**,medical_terms_extended,term,medical_term,high,ee9f3eb2e6f9
+**Polyethylene Glycol**,**بولي إيثيلين غليكول**,medical_terms_extended,term,medical_term,high,2ec50f6d2c4f
+**Titanium Dioxide**,**ثاني أكسيد التيتانيوم**,medical_terms_extended,term,medical_term,high,d2bbbeda7830
+**Sodium Benzoate**,**بنزوات الصوديوم**,medical_terms_extended,term,medical_term,high,9ac183fa225e
+**Mechanism of Action**,**آلية التأثير**,medical_terms_extended,term,medical_term,high,055ceb079aee
+**Pharmacodynamics**,**الديناميكا الدوائية**,medical_terms_extended,term,medical_term,high,3d1adcfc5803
+**Pharmacokinetics**,**الحرائك الدوائية**,medical_terms_extended,term,medical_term,high,ab240f7febfb
+**Absorption**,**الامتصاص**,medical_terms_extended,term,medical_term,high,92a001409b1e
+**Bioavailability**,**التوافر الحيوي**,medical_terms_extended,term,medical_term,high,ed30c4a08c42
+**Plasma Protein Binding**,**الارتباط ببروتينات البلازما**,medical_terms_extended,term,medical_term,high,664585877729
+**Metabolism**,**الاستقلاب**,medical_terms_extended,term,medical_term,high,1a1b6765d345
+**Peak Plasma Concentration (Cmax)**,**التركيز الأقصى في البلازما**,medical_terms_extended,term,medical_term,high,a9c041fdde91
+**Area Under Curve (AUC)**,**مساحة تحت المنحنى**,medical_terms_extended,term,medical_term,high,a5fceb621bb8
+**Blood-Brain Barrier**,**حاجز دم-دماغ**,medical_terms_extended,term,medical_term,high,3db6afc42efc
+**Placental Barrier**,**حاجز المشيمة**,medical_terms_extended,term,medical_term,high,c8d784fad0e9
+**Enzyme Inhibitor**,**مثبط إنزيم**,medical_terms_extended,term,medical_term,high,9a55ccc01723
+**Enzyme Inducer**,**محفز إنزيم**,medical_terms_extended,term,medical_term,high,5044f1ce50b6
+**Active Metabolite**,**مستقلب فعال**,medical_terms_extended,term,medical_term,high,3a06bcbc87c5
+**O-desmethyl Derivative**,**مشتق منزوع الميثيل**,medical_terms_extended,term,medical_term,high,9a57bdb4586c
+**Indications**,**استطبابات**,medical_terms_extended,term,medical_term,high,9c2fb82d2bb3
+**Contraindications**,**مضادات الاستطباب**,medical_terms_extended,term,medical_term,high,c153760eaec4
+**Side Effects / Adverse Reactions**,**الآثار الجانبية / ردود الفعل السلبية**,medical_terms_extended,term,medical_term,high,6a063123acc2
+**Hypersensitivity**,**فرط الحساسية**,medical_terms_extended,term,medical_term,high,ad89541ca594
+**Allergic Reactions**,**ردود فعل تحسسية**,medical_terms_extended,term,medical_term,high,b14779db2990
+**Anaphylaxis**,**صدمة تحسسية**,medical_terms_extended,term,medical_term,high,f1cde1a17367
+**Tachycardia**,**تسارع القلب**,medical_terms_extended,term,medical_term,high,c35c546a8b3a
+**Bradycardia**,**بطء القلب**,medical_terms_extended,term,medical_term,high,08635837316a
+**Hypotension**,**انخفاض ضغط الدم**,medical_terms_extended,term,medical_term,high,43ae21f695f3
+**Hypertension**,**ارتفاع ضغط الدم**,medical_terms_extended,term,medical_term,high,38d490169a76
+**Postural Hypotension**,**انخفاض ضغط الدم الوضعي**,medical_terms_extended,term,medical_term,high,6cdc7e19508f
+**Cardiovascular Collapse**,**وهط قلب وعائي**,medical_terms_extended,term,medical_term,high,8a727f2dfac4
+**Respiratory Depression**,**كبت التنفس**,medical_terms_extended,term,medical_term,high,055c7b0f4150
+**Seizures / Convulsions**,**نوبات صرعية / اختلاجات**,medical_terms_extended,term,medical_term,high,1a428747802f
+**Hyperreflexia**,**فرط المنعكسات**,medical_terms_extended,term,medical_term,high,873bdf489e3f
+**Dry Mouth**,**جفاف الفم**,medical_terms_extended,term,medical_term,high,f1311fa9a08f
+**Gastrointestinal Irritation**,**تهيج الجهاز الهضمي**,medical_terms_extended,term,medical_term,high,de86be684aa0
+**Miosis**,**تضييق حدقة العين**,medical_terms_extended,term,medical_term,high,29a2be2dda27
+**Serotonin Syndrome**,**متلازمة السيروتونين**,medical_terms_extended,term,medical_term,high,5413ebee990f
+**Withdrawal Symptoms**,**أعراض الانسحاب**,medical_terms_extended,term,medical_term,high,3a045dabb76b
+**Drug Dependence**,**اعتمادية دوائية**,medical_terms_extended,term,medical_term,high,fa269b4aa244
+**Overdosage / Overdose**,**فرط الجرعة**,medical_terms_extended,term,medical_term,high,4d90b7231111
+**Major Depressive Disorder**,**اضطراب اكتئابي كبير**,medical_terms_extended,term,medical_term,high,f774e8182447
+**Bipolar Disorder**,**اضطراب ثنائي القطب**,medical_terms_extended,term,medical_term,high,3b19fca75eb3
+**Manic Episode**,**نوبة هوسية**,medical_terms_extended,term,medical_term,high,8ae77eba44e2
+**Mixed Episode**,**نوبة مختلطة**,medical_terms_extended,term,medical_term,high,96a3a9113172
+**Autistic Disorder**,**اضطراب التوحد**,medical_terms_extended,term,medical_term,high,c552eec5bb10
+**Tourette's Disorder**,**اضطراب توريت**,medical_terms_extended,term,medical_term,high,1b2fcbb5a00b
+**Sleep Disorders**,**اضطرابات النوم**,medical_terms_extended,term,medical_term,high,93b754c6dec2
+**Osteoarthritis**,**التهاب المفاصل التنكسية**,medical_terms_extended,term,medical_term,high,81c664558cb7
+**Gastric Protection**,**حماية معدية**,medical_terms_extended,term,medical_term,high,dd9ce229a6bd
+**Peptic Ulcer**,**قرحة هضمية**,medical_terms_extended,term,medical_term,high,df659468726e
+**Gastrointestinal Bleeding**,**نزف معدي معوي**,medical_terms_extended,term,medical_term,high,dcf67902ae6e
+**Severe Hepatic Impairment**,**قصور كبدي شديد**,medical_terms_extended,term,medical_term,high,da83117955fb
+**Severe Renal Impairment**,**قصور كلوي شديد**,medical_terms_extended,term,medical_term,high,69cc550147a9
+**Severe Respiratory Impairment**,**قصور تنفسي شديد**,medical_terms_extended,term,medical_term,high,04ed808a1c81
+**Head Injury**,**إصابة في الرأس**,medical_terms_extended,term,medical_term,high,b072518359eb
+**Increased Intracranial Pressure**,**زيادة ضغط داخل الجمجمة**,medical_terms_extended,term,medical_term,high,3e9e933782e8
+**Decreased Level of Consciousness**,**انخفاض مستوى الوعي**,medical_terms_extended,term,medical_term,high,b3894242f4a7
+**Coronal Ischemia**,**نقص تروية الشريان التاجي**,medical_terms_extended,term,medical_term,high,4fedb95618b0
+**Cerebrovascular Disease**,**أمراض دماغية وعائية**,medical_terms_extended,term,medical_term,high,64eed6d14e10
+**Dementia-Related Psychosis**,**ذهان مرتبط بالخرف**,medical_terms_extended,term,medical_term,high,fb93d3b45eb8
+**Suicidal Thoughts and Behaviors**,**أفكار وسلوكيات انتحارية**,medical_terms_extended,term,medical_term,high,6cb5437ddc78
+**Respiratory Diseases**,**أمراض تنفسية**,medical_terms_extended,term,medical_term,high,638a68c6c195
+**Decongestant**,**مزيل احتقان**,medical_terms_extended,term,medical_term,high,a39370c6fa5a
+**Gingivitis**,**التهاب اللثة**,medical_terms_extended,term,medical_term,high,2b1902022fa0
+**Anti-bacterial**,**مضاد بكتيري**,medical_terms_extended,term,medical_term,high,41157c2140b0
+**Analgesics**,**مسكنات الألم**,medical_terms_extended,term,medical_term,high,c3d4803e6274
+**Central Acting Analgesic**,**مسكن ألم مركزي التأثير**,medical_terms_extended,term,medical_term,high,d4a45b3f728f
+**Opioid Analgesics**,**مسكنات أفيونية**,medical_terms_extended,term,medical_term,high,1592bce16286
+**NSAIDs (Non-Steroidal Anti-Inflammatory Drugs)**,**مضادات الالتهاب غير الستيرويدية**,medical_terms_extended,term,medical_term,high,36bbc4b1ad58
+**Antipsychotics**,**مضادات الذهان**,medical_terms_extended,term,medical_term,high,1b04bea4632f
+**Atypical Antipsychotics**,**مضادات ذهان غير نمطية**,medical_terms_extended,term,medical_term,high,4a9893a03179
+**Antidepressants**,**مضادات الاكتئاب**,medical_terms_extended,term,medical_term,high,2256ac3d3ab4
+**Tricyclic Antidepressants**,**مضادات الاكتئاب ثلاثية الحلقات**,medical_terms_extended,term,medical_term,high,286295cf96f1
+**SSRIs (Selective Serotonin Reuptake Inhibitors)**,**مثبطات استرداد السيروتونين الانتقائية**,medical_terms_extended,term,medical_term,high,d89da97e1ff6
+**SNRIs (Serotonin-Norepinephrine Reuptake Inhibitors)**,**مثبطات استرداد السيروتونين والنورادرينالين**,medical_terms_extended,term,medical_term,high,7fbbec7b1cdd
+**MAO Inhibitors (Monoamine Oxidase Inhibitors)**,**مثبطات مونوأمين أوكسيداز**,medical_terms_extended,term,medical_term,high,d605a0f4c17f
+**Antihypertensives**,**أدوية خافضة لضغط الدم**,medical_terms_extended,term,medical_term,high,b1dabc5eb7f6
+**Diuretics**,**مدرات البول**,medical_terms_extended,term,medical_term,high,90da387fcfbb
+**Thiazide Diuretics**,**مدرات البول الثيازيدية**,medical_terms_extended,term,medical_term,high,9d85b422c328
+**Loop Diuretics**,**مدرات البول العروية**,medical_terms_extended,term,medical_term,high,a6cb13f6a106
+**Potassium-Sparing Diuretics**,**مدرات البول الحافظة للبوتاسيوم**,medical_terms_extended,term,medical_term,high,ceb1ac3a564f
+**ACE Inhibitors (Angiotensin-Converting Enzyme Inhibitors)**,**مثبطات الإنزيم المحول للأنجيوتنسين**,medical_terms_extended,term,medical_term,high,bca8c3926e98
+**Calcium Channel Blockers**,**حاصر قنوات الكالسيوم**,medical_terms_extended,term,medical_term,high,6c33c0aef8ae
+**Antibiotics**,**مضادات حيوية**,medical_terms_extended,term,medical_term,high,b27ca7a97883
+**Antihistamines**,**مضادات هيستامين**,medical_terms_extended,term,medical_term,high,86362fb27f1f
+**Expectorants**,**طاردات للبلغم**,medical_terms_extended,term,medical_term,high,e31022247563
+**Decongestants**,**مزيلات الاحتقان**,medical_terms_extended,term,medical_term,high,5de5e7ed8f8b
+**Proton Pump Inhibitors**,**مثبطات مضخة البروتون**,medical_terms_extended,term,medical_term,high,4d8bd7c367b5
+**Antioxidants**,**مضادات الأكسدة**,medical_terms_extended,term,medical_term,high,6a6c212c49d5
+**Increased Mortality in Elderly Patients**,**زيادة معدل الوفيات لدى المرضى المسنين**,medical_terms_extended,term,medical_term,high,78c076d1a176
+**Cerebrovascular Adverse Events**,**أحداث قلبية وعائية سلبية**,medical_terms_extended,term,medical_term,high,6c07effd511b
+**Neuroleptic Malignant Syndrome (NMS)**,**متلازمة الخباث الأفيوني (NMS)**,medical_terms_extended,term,medical_term,high,29aab59cdec9
+**Tardive Dyskinesia**,**خلل الحركة المتأخر**,medical_terms_extended,term,medical_term,high,9949c76696ec
+**Metabolic Changes**,**تغيرات استقلابية**,medical_terms_extended,term,medical_term,high,1b51e9734d14
+**Hyperglycemia / Diabetes Mellitus**,**فرط سكر الدم / مرض السكري**,medical_terms_extended,term,medical_term,high,c38de7e6f304
+**Dyslipidemia**,**اضطراب دهني**,medical_terms_extended,term,medical_term,high,909a636bb4d1
+**Body Weight Gain**,**زيادة الوزن**,medical_terms_extended,term,medical_term,high,e2212d4fd1b8
+**Orthostatic Hypotension**,**انخفاض ضغط الدم الوضعي**,medical_terms_extended,term,medical_term,high,6fd25cf0ac1d
+**Leukopenia**,**نقص الكريات البيضاء**,medical_terms_extended,term,medical_term,high,c0d98a547dd2
+**Neutropenia**,**نقص العدلات**,medical_terms_extended,term,medical_term,high,fc5e6f9a0aeb
+**Agranulocytosis**,**نقص الكريات المحببة**,medical_terms_extended,term,medical_term,high,c1443afe88a3
+**Seizure Threshold**,**عتبة الاختلاج**,medical_terms_extended,term,medical_term,high,730a4478e5e9
+**Cognitive and Motor Impairment**,**إعاقة معرفية وحركية**,medical_terms_extended,term,medical_term,high,28c9866d9883
+**Body Temperature Regulation**,**تنظيم درجة حرارة الجسم**,medical_terms_extended,term,medical_term,high,48d7b0f80a72
+**Dysphagia**,**صعوبة البلع**,medical_terms_extended,term,medical_term,high,f318a9756f1e
+**Esophageal Dysmotility**,**اضطراب حركية المريء**,medical_terms_extended,term,medical_term,high,9c5c50d1cdff
+**Aspiration Pneumonia**,**التهاب رئوي استشاقي**,medical_terms_extended,term,medical_term,high,43ded9cc40d3
+**Alcoholics**,**مدمنو الكحول**,medical_terms_extended,term,medical_term,high,8b485fbeee07
+**Medication-Overuse Headache (MOH)**,**صداع ناجم عن إفراط في استخدام المسكنات**,medical_terms_extended,term,medical_term,high,968d56de92b8
+**Drug Interactions**,**التداخلات الدوائية**,medical_terms_extended,term,medical_term,high,99ed2fee1a29
+**MAO Inhibitors**,**مثبطات مونوأمين أوكسيداز**,medical_terms_extended,term,medical_term,high,e4df0bde14a5
+**CNS Depressants**,**مثبطات الجهاز العصبي المركزي**,medical_terms_extended,term,medical_term,high,356bfca9b381
+**Carbamazepine**,**كاربامازيبين**,medical_terms_extended,term,medical_term,high,c66f8ab15e4f
+**Cimetidine**,**سيميتيدين**,medical_terms_extended,term,medical_term,high,55e3f525416b
+**Buprenorphine**,**بوبرينورفين**,medical_terms_extended,term,medical_term,high,310dd97c1898
+**Nalbuphine**,**نالبوفين**,medical_terms_extended,term,medical_term,high,46607ea46a76
+**Pentazocine**,**بنتازوسين**,medical_terms_extended,term,medical_term,high,33bc983f9b6c
+**Mixed Agonist/Antagonists**,**ناظم/مضاد مختلط**,medical_terms_extended,term,medical_term,high,984165ff3f55
+**Coumarin Derivatives (Warfarin)**,**مشتقات الكومارين (وارفارين)**,medical_terms_extended,term,medical_term,high,d17ed94ae8ae
+**Ketoconazole**,**كيتوكونازول**,medical_terms_extended,term,medical_term,high,1df253838d90
+**Erythromycin**,**إريثرومايسين**,medical_terms_extended,term,medical_term,high,72038b1aad72
+**Bupropion**,**بوبروبيون**,medical_terms_extended,term,medical_term,high,68dbfe2c232f
+**Mirtazapine**,**ميرتازابين**,medical_terms_extended,term,medical_term,high,f59ba75094f4
+**Tetrahydrocannabinol**,**تتراهيدروكانابينول**,medical_terms_extended,term,medical_term,high,49c7a38fba8b
+**Naloxone**,**نالوكسون**,medical_terms_extended,term,medical_term,high,703500726a56
+**Diazepam**,**ديازيبام**,medical_terms_extended,term,medical_term,high,7ce3459bebcf
+**Activated Charcoal**,**الفحم المنشط**,medical_terms_extended,term,medical_term,high,bcba45b9d6dc
+**Gastric Lavage**,**غسل المعدة**,medical_terms_extended,term,medical_term,high,e84f28b0e2e4
+**Pediatric Use**,**استخدام للأطفال**,medical_terms_extended,term,medical_term,high,d6acaef360a8
+**Geriatric Use**,**استخدام للمسنين**,medical_terms_extended,term,medical_term,high,16ad88348613
+**Breast Milk**,**حليب الثدي**,medical_terms_extended,term,medical_term,high,94ef7773a194
+**Teratogenicity**,**تسبب التشوهات الجنينية**,medical_terms_extended,term,medical_term,high,0e0036b133c3
+**Dosage and Administration**,**الجرعة وطريقة الاستعمال**,medical_terms_extended,term,medical_term,high,5a6925b65751
+**Recommended Dose**,**الجرعة الموصى بها**,medical_terms_extended,term,medical_term,high,9a08422762ff
+**Initial Dose**,**الجرعة الأولية**,medical_terms_extended,term,medical_term,high,f621f429d833
+**Maintenance Dose**,**الجرعة الصيانة**,medical_terms_extended,term,medical_term,high,98afedb87225
+**Maximum Daily Dose**,**الجرعة اليومية القصوى**,medical_terms_extended,term,medical_term,high,7ea36fae99bb
+**Dosage Adjustment**,**تعديل الجرعة**,medical_terms_extended,term,medical_term,high,690539cea0a8
+**Dosage Interval**,**فترة الجرعة**,medical_terms_extended,term,medical_term,high,4f16669d7072
+**Missed Dose**,**جرعة منسية**,medical_terms_extended,term,medical_term,high,9def0d777efd
+**Overdosage Management**,**إدارة فرط الجرعة**,medical_terms_extended,term,medical_term,high,685ccaa46dfb
+**Carton Box**,**علبة كرتون**,medical_terms_extended,term,medical_term,high,e745228c32d4
+**Storage Conditions**,**شروط الحفظ**,medical_terms_extended,term,medical_term,high,bc1b51a45684
+**Store at room temperature**,**يحفظ في درجة حرارة الغرفة**,medical_terms_extended,term,medical_term,high,2e32e01e8d81
+**Store in a dry place**,**يحفظ في مكان جاف**,medical_terms_extended,term,medical_term,high,755dff7cd9a1
+**Keep away from light**,**يحفظ بعيدًا عن الضوء**,medical_terms_extended,term,medical_term,high,a091bd06c360
+**Keep away from humidity**,**يحفظ بعيدًا عن الرطوبة**,medical_terms_extended,term,medical_term,high,34be5701113c
+**Keep out of reach of children**,**يحفظ بعيدًا عن متناول الأطفال**,medical_terms_extended,sentence,medical_term,high,e4d526c1e17b
+**Prescription Only Medicine**,**يصرف بموجب وصفة طبية**,medical_terms_extended,term,medical_term,high,137da598d998
+**Do not interrupt treatment**,**لا تقاطع فترة العلاج**,medical_terms_extended,term,medical_term,high,c5899b0582f4
+**Council of Arab Health Ministers**,**مجلس وزراء الصحة العرب**,medical_terms_extended,term,medical_term,high,e3b6c31c7d16
+**Arab Pharmacists Association**,**اتحاد الصيدليين العرب**,medical_terms_extended,term,medical_term,high,11393a87cd67
+**Tramadol Hydrochloride is a centrally acting synthetic analgesic compound**,**ترامادول هيدروكلوريد هو مسكن اصطناعي مركزي التأثير**,mechanism_pk,sentence,medical_term,high,eee2a49bfaad
+"**Non-selective pure agonist at mu, delta, and kappa opioid receptors**",**ناظم غير انتقائي للمستقبلات الأفيونية ميو، دلتا، وكابا**,mechanism_pk,sentence,medical_term,high,2f2793dffc8a
+**Inhibition of neuronal reuptake of noradrenaline (norepinephrine) and enhancement of serotonin release**,**تثبيط إعادة امتصاص نورادرينالين (نورإبينيفرين) وتعزيز إطلاق السيروتونين**,mechanism_pk,sentence,medical_term,high,675a09bd6ae4
+**More than 90% of tramadol is absorbed after oral administration. The mean absolute bioavailability is approximately 70%**,**يمتص أكثر من ٩٠٪ من ترامادول بعد تناوله عن طريق الفم. المتوسط التوافر الحيوي المطلق حوالي ٧٠٪**,mechanism_pk,sentence,medical_term,high,bb2eb2bd404d
+**Plasma protein binding of about 20%**,**الارتباط ببروتينات البلازما حوالي ٢٠٪**,mechanism_pk,sentence,medical_term,high,0af39768c1e0
+**Passes the blood-brain and placental barriers**,**يعبر حاجز دم-دماغ وحاجز المشيمة**,mechanism_pk,sentence,medical_term,high,8e47a9ad3c4c
+**Tramadol and its metabolites are almost completely excreted via the kidneys**,**يطرح ترامادول ومستقلباته تقريبًا بالكامل عن طريق الكلى**,mechanism_pk,sentence,medical_term,high,8d2a713d216b
+**Agomelatine is a melatonergic agonist (MT1 and MT2 receptors) and 5-HT2C antagonist**,**أجوميلاتين هو محفز للمستقبلات الميلاتونينية (MT1 و MT2) ومضاد للمستقبلات 5-HT2C**,mechanism_pk,sentence,medical_term,high,560d87be6f22
+**Diclofenac Potassium is a potent inhibitor of prostaglandin biosynthesis**,**ديكلوفيناك بوتاسيوم هو مثبط قوي لتخليق البروستاغلاندين**,mechanism_pk,sentence,medical_term,high,f03e9bbcfa2f
+**TRAMADOL HAMA PHARMA (Film-Coated Tablets) (Tramadol Hydrochloride 50 mg)**,**ترامادول هاما فارما (أقراص ملبسة بالفيلم) (ترامادول هيدروكلوريد ٥٠ ملغ)**,leaflet_content_detailed,sentence,medical_term,high,fcf28c397d9e
+"**NODEMENT (Armodafinil 50 mg, 150 mg, 250 mg) (Tablets)**",**نوديمينت (أرمودافينيل ٥٠ ملغ، ١٥٠ ملغ، ٢٥٠ ملغ) (أقراص)**,leaflet_content_detailed,sentence,medical_term,high,2d3a3e6ed09c
+**CLOZAPINE HAMA PHARMA (Tablets)**,**كلوزابين هاما فارما (أقراص)**,leaflet_content_detailed,term,medical_term,high,8cc70dc77560
+**FEM-RELIEVE (Film-Coated Tablets)**,**فيم-ريليف (أقراص ملبسة بالفيلم)**,leaflet_content_detailed,term,medical_term,high,770a9660f568
+**VITOREX (Pizotifen 0.5 mg) (Capsules)**,**فيتوركس (بيزوتيفين ٠.٥ ملغ) (كبسولات)**,leaflet_content_detailed,term,medical_term,high,9258b572b42b
+**KETOTIFEN HAMA PHARMA (Ketotifen 1 mg as Hydrogen Fumarate) (Tablets)**,**كيتوتيفين هاما فارما (كيتوتيفين ١ ملغ على شكل فومارات هيدروجين) (أقراص)**,leaflet_content_detailed,sentence,medical_term,high,55e6e6fa8400
+"**DILTIAZEM HAMA PHARMA (Diltiazem hydrochloride 60 mg, 90 mg, 120 mg, 180 mg) (Tablets)**",**ديلتيازيم هاما فارما (ديلتيازيم هيدروكلوريد ٦٠ ملغ، ٩٠ ملغ، ١٢٠ ملغ، ١٨٠ ملغ) (أقراص)**,leaflet_content_detailed,sentence,medical_term,high,00c61da8a803
+**ANTI-TUSSIVE (Oxomemazine 1.65 mg + Paracetamol 33.3 mg + Sodium benzoate 33.3 mg + Guaifenesin 33.3 mg)**,**مضاد السعال (أوكسوميمازين ١.٦٥ ملغ + باراسيتامول ٣٣.٣ ملغ + بنزوات الصوديوم ٣٣.٣ ملغ + غوايفينيسين ٣٣.٣ ملغ)**,leaflet_content_detailed,sentence,medical_term,high,0a04d2d99d2d
+**FEDROLIDINE (Pseudoephedrine hydrochloride 60 mg + Triprolidine hydrochloride 2.5 mg) (Tablets)**,**فيدروليدين (سودوإيفيدرين هيدروكلوريد ٦٠ ملغ + تريبوليدين هيدروكلوريد ٢.٥ ملغ) (أقراص)**,leaflet_content_detailed,sentence,medical_term,high,dc147c563083
+**Composition: Each film-coated tablet contains Tramadol Hydrochloride 50 mg**,**التركيب: يحوي كل قرص ملبس بالفيلم على ترامادول هيدروكلوريد ٥٠ ملغ**,leaflet_content_detailed,sentence,medical_term,high,2b8157463eba
+"**Excipients: Magnesium stearate, Microcrystalline cellulose, HPMC, Sodium starch glycolate, Pregelatinized starch, Corn starch, Polysorbate 80, Carnauba wax, Iron oxide yellow, Polyethylene glycol, Titanium dioxide, Lactose**",**السواغات: ستيرات المغنيسيوم، السليلوز البلوري المجهري، HPMC، نشاء الصوديوم غليكولات، نشاء مسبق التجلط، نشاء الذرة، بوليسوربات ٨٠، شمع كارناوبا، أكسيد الحديد الأصفر، بولي إيثيلين غليكول، ثاني أكسيد التيتانيوم، لاكتوز**,leaflet_content_detailed,sentence,medical_term,high,2a0c1a3fb0a1
+**Pharmacodynamics: Centrally acting synthetic analgesic compound**,**الديناميكا الدوائية: مركب مسكن اصطناعي مركزي التأثير**,leaflet_content_detailed,sentence,medical_term,high,ea735bbb09ed
+**Passes blood-brain and placental barriers**,**يعبر حاجز دم-دماغ وحاجز المشيمة**,leaflet_content_detailed,term,medical_term,high,234fe3bbb85a
+**Elimination: Almost completely excreted via kidneys**,**الإطراح: يتم طرحه تقريبًا بالكامل عن طريق الكلى**,leaflet_content_detailed,sentence,medical_term,high,99bd0a4293f2
+**Indications: Treatment of moderate to severe pain**,**الاستطبابات: علاج الألم المتوسط إلى الشديد**,leaflet_content_detailed,sentence,medical_term,high,2be626276822
+"**Contraindications: Hypersensitivity, Acute intoxication with CNS depressants, MAO inhibitors, Severe hepatic/renal/respiratory impairment, Epilepsy, Breastfeeding (long-term)**",**مضادات الاستطباب: فرط الحساسية، التسمم الحاد بمثبطات الجهاز العصبي المركزي، مثبطات مونوأمين أوكسيداز، قصور كبدي/كلوي/تنفسي شديد، صرع، الإرضاع (طويل الأمد)**,leaflet_content_detailed,sentence,medical_term,high,6f13664619db
+"**Warnings: Withdrawal symptoms, Drug dependence, Opioid-dependent patients, Convulsive disorders, Respiratory depression**",**التحذيرات: أعراض الانسحاب، الاعتمادية الدوائية، المرضى المعتمدون على الأفيونيات، اضطرابات اختلاجية، كبت التنفس**,leaflet_content_detailed,sentence,medical_term,high,6859974c304a
+"**Drug Interactions: MAO inhibitors, CNS depressants, Carbamazepine, Cimetidine, SSRIs, SNRIs, Tricyclic antidepressants, Coumarin derivatives (warfarin), Ketoconazole, Erythromycin**",**التداخلات الدوائية: مثبطات MAO، مثبطات الجهاز العصبي المركزي، كاربامازيبين، سيميتيدين، مثبطات استرداد السيروتونين الانتقائية (SSRIs)، مثبطات استرداد السيروتونين والنورادرينالين (SNRIs)، مضادات الاكتئاب ثلاثية الحلقات، مشتقات الكومارين (وارفارين)، كيتوكونازول، إريثرومايسين**,leaflet_content_detailed,sentence,medical_term,high,f1f9e9bf818d
+"**Serotonin syndrome (confusion, agitation, fever, sweating, ataxia, hyperreflexia, myoclonus, diarrhea)**",**متلازمة السيروتونين (ارتباك، هياج، حمى، تعرق، ترنح، فرط المنعكسات، رمع عضلي، إسهال)**,leaflet_content_detailed,sentence,medical_term,high,0a7f40b1b9e3
+"**Adverse Reactions: Palpitation, tachycardia, hypotension, dizziness, headache, somnolence, nausea, vomiting, constipation, dry mouth, diarrhea, sweating, pruritus, rash, urticaria, fatigue**",**الآثار الجانبية: خفقان، تسارع القلب، انخفاض ضغط الدم، دوخة، صداع، نعاس، غثيان، قيء، إمساك، جفاف الفم، إسهال، تعرق، حكة، طفح جلدي، شرى، إرهاق**,leaflet_content_detailed,sentence,medical_term,high,a3b764c10217
+"**Overdosage: Miosis, vomiting, cardiovascular collapse, sedation, coma, seizures, respiratory depression**",**فرط الجرعة: تضييق حدقة العين، قيء، وهط قلب وعائي، تهدئة، غيبوبة، اختلاجات، كبت التنفس**,leaflet_content_detailed,sentence,medical_term,high,9c5647f63daa
+"**Management of Overdosage: Maintain airway, cardiovascular function, naloxone for respiratory depression, diazepam for fits, activated charcoal/gastric lavage within 2 hours**",**إدارة فرط الجرعة: الحفاظ على مجرى الهواء، وظائف القلب والأوعية الدموية، نالوكسون لكبت التنفس، ديازيبام للاختلاجات، الفحم المنشط/غسل المعدة خلال ٢ ساعة**,leaflet_content_detailed,sentence,medical_term,high,e987ebbe4ec7
+"**Dosage: Adults & children >12 years: 50-100 mg 3-4 times daily (acute pain), 50-100 mg every 4-6 hours (chronic pain), max 400 mg/day**",**الجرعة: البالغون والأطفال >١٢ سنة: ٥٠-١٠٠ ملغ ٣-٤ مرات يوميًا (ألم حاد)، ٥٠-١٠٠ ملغ كل ٤-٦ ساعات (ألم مزمن)، حد أقصى ٤٠٠ ملغ/اليوم**,leaflet_content_detailed,sentence,medical_term,high,47c4f0981e4c
+"**Renal Impairment: Increase dosage interval to 12 hours if creatinine clearance <30 ml/min, not recommended if <10 ml/min**",**قصور كلوي: زيادة فترة الجرعة إلى ١٢ ساعة إذا كانت تصفية الكرياتينين <٣٠ مل/دقيقة، غير موصى به إذا كانت <١٠ مل/دقيقة**,leaflet_content_detailed,sentence,medical_term,high,255043632177
+"**Hepatic Impairment: Divide dose or extend interval to 12 hours, contraindicated in severe impairment**",**قصور كبدي: قسم الجرعة أو اطلب الفترة إلى ١٢ ساعة، مضاد استطباب في القصور الشديد**,leaflet_content_detailed,sentence,medical_term,high,8e456b2fcd2a
+**Pediatric: Not recommended for children <12 years**,**الأطفال: غير موصى به للأطفال <١٢ سنة**,leaflet_content_detailed,sentence,medical_term,high,6a67de7c2d3f
+**Each film-coated tablet contains: Tramadol Hydrochloride 50 mg**,**يحوي كل قرص ملبس بالفيلم: ترامادول هيدروكلوريد ٥٠ ملغ**,composition,sentence,medical_term,high,2bbd40d9d4e8
+**Each capsule contains: Pizotifen (as hydrogen maleate) 0.5 mg**,**يحوي كل كبسولة: بيزوتيفين (على شكل ماليات هيدروجين) ٠.٥ ملغ**,composition,sentence,medical_term,high,177e7e233de8
+**Each tablet of Ketotifen Hama Pharma contains: 1 mg Ketotifen (as Hydrogen Fumarate)**,**يحوي كل قرص من كيتوتيفين حماة فارما: ١ ملغ كيتوتيفين (على شكل فومارات هيدروجين)**,composition,sentence,medical_term,high,c54873ea61da
+**Composition: Paracetamol 500 mg + Diclofenac Potassium 50 mg**,**التركيب: باراسيتامول ٥٠٠ ملغ + ديكلوفيناك بوتاسيوم ٥٠ ملغ**,composition,sentence,medical_term,high,1a110426303f
+**Composition and Excipients: Each tablet contains 10 mg or 15 mg of aripiprazole**,**التركيب والسواغات: يحوي كل قرص على ١٠ ملغ أو ١٥ ملغ من أريبيبرازول**,composition,sentence,medical_term,high,4f0770b47127
+**Anticoagulant**,**مضاد تخثر**,updated_indications,term,medical_term,high,8997d44d4f7a
+**Reduction in the risk of stroke and systemic embolism in patients with non-valvular atrial fibrillation**,**تقليل خطر السكتة الدماغية والانسداد الجهازي لدى مرضى الرجفان الأذيني غير الصمامي**,updated_indications,sentence,medical_term,high,138b3eeb2284
+**Treatment of Deep Vein Thrombosis (DVT)**,**علاج خثار الوريد العميق**,updated_indications,sentence,medical_term,high,65013d494553
+**Treatment of Pulmonary Embolism (PE)**,**علاج الانسداد الرئوي**,updated_indications,term,medical_term,high,c3b83e226cae
+**Reduction in the risk of recurrence of DVT and PE**,**تقليل خطر تكرر خثار الوريد العميق والانسداد الرئوي**,updated_indications,sentence,medical_term,high,bf3cd6aeb27d
+**Prophylaxis of Deep Vein Thrombosis following Hip or Knee replacement surgery**,**الوقاية من خثار الوريد العميق بعد جراحة استبدال مفصل الورك أو الركبة**,updated_indications,sentence,medical_term,high,c5ae12961457
+**Reduction of Risk of Major Cardiovascular Events in Chronic Coronary Artery Disease (CAD) or Peripheral Artery Disease (PAD)**,**تقليل خطر الأحداث القلبية الوعائية الكبرى في مرض الشريان التاجي المزمن أو مرض الشريان المحيطي**,updated_indications,sentence,medical_term,high,993c7f39f1c1
+"**Prevention of ischemic events, myocardial infarction, stroke and cardiovascular death in patients with Acute Coronary Syndrome (ACS)**",**الوقاية من الأحداث الإفقارية، احتشاء عضلة القلب، السكتة الدماغية، والوفاة القلبية الوعائية لدى مرضى متلازمة الشريان التاجي الحادة**,updated_indications,sentence,medical_term,high,27665f9822bc
+**Unstable angina (UA)**,**ذبحة غير مستقرة**,updated_indications,term,medical_term,high,29316851dd1c
+**Non-ST elevation myocardial infarction (NSTEMI)**,**احتشاء عضلة القلب بدون ارتفاع القطعة ST**,updated_indications,term,medical_term,high,edcd8d8ef7c0
+**ST-segment elevation acute myocardial infarction (STEMI)**,**احتشاء عضلة القلب مع ارتفاع القطعة ST**,updated_indications,sentence,medical_term,high,24168ad7e9b8
+**Post-operative inflammation and pain**,**التهاب وألم ما بعد الجراحة**,updated_indications,term,medical_term,high,c1f9ba8445bc
+**Sprains**,**الالتواء**,updated_indications,term,medical_term,high,08a7c0a86946
+**Flare-up of osteoarthritis**,**تفاقم التهاب المفاصل التنكسية**,updated_indications,term,medical_term,high,31192d24a8ec
+**Acute attacks of gout**,**نوبات حادة من النقرس**,updated_indications,term,medical_term,high,579894f5662e
+**Non-articular rheumatism**,**الروماتيزم غير المفصلي**,updated_indications,term,medical_term,high,20f98156131b
+**Painful syndromes of the vertebral column**,**متلازمات مؤلمة في العمود الفقري**,updated_indications,sentence,medical_term,high,e4db6eb41299
+**Painful and/or inflammatory conditions in gynaecology**,**الحالات المؤلمة و/أو الالتهابية في طب النساء**,updated_indications,sentence,medical_term,high,76c3672b74c9
+**Primary dysmenorrhoea**,**عسر طمث أولي**,updated_indications,term,medical_term,high,d3310b732bd6
+**Adnexitis**,**التهاب الملحقات**,updated_indications,term,medical_term,high,921b8ea1442b
+**Pharyngotonsillitis**,**التهاب البلعوم واللوزتين**,updated_indications,term,medical_term,high,ed7bdc40d247
+**Otitis**,**التهاب الأذن الوسطى**,updated_indications,term,medical_term,high,84acb9b6482f
+**Treatment of moderate to severe pain**,**علاج الألم المتوسط إلى الشديد**,updated_indications,sentence,medical_term,high,d7cf9e4be38d
+"**Anti-bacterial, Gingivitis**",**مضاد بكتيري، التهاب اللثة**,updated_indications,term,medical_term,high,16fb581bc0cb
+**Antidiabetic**,**مضاد السكري**,updated_indications,term,medical_term,high,dfd16c3f0f1c
+**Avoid concomitant use of Rivaroxaban with combined P-gp and strong CYP3A4 inhibitors**,**تجنب الاستخدام المتزامن لريفاروكسبان مع مثبطات P-gp القوية وCYP3A4**,updated_interactions,sentence,medical_term,high,c9ddc15e8485
+**Avoid concomitant use of Rivaroxaban with drugs that are combined P-gp and strong CYP3A4 inducers**,**تجنب الاستخدام المتزامن لريفاروكسبان مع الأدوية التي هي مثبطات P-gp القوية ومحفزات CYP3A4**,updated_interactions,sentence,medical_term,high,42158461b81c
+**Avoid using omeprazole or esomeprazole with clopidogrel**,**تجنب استخدام أوميبرازول أو إيزوميبرازول مع كلوبيدوغريل**,updated_interactions,sentence,medical_term,high,a575e6ef5ad9
+**Omeprazole and esomeprazole significantly reduce the antiplatelet activity of clopidogrel**,**أوميبرازول وإيزوميبرازول يقللان بشكل كبير من النشاط المضاد للصفيحات لكلوبيدوغريل**,updated_interactions,sentence,medical_term,high,592072370301
+**CYP2C19 poor metabolizer status is associated with diminished antiplatelet response to clopidogrel**,**حالة الاستقلاب السيئة لـ CYP2C19 ترتبط باستجابة مضادة للصفيحات ضعيفة لكلوبيدوغريل**,updated_interactions,sentence,medical_term,high,fa347a25e636
+"**Concomitant administration of enoxaparin, warfarin, aspirin, clopidogrel and chronic NSAID use may increase the risk of bleeding**",**الإعطاء المتزامن لإينوكسابارين، وارفارين، أسبرين، كلوبيدوغريل واستخدام مزمن لمضادات الالتهاب غير الستيرويدية قد يزيد خطر النزف**,updated_interactions,sentence,medical_term,high,089ae93351a7
+**Care should be taken and the risk/benefit of treatment determined prior to administration**,**يجب توخي الحذر وتحديد المخاطر/فوائد العلاج قبل إعطاء الدواء**,warnings,sentence,medical_term,high,38a4befe7e9d
+**Withdrawal symptoms: At therapeutic doses tramadol has the potential to cause withdrawal symptoms**,**أعراض الانسحاب: في الجرعات العلاجية، قد يسبب ترامادول أعراض انسحاب**,warnings,sentence,medical_term,high,ddf1b2eb0a8c
+**Drug dependence and abuse: Reports of these are rare**,**اعتمادية الدواء وسوء الاستخدام: التقارير عنها نادرة**,warnings,sentence,medical_term,high,7e442e3d7b5e
+**Increased mortality in elderly patients with dementia-related psychosis**,**زيادة معدل الوفيات لدى المرضى المسنين المصابين بذهان مرتبط بالخرف**,warnings,sentence,medical_term,high,8831a6446e80
+"**Cerebrovascular adverse events, including stroke**",**أحداث قلبية وعائية سلبية، بما في ذلك السكتة الدماغية**,warnings,term,medical_term,high,d2de21fd9e5b
+**Patients prone to convulsive disorders. Convulsions have been reported at therapeutic doses**,**المرضى المعرضون لاضطرابات اختلاجية. تم الإبلاغ عن اختلاجات في الجرعات العلاجية**,warnings,sentence,medical_term,high,f41a0eea3a06
+**Selective inhibitor of factor Xa (FXa)**,**مثبط انتقائي لعامل Xa**,updated_mechanism,sentence,medical_term,high,65ec2f8d9867
+**Does not require a cofactor (such as Anti-thrombin III) for activity**,**لا يتطلب عامل مساعد (مثل مضاد الثرومبين III) للنشاط**,updated_mechanism,sentence,medical_term,high,084aea3582ea
+**Inhibits free FXa and prothrombinase activity**,**يثبط عامل Xa الحر ونشاط البروثرومبيناز**,updated_mechanism,sentence,medical_term,high,a6d72ada0f1c
+**Decreases thrombin generation**,**يقلل من توليد الثرومبين**,updated_mechanism,term,medical_term,high,6bc8500b3780
+**No direct effect on platelet aggregation**,**لا تأثير مباشر على تجمع الصفيحات**,updated_mechanism,sentence,medical_term,high,ccc35b8833f7
+**Indirectly inhibits platelet aggregation induced by thrombin**,**يثبط بشكل غير مباشر تجمع الصفيحات المحفز بالثرومبين**,updated_mechanism,sentence,medical_term,high,6e8b832c3792
+**Clopidogrel selectively inhibits the binding of adenosine diphosphate (ADP) to its platelet receptor**,**يثبط كلوبيدوغريل بشكل انتقائي ارتباط ثنائي فوسفات الأدينوزين (ADP) بمستقبلاته على الصفيحات**,updated_mechanism,sentence,medical_term,high,c6c9917fa949
+**Inhibition of the cyclooxygenase enzyme**,**تثبيط إنزيم السيكلوأوكسيجيناز**,updated_mechanism,term,medical_term,high,c93f56873a3e
+**Decreased formation of thromboxane A2**,**انخفاض تكوين الثرومبوكسان A2**,updated_mechanism,term,medical_term,high,cfccbb42e26b
+"**Non-steroidal compound with anti-rheumatic, anti-inflammatory, analgesic and antipyretic properties**",**مركب غير ستيرويدي ذو خصائص مضادة للروماتيزم، مضادة للالتهاب، مسكنة وخافضة للحرارة**,updated_mechanism,sentence,medical_term,high,4aa5813ceaea
+**Inhibition of prostaglandin biosynthesis**,**تثبيط تخليق البروستاغلاندين**,updated_mechanism,term,medical_term,high,7a0403f47898
+**PRICKSAGE (Agomelatine 25mg) (Film-Coated Tablets)**,**بريكسيج (أقراص ملبسة بالفيلم) (أجوميلاتين ٢٥ ملغ)**,leaflet_content_basic,term,medical_term,high,4dddd1aeb5d8
+**AGILOMOX (Paracetamol 500 mg + Diclofenac Potassium 50 mg) (Tablets)**,**أجيلوموكس (باراسيتامول ٥٠٠ ملغ + ديكلوفيناك بوتاسيوم ٥٠ ملغ) (أقراص)**,leaflet_content_basic,sentence,medical_term,high,07c8b09b6fa9
+"**ARIPIPRAZOLE (10 mg, 15 mg) (Tablets)**",**أريبيبرازول (١٠ ملغ، ١٥ ملغ) (أقراص)**,leaflet_content_basic,sentence,medical_term,high,265a3f3aaed4
+**Composition & Excipients: Each film-coated tablet contains...**,**التركيب والسواغات: يحوي كل قرص ملبس بالفيلم على...**,leaflet_content_basic,sentence,medical_term,high,27908c699460
+"**Chemical composition: Paracetamol 500 mg, Diclofenac Potassium 50 mg**",**التركيب الكيميائي: باراسيتامول ٥٠٠ ملغ، ديكلوفيناك بوتاسيوم ٥٠ ملغ**,leaflet_content_basic,sentence,medical_term,high,8ef675402edd
+**Each tablet contains 10 mg or 15 mg of aripiprazole**,**يحوي كل قرص على ١٠ ملغ أو ١٥ ملغ من أريبيبرازول**,leaflet_content_basic,sentence,medical_term,high,868f67d7c21c
+"**Excipients: Microcrystalline cellulose, Maize starch, Lactose monohydrate, Magnesium stearate, Iron oxide red**",**السواغات: السليلوز البلوري المجهري، نشاء الذرة، لاكتوز أحادي الماء، ستيرات المغنيسيوم، أكسيد الحديد الأحمر**,leaflet_content_basic,sentence,medical_term,high,9198bea5443f
+**Aripiprazole exhibits partial agonist activity at D2 and 5-HT1A receptors and antagonist activity at 5-HT2A receptors**,**أريبيبرازول يُظهر نشاطًا محفزًا جزئيًا للمستقبلات D2 و5-HT1A ونشاطًا مضادًا للمستقبلات 5-HT2A**,leaflet_content_basic,sentence,medical_term,high,a5f3ca84131f
+"**Absorption: Well absorbed after oral administration, with peak plasma concentrations within 3-5 hours**",**الامتصاص: يمتص بشكل جيد بعد التناول عن طريق الفم، مع وصول التركيز الأقصى في البلازما خلال ٣-٥ ساعات**,leaflet_content_basic,sentence,medical_term,high,962b9e4d06a0
+**Bioavailability: 87%**,**التوافر الحيوي: ٨٧٪**,leaflet_content_basic,term,medical_term,high,2e5c940cb54b
+**Distribution: >99% bound to serum proteins**,**التوزيع: أكثر من ٩٩٪ مرتبط ببروتينات المصل**,leaflet_content_basic,sentence,medical_term,high,9e7898e50f7c
+**Metabolism and Elimination: Approximately 25% in urine and 55% in feces**,**الاستقلاب والإطراح: حوالي ٢٥٪ في البول و٥٥٪ في البراز**,leaflet_content_basic,sentence,medical_term,high,34cff5b74c5a
+**For the treatment of major depressive episodes in adults**,**لعلاج نوبات الاكتئاب الرئيسية عند البالغين**,leaflet_content_basic,sentence,medical_term,high,591aa580d476
+**For the relief of signs and symptoms of osteoarthritis with gastric protection**,**لتخفيف علامات وأعراض التهاب المفاصل التنكسية مع حماية معدية**,leaflet_content_basic,sentence,medical_term,high,4880ac1ef1b2
+**Treatment of schizophrenia**,**علاج الفصام**,leaflet_content_basic,term,medical_term,high,d51831b71007
+**Acute treatment of manic and mixed episodes associated with Bipolar I Disorder**,**العلاج الحاد للحالات الهوسية والمختلطة المرتبطة باضطراب ثنائي القطب من النوع الأول**,leaflet_content_basic,sentence,medical_term,high,04d8f14b7bb4
+**Adjunctive treatment of major depressive disorder**,**العلاج المساعد لاضطراب الاكتئاب الرئيسي**,leaflet_content_basic,sentence,medical_term,high,540a516c7e6e
+**Irritability associated with autistic disorder**,**التهيج المرتبط باضطراب التوحد**,leaflet_content_basic,term,medical_term,high,1c09b0927025
+**Treatment of Tourette's disorder**,**علاج اضطراب توريت**,leaflet_content_basic,term,medical_term,high,2c85dffcccee
+**Analgesics (for pain relief)**,**مسكنات الألم**,leaflet_content_basic,term,medical_term,high,699f7c7ce5e5
+**Anti-inflammatory**,**مضادات الالتهاب**,leaflet_content_basic,term,medical_term,high,8853a2bcdb44
+**Diuretic**,**مدر للبول**,leaflet_content_basic,term,medical_term,high,29204ce70041
+**Antioxidant**,**مضاد للأكسدة**,leaflet_content_basic,term,medical_term,high,adf9a10e7b77
+**Hypersensitivity to the drug or its components**,**فرط الحساسية للمادة الفعالة أو أي من مكونات الدواء**,leaflet_content_basic,sentence,medical_term,high,c4c6df62ff74
+**Active or history of recurrent peptic ulcer/haemorrhage**,**قرحة هضمية نشطة أو تاريخ من النزف أو الانثقاب المتكرر**,leaflet_content_basic,sentence,medical_term,high,ea333d8b349e
+**History of gastrointestinal bleeding or perforation**,**تاريخ من نزف معدي معوي أو انثقاب**,leaflet_content_basic,sentence,medical_term,high,2d204f9a4e30
+"**Severe heart failure, hepatic failure, and renal failure**",**فشل قلبي حاد، فشل كبدي، وفشل كلوي**,leaflet_content_basic,sentence,medical_term,high,428712cbe00b
+**Children under the age of 14 years**,**الأطفال تحت سن ١٤ عام**,leaflet_content_basic,sentence,medical_term,high,0ed4c955f5e9
+**Nausea and dizziness**,**الغثيان والدوار**,leaflet_content_basic,term,medical_term,high,98251599ffdd
+"**Nausea, vomiting, constipation, headache, dizziness, akathisia, anxiety, insomnia**",**غثيان، قيء، إمساك، صداع، دوخة، أكاثيزيا، قلق، أرق**,leaflet_content_basic,sentence,medical_term,high,ac1f7c63c46e
+"**Feeling of sickness, skin reddening, allergic reactions, shortness of breath, swollen facial features, liver damage**",**شعور بالمرض، احمرار الجلد، ردود فعل تحسسية، ضيق في التنفس، تورم في الوجه، تلف الكبد**,leaflet_content_basic,sentence,medical_term,high,74463dc9fc22
+"**Tremor, blurred vision, abdominal discomfort, gastrointestinal disorders**",**رعاش، عدم وضوح الرؤية، عدم راحة في البطن، اضطرابات معدية معوية**,leaflet_content_basic,sentence,medical_term,high,9b625827be52
+"**Tachycardia, hypertension, hypotension, leukopenia, neutropenia**",**خفقان القلب، ارتفاع ضغط الدم، انخفاض ضغط الدم، نقص الكريات البيضاء، نقص العدلات**,leaflet_content_basic,term,medical_term,high,5ff17a842993
+**Suicidal thoughts and behaviors**,**أفكار انتحارية وسلوكيات**,leaflet_content_basic,term,medical_term,high,31ee7f6eb255
+"**Dysphagia, esophageal dysmotility, aspiration pneumonia**",**صعوبة البلع، اضطراب حركية المريء، التهاب رئوي استشاقي**,leaflet_content_basic,term,medical_term,high,dfc47dc1910c
+**Warnings and Precautions**,**تحذيرات واحتياطات**,leaflet_content_basic,term,medical_term,high,099cf57cf8a1
+**Monitoring of liver function: Cases of liver injury have been reported**,**مراقبة وظائف الكبد: تم الإبلاغ عن حالات إصابة الكبد**,leaflet_content_basic,sentence,medical_term,high,7fdcddb88072
+**Avoid concomitant use with other NSAIDs**,**تجنب الاستخدام المتزامن مع مضادات الالتهاب غير الستيرويدية الأخرى**,leaflet_content_basic,sentence,medical_term,high,b42c157971b8
+**Close medical surveillance is imperative in patients with symptoms indicative of gastrointestinal disorders**,**المراقبة الطبية الدقة ضرورية للمرضى الذين تظهر عليهم أعراض اضطرابات معدية معوية**,leaflet_content_basic,sentence,medical_term,high,f2199a7a8aa6
+**The recommended dose is one tablet (25 mg) once daily taken orally at bedtime**,**الجرعة الموصى بها هي قرص واحد (٢٥ ملغ) مرة واحدة يوميًا تؤخذ عن طريق الفم قبل النوم**,leaflet_content_basic,sentence,medical_term,high,df4c0c52ec5e
+**1 tablet 3 times/day**,**قرص واحد ٣ مرات يوميًا**,leaflet_content_basic,term,medical_term,high,98bf9bedccf9
+**Dosage increases should generally not be made before 2 weeks**,**يجب عدم زيادة الجرعة قبل مرور أسبوعين**,leaflet_content_basic,sentence,medical_term,high,a4f4955eae35
+**Maintenance treatment: Periodically reassess to determine the continued need**,**العلاج الصيانى: إعادة تقييم دورية لتحديد الحاجة المستمرة**,leaflet_content_basic,sentence,medical_term,high,55b3a7cc4449
+**No dosage tapering is needed on treatment discontinuation**,**لا حاجة لتخفيض الجرعة عند التوقف عن العلاج**,leaflet_content_basic,sentence,medical_term,high,ff110cbd20e0
+**Overdosage / Toxicity**,**فرط الجرعة / السمية**,leaflet_content_basic,term,medical_term,high,4db30391562b
+**Liver damage is possible in adults who have taken 10g or more of paracetamol**,**تلف الكبد ممكن لدى البالغين الذين تناولوا ١٠ جرام أو أكثر من الباراسيتامول**,leaflet_content_basic,sentence,medical_term,high,277921d62dfa
+"**Symptoms include headache, nausea, vomiting, epigastric pain, gastrointestinal bleeding**",**الأعراض تشمل صداع، غثيان، قيء، ألم شرسوفي، نزف معدي معوي**,leaflet_content_basic,sentence,medical_term,high,2308213c94f6
+"**Management of overdosage: Activated charcoal, cardiac monitoring, supportive therapy**",**إدارة فرط الجرعة: الفحم المنشط، مراقبة القلب، العلاج الداعم**,leaflet_content_basic,sentence,medical_term,high,399124b5d150
+"**Store at room temperature, between 15-30° C**",**يحفظ في درجة حرارة الغرفة، بين ١٥-٣٠ درجة مئوية**,leaflet_content_basic,sentence,medical_term,high,bb695dc01c8b
+**Store away from humidity and direct light**,**يحفظ بعيدًا عن الرطوبة والضوء المباشر**,leaflet_content_basic,sentence,medical_term,high,99f4c393cd47
+"**2 blisters, each contains 10 tablets/carton box**",**علبتان من البليستر، كل منهما يحتوي على ١٠ أقراص/علبة كرتون**,leaflet_content_basic,sentence,medical_term,high,49b0a0f785f5
+**Manufactured by: HAMA PHARMA Hama - Syria**,**تصنيع: هاما فارما - حماة - سوريا**,leaflet_content_basic,sentence,medical_term,high,eef4b1c01fa4
+**Naproxen**,**نابروكسين**,medical_terms_basic,term,medical_term,high,960bb7f9c952
+**Esomeprazole**,**إيزوميبرازول**,medical_terms_basic,term,medical_term,high,b50fb3265c1a
+**Hydrochlorthiazide**,**هايدروكلوروثيازيد**,medical_terms_basic,term,medical_term,high,141ca087c71f
+**Maize starch**,**نشاء الذرة**,medical_terms_basic,term,medical_term,high,bcf6ad63d09f
+**Peak plasma concentration**,**التركيز الأقصى في البلازما**,medical_terms_basic,term,medical_term,high,7851a5ec0b6c
+**Anaphylaxis**,**الصدمة التحسسية**,medical_terms_basic,term,medical_term,high,27bbe1d56f70
+**Akathisia**,**أكاثيزيا (اضطراب حركي)**,medical_terms_basic,term,medical_term,high,551cefa48074
+**Tachycardia**,**خفقان القلب**,medical_terms_basic,term,medical_term,high,d0f62cd42f48
+**Hepatic impairment**,**قصور كبدي / اعتلال كبدي**,medical_terms_basic,term,medical_term,high,8b769203a154
+**Renal impairment**,**اعتلال كلوي**,medical_terms_basic,term,medical_term,high,6e569c3acbd6
+**Cardiovascular disease**,**أمراض قلبية وعائية**,medical_terms_basic,term,medical_term,high,e27c2f7840ee
+**Depression / Major Depressive Disorder**,**اكتئاب / اضطراب اكتئابي كبير**,medical_terms_basic,term,medical_term,high,510b4b8b3f95
+**Suicidal thoughts**,**أفكار انتحارية**,medical_terms_basic,term,medical_term,high,97ff6b3c27bf
+**Suicidality**,**سلوك انتحاري**,medical_terms_basic,term,medical_term,high,2ac553fe1ad7
+**Overdosage**,**فرط الجرعة**,medical_terms_basic,term,medical_term,high,25e4d185e15b
+**Antihypertensive Drugs**,**أدوية خافضة لضغط الدم**,medical_terms_basic,term,medical_term,high,d55739656080
+**Benzodiazepines**,**بنزوديازيبينات**,medical_terms_basic,term,medical_term,high,7e88c165e23c
+**Antibacterial**,**مضاد للبكتيريا**,medical_terms_basic,term,medical_term,high,ae1bee1f9412
+**Central Acting Analgesic**,**مسكن الألم المركزي**,medical_terms_basic,term,medical_term,high,55e590299f4c
+**Room temperature**,**درجة حرارة الغرفة**,medical_terms_basic,term,medical_term,high,a25784aa631e
+**Do not interrupt the treatment period**,**لا تقاطع فترة العلاج**,medical_terms_basic,sentence,medical_term,high,aa85d5ebe480
+**The dose should be adjusted to the intensity of the pain and the sensitivity of the individual patient**,**يجب تعديل الجرعة حسب شدة الألم وحساسية المريض الفردية**,dosage,sentence,medical_term,high,7e03217f4354
+**Adults and children over 12 years: 50-100 mg 3-4 times daily**,**البالغون والأطفال فوق ١٢ سنة: ٥٠-١٠٠ ملغ ٣-٤ مرات يوميًا**,dosage,sentence,medical_term,high,e2f5208947bd
+**A total daily dose of 400 mg should not be exceeded**,**يجب عدم تجاوز الجرعة اليومية الإجمالية ٤٠٠ ملغ**,dosage,sentence,medical_term,high,2d042dd2ad71
+"**For patients with creatinine clearance <30 ml/min, the dosage interval should be increased to 12 hours**",**لمرضى تصفية الكرياتينين <٣٠ مل/دقيقة، يجب زيادة فترة الجرعة إلى ١٢ ساعة**,dosage,sentence,medical_term,high,97a24a5146af
+"**In severe hepatic impairment, the product is contraindicated**",**في القصور الكبدي الشديد، المنتج مضاد استطباب**,dosage,sentence,medical_term,high,168af5bf93f5
+**Children under 12 years: Not recommended**,**الأطفال تحت ١٢ سنة: غير موصى به**,dosage,sentence,medical_term,high,aed559049b9a
+**Tramadol should not be combined with MAO inhibitors**,**يجب عدم الجمع بين ترامادول ومثبطات مونوأمين أوكسيداز**,interactions,sentence,medical_term,high,49f9342cc7f0
+**Concomitant administration of Tramadol with other centrally depressant medicinal products including alcohol may potentiate the CNS effects**,**الإعطاء المتزامن لترامادول مع منتجات طبية مثبطة للجهاز العصبي المركزي بما في ذلك الكحول قد يزيد من آثار الجهاز العصبي المركزي**,interactions,sentence,medical_term,high,c23edc979b26
+**Caution should be exercised during concomitant treatment with tramadol and coumarin derivatives (e.g. warfarin)**,**يجب توخي الحذر أثناء العلاج المتزامن بترامادول ومشتقات الكومارين (مثل وارفارين)**,interactions,sentence,medical_term,high,f511fd82f543
+"**Other active substances known to inhibit CYP3A4, such as ketoconazole and erythromycin, might inhibit the metabolism of tramadol**",**المواد الفعالة الأخرى المعروفة بتثبيط CYP3A4، مثل كيتوكونازول وإريثرومايسين، قد تثبط استقلاب ترامادول**,interactions,sentence,medical_term,high,b280b31908f4
+**HAMA PHARMA**,**حماة فارما**,drug_names,term,medical_term,high,f875322a037c
+**TRAMADOL HAMA PHARMA**,**ترامادول حماة فارما**,drug_names,term,medical_term,high,9235b0e4ce62
+**AGILOMOX**,**أجيلوموكس**,drug_names,term,medical_term,high,08cd19aa01a6
+**ARIPIPRAZOLE HAMA PHARMA**,**أريبيبرازول حماة فارما**,drug_names,term,medical_term,high,0d0da84bb73c
+**NIVOLTIC**,**نيفولتيك**,drug_names,term,medical_term,high,c997f26f66c7
+**NODEMENT**,**نوديمينت**,drug_names,term,medical_term,high,c798c66214ea
+**METRONIDAZOLE PLUS HAMA PHARMA**,**مترونيدازول بلس حماة فارما**,drug_names,term,medical_term,high,815d767491ea
+**CLOZAPINE HAMA PHARMA**,**كلوزابين حماة فارما**,drug_names,term,medical_term,high,d810527f792b
+**FEM-RELIEVE**,**فيم-ريليف**,drug_names,term,medical_term,high,2c9cd8dbca7d
+**KETOTIFEN HAMA PHARMA**,**كيتوتيفين حماة فارما**,drug_names,term,medical_term,high,eda42cb60a9b
+**ULCER-STOP**,**ألكر-ستوب**,drug_names,term,medical_term,high,e5086690a670
+**DILTIAZEM HAMA PHARMA**,**ديلتيازيم حماة فارما**,drug_names,term,medical_term,high,f81bb650d9b1
+**ANTI-TUSSIVE**,**مضاد السعال**,drug_names,term,medical_term,high,c751d0cf470e
+**FEDROLIDINE**,**فيدروليدين**,drug_names,term,medical_term,high,eef4fb025025
+**ROVALTRO**,**روفالترو**,updated_drug_names,term,medical_term,high,688c3b355ad3
+**TROMBO STOP**,**ترومبو ستوب**,updated_drug_names,term,medical_term,high,8eb1bd27c310
+**Rivaroxaban**,**ريفاروكسبان**,updated_active_ingredients,term,medical_term,high,65517840844e
+**Clopidogrel (as Hydrogen Sulphate)**,**كلوبيدوغريل (على شكل كبريتات الهيدروجين)**,updated_active_ingredients,term,medical_term,high,88580b6451ba
+**Paracetamol**,**باراسيتامول**,updated_active_ingredients,term,medical_term,high,f1408ef7594b
+**Linagliptin**,**ليناغليبتين**,updated_active_ingredients,term,medical_term,high,c02af843d11d
+Phenobarbital,فينوباربيتال,core_medical_vocabulary,term,medical_term,high,97d844bbe39a
+Calcium stearate,ستيترات الكالسيوم,core_medical_vocabulary,term,medical_term,high,a61627582395
+Corn starch,نشاء الذرة,core_medical_vocabulary,term,medical_term,high,8c559779c3d5
+Anhydrous lactose,لاكتوز لامائي,core_medical_vocabulary,term,medical_term,high,ee1f13be47d4
+Magnesium stearate,ستيترات المغنيسيوم,core_medical_vocabulary,term,medical_term,high,6acdf606a1fa
+Colloidal silicon dioxide,ثاني أوكسيد السيليكون الغرويدي,core_medical_vocabulary,term,medical_term,high,51617860852e
+Microcrystalline cellulose,ميكروكريستالين سللوز,core_medical_vocabulary,term,medical_term,high,8519e0af3f41
+Sodium starch glycolate,غليكوات النشاء الصودية,core_medical_vocabulary,term,medical_term,high,78da33c1a81a
+Sodium docusate,صوديوم دوكوسات,core_medical_vocabulary,term,medical_term,high,3ad8796c69fb
+Lactose monohydrate,لاكتوز مونوهيدرات,core_medical_vocabulary,term,medical_term,high,79baa22bedf8
+Long-acting barbiturate,مركب باربيتوري طويل المفعول,core_medical_vocabulary,term,medical_term,high,724815026c91
+Central nervous system depressant,مثبط للجملة العصبية المركزية,core_medical_vocabulary,term,medical_term,high,a881674098ac
+Sedative,مهدئ,core_medical_vocabulary,term,medical_term,high,142fd2941fee
+Anticonvulsant,مضاد للاختلاج,core_medical_vocabulary,term,medical_term,high,d205d6ec8ece
+Pharmacokinetics,الحركية الدوائية,core_medical_vocabulary,term,medical_term,high,439b194634f6
+Onset of action,بداية التأثير,core_medical_vocabulary,term,medical_term,high,e08a2d945d13
+Duration of action,مدة التأثير,core_medical_vocabulary,term,medical_term,high,737e0fb0eec8
+Liver,الكبد,core_medical_vocabulary,term,medical_term,high,c6b4b0d225a0
+Hypersensitive,فرط الحساسية,core_medical_vocabulary,term,medical_term,high,02929dfbd28e
+Side effects,التأثيرات الجانبية,core_medical_vocabulary,term,medical_term,high,3394325e537f
+CNS Depression,تثبيط الجهاز العصبي المركزي,core_medical_vocabulary,term,medical_term,high,e0b0fb54b4bb
+Sedation,تهدئة,core_medical_vocabulary,term,medical_term,high,574599af6102
+Lethargy,خمول,core_medical_vocabulary,term,medical_term,high,3564890f597c
+Vertigo,دوار,core_medical_vocabulary,term,medical_term,high,30b4197ec2a0
+Barbiturate poisoning,التسمم بالباربيتورات,core_medical_vocabulary,term,medical_term,high,888408a9f9db
+Cardiovascular system,الجملة القلبية الوعائية,core_medical_vocabulary,term,medical_term,high,4f5a3efd70fc
+Presentation,التعبئة,core_medical_vocabulary,term,medical_term,high,99e85aed957c
+Blisters,أشرطة بليستر,core_medical_vocabulary,term,medical_term,high,74ee489d0a20
+Storage,شروط الحفظ,core_medical_vocabulary,term,medical_term,high,5069e60bf46f
+Room temperature,درجة حرارة الغرفة,core_medical_vocabulary,term,medical_term,high,818d82965d93
+Moisture,الرطوبة,core_medical_vocabulary,term,medical_term,high,88b260528552
+**Indications: Treatment of moderate to severe pain**,**استطبابات: علاج الألم المتوسط إلى الشديد**,indications,sentence,medical_term,high,0a2833b85f33
+**Indications: Sleep disorders**,**استطبابات: اضطرابات النوم**,indications,term,medical_term,high,aa9b18686711
+**Indications: Central Acting Analgesic**,**استطبابات: مسكن ألم مركزي التأثير**,indications,term,medical_term,high,e3c8ec19ee95
+"**Indications: Anti-bacterial, Gingivitis**",**استطبابات: مضاد بكتيري، التهاب اللثة**,indications,term,medical_term,high,618f36be14c8
+**Contraindications: Hypersensitivity to the active substance or any of the other ingredients**,**مضادات الاستطباب: فرط الحساسية للمادة الفعالة أو أي من المكونات الأخرى**,indications,sentence,medical_term,high,c63f10615afc
+**Contraindications: Acute intoxication with central nervous system depressants**,**مضادات الاستطباب: التسمم الحاد بمثبطات الجهاز العصبي المركزي**,indications,sentence,medical_term,high,ef61109eaca2
+"**Contraindications: MAO inhibitors, Severe hepatic/renal/respiratory impairment, Epilepsy**",**مضادات الاستطباب: مثبطات مونوأمين أوكسيداز، قصور كبدي/كلوي/تنفسي شديد، صرع**,indications,sentence,medical_term,high,ef4724891cf2
+**Contraindications: Severe hepatic impairment**,**مضادات الاستطباب: قصور كبدي شديد**,indications,term,medical_term,high,5f928bc6aa9b
+"Phenobarbital 15, 30, 60, 100 mg (TABLETS)",فينوباربيتال ١٥، ٣٠، ٦٠، ١٠٠ ملغ (أقراص),leaflet_core_glossary,sentence,medical_term,high,9efd0824ba6c
+"COMPOSITION: Each tablet contains: 15 mg, 30 mg, 60 mg or 100 mg of phenobarbital.",التركيب: يحوي كل قرص على: ١٥ أو ٣٠ أو ٦٠ أو ١٠٠ ملغ فينوباربيتال.,leaflet_core_glossary,sentence,medical_term,high,d08b447f5f23
+"EXCIPIENTS: Calcium stearate, Corn starch, Anhydrous lactose, Magnesium stearate, Colloidal silicon dioxide, Microcrystalline cellulose, Sodium starch glycolate, Sodium docusate, Lactose monohydrate.",السواغات: ستيترات الكالسيوم، نشاء الذرة، لاكتوز لامائي، ستيترات المغنيسيوم، ثاني أوكسيد السيليكون الغرويدي، ميكروكريستالين سللوز، غليكوات النشاء الصودية، صوديوم دوكوسات، لاكتوز مونوهيدرات.,leaflet_core_glossary,sentence,medical_term,high,f78f2ed5a6e8
+"MECHANISM OF ACTION: Phenobarbital, a long-acting barbiturate, is a central nervous system depressant. In ordinary doses, the drug acts as a sedative and anticonvulsant.",آلية التأثير: فينوباربيتال مركب باربيتوري طويل المفعول مثبط للجملة العصبية المركزية. بالجرعات العادية، يعمل فينوباربيتال كمهدئ ومضاد للاختلاج.,leaflet_core_glossary,sentence,medical_term,high,f47618f86849
+"PHARMACOKINETICS: Its onset of action occurs within 30 minutes, and the duration of action ranges from 5 to 6 hours. It is detoxified in the liver.",الحركية الدوائية: يبدأ عمل فينوباربيتال خلال ٣٠ دقيقة، ويستمر لفترة تتراوح بين ٥ إلى ٦ ساعات. يتم إزالة سميته في الكبد.,leaflet_core_glossary,sentence,medical_term,high,dd063e64aee8
+INDICATIONS: Phenobarbital Hama Pharma is indicated for use as a sedative or anticonvulsant.,الاستطبابات: يستخدم فينوباربيتال حماة فارما كمهدئ أو مضاد للاختلاج.,leaflet_core_glossary,sentence,medical_term,high,cde530ba7f46
+CONTRAINDICATIONS: Phenobarbital Hama Pharma is contraindicated in patients who are hypersensitive to barbiturates.,مضادات الاستطباب: يجب عدم استخدام فينوباربيتال حماة فارما في المرضى المعروفين بفرط الحساسية للباربيتورات.,leaflet_core_glossary,sentence,medical_term,high,1b54dcc5345b
+"SIDE EFFECTS: CNS Depression: Sedation, drowsiness, lethargy, and vertigo.",التأثيرات الجانبية: تثبيط الجهاز العصبي المركزي: تهدئة، نعاس، خمول، ودوار.,leaflet_core_glossary,sentence,medical_term,high,b9af81a14486
+OVERDOSE: The signs and symptoms of barbiturate poisoning are referable especially to the central nervous system and the cardiovascular system.,حالات فرط الجرعة: تتجلى أعراض التسمم بالباربيتورات خاصة في الجملة العصبية المركزية وفي الجملة القلبية الوعائية.,leaflet_core_glossary,sentence,medical_term,high,ba43647169e2
+"PRESENTATION: 3 Blisters, each contains 10 tablets of Phenobarbital Hama Pharma-15 mg.",التعبئة: ٣ أشرطة، كل شريط يحوي ١٠ أقراص من فينوباربيتال حماة فارما-١٥ ملغ.,leaflet_core_glossary,sentence,medical_term,high,e015a7ff6e3f
+"STORAGE: Store at room temperature, between 20°-25°C, away from moisture and light. Keep out of reach of children.",شروط الحفظ: يحفظ في درجة حرارة الغرفة، بين ٢٠°-٢٥°، بعيداً عن الرطوبة والضوء. يحفظ بعيداً عن متناول الأطفال.,leaflet_core_glossary,sentence,medical_term,high,7bec7fbb7fa9
+"**Packing: 2 blisters, each contains 10 film-coated tablets**",**التعبئة: علبتان من البليستر، كل منهما يحتوي على ١٠ أقراص ملبسة بالفيلم**,general_info,sentence,medical_term,high,203eb35e3c03
+"**Storage Conditions: Store at room temperature, 20°-25° C**",**شروط الحفظ: يحفظ في درجة حرارة الغرفة، ٢٠-٢٥ درجة مئوية**,general_info,sentence,medical_term,high,aa33f456a675
+"**A medicament is a product which affects your health, and its consumption contrary to instructions is dangerous for you**",**الدواء منتج يؤثر على صحتك، واستخدامه خلاف التعليمات يعرضك للخطر**,general_info,sentence,medical_term,high,094dcb45d60f
+**Active pathological bleeding**,**نزف مرضى نشط**,updated_contraindications,term,medical_term,high,2fb503a8819b
+**Severe hypersensitivity reactions to the drug or its components**,**ردود فعل تحسسية شديدة تجاه الدواء أو مكوناته**,updated_contraindications,sentence,medical_term,high,9be65ff889d2
+**Active peptic ulceration or past history of ulceration or dyspepsia**,**قرحة هضمية نشطة أو تاريخ سابق من القرحة أو عسر الهضم**,updated_contraindications,sentence,medical_term,high,7810e5d95816
+**Patients who are suffering from gout**,**المرضى الذين يعانون من النقرس**,updated_contraindications,sentence,medical_term,high,f438eef2eea1
+**Third trimester of pregnancy**,**الثلث الثالث من الحمل**,updated_contraindications,term,medical_term,high,303f30335d73
+**Concurrent anticoagulant therapy**,**العلاج المتزامن بمضادات التخثر**,updated_contraindications,term,medical_term,high,60df058bc8ef
+**Nasal polyps associated with asthma**,**سلائل أنفية مرتبطة بالربو**,updated_contraindications,term,medical_term,high,445c5b3a00da
+"**Active gastric or intestinal ulcer, bleeding or perforation**",**قرحة معدية أو معوية نشطة، نزف أو انثقاب**,updated_contraindications,sentence,medical_term,high,5882fa8d2bf1
+**Last trimester of pregnancy**,**الثلث الأخير من الحمل**,updated_contraindications,term,medical_term,high,b1e913e5b8c7
+**Severe cardiac failure**,**فشل قلب شديد**,updated_contraindications,term,medical_term,high,58b1e654b4f0
+**Hypersensitivity to the active substance or to any of the excipients**,**فرط الحساسية للمادة الفعالة أو لأي من السواغات**,updated_contraindications,sentence,medical_term,high,103513047bf8
+"**Hypersensitivity to clopidogrel, salicylates or NSAIDs**",**فرط الحساسية لكلوبيدوغريل، الساليسيلات أو مضادات الالتهاب غير الستيرويدية**,updated_contraindications,sentence,medical_term,high,0f5a4e890126
+Acetylsalicylic acid,حمض الأسيتيل ساليسيليك,who_essential_medicines,term,pharmacology,very_high,2d0765622621
+Ibuprofen,إيبوبروفين,who_essential_medicines,term,pharmacology,very_high,7ff1b12ee882
+Paracetamol,باراسيتامول,who_essential_medicines,term,pharmacology,very_high,e006f9ecdcf5
+Amoxicillin,أموكسيسيلين,who_essential_medicines,term,pharmacology,very_high,00bfafb018aa
+Azithromycin,أزيثرومايسين,who_essential_medicines,term,pharmacology,very_high,b25c9e478ec5
+Ciprofloxacin,سيبروفلوكساسين,who_essential_medicines,term,pharmacology,very_high,9072aff59687
+Ceftriaxone,سيفترياكسون,who_essential_medicines,term,pharmacology,very_high,6524c1e23d4a
+Metronidazole,ميترونيدازول,who_essential_medicines,term,pharmacology,very_high,34d7f6d3a3f6
+Doxycycline,دوكسي سيكلين,who_essential_medicines,term,pharmacology,very_high,bf4f6c987146
+Diclofenac,ديكلوفيناك,who_essential_medicines,term,pharmacology,very_high,389db3dc24d9
+Tramadol,ترامادول,who_essential_medicines,term,pharmacology,very_high,6dd86d328fe6
+Morphine,مورفين,who_essential_medicines,term,pharmacology,very_high,1d0a2f63cd5f
+Diazepam,ديازيبام,who_essential_medicines,term,pharmacology,very_high,20305cff0b13
+Lorazepam,لورازيبام,who_essential_medicines,term,pharmacology,very_high,ec2fe7deea80
+Amlodipine,أملوديبين,who_essential_medicines,term,pharmacology,very_high,56576195ce27
+Enalapril,إنالابريل,who_essential_medicines,term,pharmacology,very_high,ab768edf7dfd
+Losartan,لوسارتان,who_essential_medicines,term,pharmacology,very_high,44f170f2bec1
+Metformin,ميتفورمين,who_essential_medicines,term,pharmacology,very_high,669f9106ae9d
+Insulin,إنسولين,who_essential_medicines,term,pharmacology,very_high,e21b5b497748
+Glibenclamide,غليبنكلاميد,who_essential_medicines,term,pharmacology,very_high,7b0e2fc18204
+Glimepiride,غليميبيريد,who_essential_medicines,term,pharmacology,very_high,5613f78a7d7d
+Omeprazole,أوميبرازول,who_essential_medicines,term,pharmacology,very_high,d806884eb5c5
+Pantoprazole,بانتوبرازول,who_essential_medicines,term,pharmacology,very_high,f008f02024d1
+Prednisone,بريدنيزون,who_essential_medicines,term,pharmacology,very_high,d6356aab0c38
+Prednisolone,بريدنيزولون,who_essential_medicines,term,pharmacology,very_high,f492662f1580
+Dexamethasone,ديكساميثازون,who_essential_medicines,term,pharmacology,very_high,badc365d7a1d
+Hydrocortisone,هيدروكورتيزون,who_essential_medicines,term,pharmacology,very_high,a0161e459421
+Salbutamol,سالبوتامول,who_essential_medicines,term,pharmacology,very_high,6c7972e542f2
+Montelukast,مونتيلوكاست,who_essential_medicines,term,pharmacology,very_high,ff246b869aac
+Cetirizine,سيتيريزين,who_essential_medicines,term,pharmacology,very_high,483876eeefb2
+Loratadine,لوراتادين,who_essential_medicines,term,pharmacology,very_high,084d06e9ec0a
+Furosemide,فوروسيميد,who_essential_medicines,term,pharmacology,very_high,30ddeb0ffadc
+Spironolactone,سبيرونولاكتون,who_essential_medicines,term,pharmacology,very_high,d470b88d10ec
+Warfarin,وارفارين,who_essential_medicines,term,pharmacology,very_high,1196c04047c3
+Heparin,هيبارين,who_essential_medicines,term,pharmacology,very_high,57a619f72d2d
+Clopidogrel,كلوبيدوغريل,who_essential_medicines,term,pharmacology,very_high,06cae7ee7d2e
+Atorvastatin,أتورفاستاتين,who_essential_medicines,term,pharmacology,very_high,619d8994114f
+Simvastatin,سيمفاستاتين,who_essential_medicines,term,pharmacology,very_high,06bd7091a63b
+Phenytoin,فينيتوين,who_essential_medicines,term,pharmacology,very_high,0b79d147aad5
+Carbamazepine,كاربامازيبين,who_essential_medicines,term,pharmacology,very_high,ec4d077f5635
+Valproic acid,حمض الفالبرويك,who_essential_medicines,term,pharmacology,very_high,7fb5bb305873
+Clozapine,كلوزابين,who_essential_medicines,term,pharmacology,very_high,e3e7689623e4
+Haloperidol,هالوبيريدول,who_essential_medicines,term,pharmacology,very_high,320b96f082fb
+Fluoxetine,فلوكسيتين,who_essential_medicines,term,pharmacology,very_high,b7fe919a7964
+Sertraline,سيرترالين,who_essential_medicines,term,pharmacology,very_high,661d5c44bad6
+Citalopram,سيتالوبرام,who_essential_medicines,term,pharmacology,very_high,6bc634eb6d2f
+Amitriptyline,أميتريبتيلين,who_essential_medicines,term,pharmacology,very_high,690bd3d210d0
+Levothyroxine,ليفوثيروكسين,who_essential_medicines,term,pharmacology,very_high,772516d84264
+Alendronic acid,حمض الأليندرونيك,who_essential_medicines,term,pharmacology,very_high,58a9f286b822
+Folic acid,حمض الفوليك,who_essential_medicines,term,pharmacology,very_high,2fa004105ad5
+Vitamin B12,فيتامين ب12,who_essential_medicines,term,pharmacology,very_high,f31d38d368a5
+Adrenaline,أدرينالين,who_essential_medicines,term,pharmacology,very_high,fa9f05590e22
+Atropine,أتروبين,who_essential_medicines,term,pharmacology,very_high,1ff8cd437acc
+Dopamine,دوبامين,who_essential_medicines,term,pharmacology,very_high,327bca25f36b
+Insulin glargine,إنسولين غلارجين,who_essential_medicines,term,pharmacology,very_high,f0199418fead
+Metoprolol,ميتوبرولول,who_essential_medicines,term,pharmacology,very_high,83207f3ddac2
+Aripiprazole,أريبيبرازول,who_essential_medicines,term,pharmacology,very_high,db41a4d57ebe
+Olanzapine,أولانزابين,who_essential_medicines,term,pharmacology,very_high,4c9c4fa60fc3
+Risperidone,ريسبريدون,who_essential_medicines,term,pharmacology,very_high,d704f1cb6f65
+Quetiapine,كيتيابين,who_essential_medicines,term,pharmacology,very_high,e3bf114ced7b
+Lithium carbonate,كربونات الليثيوم,who_essential_medicines,term,pharmacology,very_high,9c4cd29e518c
+Clonazepam,كلونازيبام,who_essential_medicines,term,pharmacology,very_high,27ee053dc981
+Alprazolam,ألبرازولام,who_essential_medicines,term,pharmacology,very_high,e8c53c6eae7c
+Ketotifen,كيتوتيفين,who_essential_medicines,term,pharmacology,very_high,63b2641fa095
+Sumatriptan,سوماتريبتان,who_essential_medicines,term,pharmacology,very_high,9bf8e99857bd
+Orlistat,أورليستات,who_essential_medicines,term,pharmacology,very_high,e3858c95331a
+Alogliptin,أالوغليبتين,who_essential_medicines,term,pharmacology,very_high,f3f0fb768034
+Nortriptyline,نورتريبتيلين,who_essential_medicines,term,pharmacology,very_high,7c52e07004f1
+Agomelatine,أغوميلاتين,who_essential_medicines,term,pharmacology,very_high,2036a88a6bf0
+Ofloxacin,أوفلوكساسين,who_essential_medicines,term,pharmacology,very_high,cfc38449d4f5
+Cefotaxime,سيفوتاكسيم,who_essential_medicines,term,pharmacology,very_high,7cf088289589
+Gentamicin,جنتاميسين,who_essential_medicines,term,pharmacology,very_high,6a76d5c0976c
+Vancomycin,فانكومايسين,who_essential_medicines,term,pharmacology,very_high,76616e5f20cc
+Fluconazole,فلوكونازول,who_essential_medicines,term,pharmacology,very_high,01c7dc9a4ecb
+Acyclovir,أسيكلوفير,who_essential_medicines,term,pharmacology,very_high,b8e33771f3e7
+Oseltamivir,أوسيلتاميفير,who_essential_medicines,term,pharmacology,very_high,391f5cf36a7a
+Ivermectin,إيفرميكتين,who_essential_medicines,term,pharmacology,very_high,52a62b545a8d
+Albendazole,ألبيندازول,who_essential_medicines,term,pharmacology,very_high,d98c09d280e4
+Mebendazole,ميبيندازول,who_essential_medicines,term,pharmacology,very_high,2d77806ea881
+Ranitidine,رانيتيدين,who_essential_medicines,term,pharmacology,very_high,a8838a61bc4a
+Domperidone,دومبيريدون,who_essential_medicines,term,pharmacology,very_high,56ae3f5694bf
+Ondansetron,أوندانسيترون,who_essential_medicines,term,pharmacology,very_high,0112cec01027
+Loperamide,لوبراميد,who_essential_medicines,term,pharmacology,very_high,8377177e9984
+Diltiazem,ديلتيازيم,who_essential_medicines,term,pharmacology,very_high,b2c488f09ddd
+Nifedipine,نيفيديبين,who_essential_medicines,term,pharmacology,very_high,6347e556b0c0
+Captopril,كابتوبريل,who_essential_medicines,term,pharmacology,very_high,8ec3c95a5a94
+Hydrochlorothiazide,هيدروكلوروثيازيد,who_essential_medicines,term,pharmacology,very_high,79225fa22b29
+Digoxin,ديجوكسين,who_essential_medicines,term,pharmacology,very_high,a424db320c0f
+Dobutamine,دوبوتامين,who_essential_medicines,term,pharmacology,very_high,684500a3a801
+Nitroglycerin,نيتروغليسرين,who_essential_medicines,term,pharmacology,very_high,5ea1b8522aa1
+Enoxaparin,إينوكسابارين,who_essential_medicines,term,pharmacology,very_high,4b4504b3c557
+Chlorphenamine,كلورفينامين,who_essential_medicines,term,pharmacology,very_high,5ba22b1178a9
+Diphenhydramine,ديفينهيدرامين,who_essential_medicines,term,pharmacology,very_high,fecc8c5f9023
+Ipratropium bromide,بروميد الإبراتروبيوم,who_essential_medicines,term,pharmacology,very_high,3c611906d876
+Beclometasone,بيكلوميثازون,who_essential_medicines,term,pharmacology,very_high,3cc52c33cc27
+Budesonide,بوديسونيد,who_essential_medicines,term,pharmacology,very_high,aed570dd5ee1
+Fluticasone,فلوتيكازون,who_essential_medicines,term,pharmacology,very_high,90962fbbf180
+Sodium cromoglicate,كروموغليكات الصوديوم,who_essential_medicines,term,pharmacology,very_high,73902db26419
+Take one tablet three times a day after meals.,خذ قرصاً واحداً ثلاث مرات يومياً بعد الوجبات.,curated_medical_phrases,sentence,medical_phrases,very_high,4f45ea5b563d
+Take two tablets daily with water.,خذ قرصين يومياً مع الماء.,curated_medical_phrases,sentence,medical_phrases,very_high,6385c48707a9
+Store in a cool dry place below 25 degrees Celsius.,يحفظ في مكان بارد وجاف تحت 25 درجة مئوية.,curated_medical_phrases,sentence,medical_phrases,very_high,0c0c29ea1385
+Keep out of reach of children.,يحفظ بعيداً عن متناول الأطفال.,curated_medical_phrases,sentence,medical_phrases,very_high,4b6deb2ae9f0
+Do not exceed the recommended dose.,لا تتجاوز الجرعة الموصى بها.,curated_medical_phrases,sentence,medical_phrases,very_high,f68287deeea4
+Consult your doctor before use.,استشر طبيبك قبل الاستعمال.,curated_medical_phrases,term,medical_phrases,very_high,c30be57cd6ac
+Not recommended for use during pregnancy.,لا يوصى بالاستعمال أثناء الحمل.,curated_medical_phrases,sentence,medical_phrases,very_high,7860ca65296f
+Contraindicated in patients with known hypersensitivity.,مضاد استطباب عند المرضى الذين يعانون من فرط حساسية معروف.,curated_medical_phrases,sentence,medical_phrases,very_high,d2b95e0543de
+May cause drowsiness. Do not drive or operate machinery.,قد يسبب النعاس. لا تقُد أو تشغل الآلات.,curated_medical_phrases,sentence,medical_phrases,very_high,8f13f8bf43b3
+Discontinue use and consult a physician if adverse reactions occur.,أوقف الاستعمال واستشر الطبيب في حال حدوث تفاعلات ضارة.,curated_medical_phrases,sentence,medical_phrases,very_high,e9f76afdd53c
+For oral administration only.,للاستعمال الفموي فقط.,curated_medical_phrases,term,medical_phrases,very_high,6e0fb4086ab8
+Shake well before use.,يرجّز جيداً قبل الاستعمال.,curated_medical_phrases,term,medical_phrases,very_high,2a39cc4f98c7
+This medication should not be used after the expiry date.,لا يجب استعمال هذا الدواء بعد تاريخ انتهاء الصلاحية.,curated_medical_phrases,sentence,medical_phrases,very_high,5097343b38a5
+Seek immediate medical attention in case of overdose.,اطلب العناية الطبية فوراً في حالة الجرعة الزائدة.,curated_medical_phrases,sentence,medical_phrases,very_high,c4de9fb67976
+Use with caution in patients with renal impairment.,يستعمل بحذر عند المرضى الذين يعانون من قصور كلوي.,curated_medical_phrases,sentence,medical_phrases,very_high,7471bd59a46b
+Use with caution in patients with hepatic impairment.,يستعمل بحذر عند المرضى الذين يعانون من قصور كبدي.,curated_medical_phrases,sentence,medical_phrases,very_high,98f473b0ce4a
+Not recommended for children under 12 years of age.,لا يوصى به للأطفال تحت سن 12 عاماً.,curated_medical_phrases,sentence,medical_phrases,very_high,f95ef4fa0659
+"Take on an empty stomach, 30 minutes before meals.",يؤخذ على معدة فارغة، 30 دقيقة قبل الوجبات.,curated_medical_phrases,sentence,medical_phrases,very_high,b7ce588c1512
+Do not crush or chew the tablet. Swallow whole.,لا تسحق أو تمضغ القرص. ابتلعه كاملاً.,curated_medical_phrases,sentence,medical_phrases,very_high,a90fe00b471b
+Each tablet contains:,كل قرص يحتوي على:,curated_medical_phrases,term,medical_phrases,very_high,e77636964949
+Dosage form: Film-coated tablet,الشكل الصيدلاني: قرص مغلف بغشاء,curated_medical_phrases,term,medical_phrases,very_high,d50dcb33676b
+"Side effects: Nausea, vomiting, abdominal pain.",الآثار الجانبية: غثيان، إقياء، ألم بطني.,curated_medical_phrases,sentence,medical_phrases,very_high,be5806da9b15
+Drug interactions: May increase the effect of anticoagulants.,التداخلات الدوائية: قد يزيد من تأثير مضادات التخثر.,curated_medical_phrases,sentence,medical_phrases,very_high,6ea8f18457e5
+Pharmacokinetics: Rapidly absorbed after oral administration.,الحرائك الدوائية: يمتص بسرعة بعد الإعطاء الفموي.,curated_medical_phrases,sentence,medical_phrases,very_high,abf2bac5127e
+Mechanism of action: Inhibits cyclooxygenase enzyme.,آلية التأثير: يثبط إنزيم السيكلوأوكسيجيناز.,curated_medical_phrases,sentence,medical_phrases,very_high,9b14963558de
+Half-life: approximately 6 hours.,عمر النصف: حوالي 6 ساعات.,curated_medical_phrases,term,medical_phrases,very_high,9c4bf198bee1
+Excreted mainly in urine.,يُفرز بشكل رئيسي في البول.,curated_medical_phrases,term,medical_phrases,very_high,a6cc9ddc302a
+Contraindicated in patients with severe liver disease.,مضاد استطباب عند المرضى الذين يعانون من أمراض الكبد الشديدة.,curated_medical_phrases,sentence,medical_phrases,very_high,a1371c8dcf0f
+Pregnancy category: Should be used only if clearly needed.,فئة الحمل: يُستعمل فقط في حال الضرورة القصوى.,curated_medical_phrases,sentence,medical_phrases,very_high,d96aa1233590
+Breastfeeding: Not recommended during lactation.,الرضاعة: لا يوصى به أثناء الإرضاع.,curated_medical_phrases,term,medical_phrases,very_high,b4bd2aa90efa
+Treatment of essential hypertension.,علاج ارتفاع الضغط الشرياني الأساسي.,curated_medical_phrases,term,medical_phrases,very_high,a6fc670b7da4
+Management of type 2 diabetes mellitus.,علاج داء السكري النمط الثاني.,curated_medical_phrases,sentence,medical_phrases,very_high,25341c0bffb0
+Antibiotic for the treatment of bacterial infections.,مضاد حيوي لعلاج الانتانات الجرثومية.,curated_medical_phrases,sentence,medical_phrases,very_high,2764ebc395ec
+Anti-inflammatory and analgesic.,مضاد للالتهاب ومسكن.,curated_medical_phrases,term,medical_phrases,very_high,f7d4aa09cde9
+Sedative and anxiolytic.,مهدئ ومضاد للقلق.,curated_medical_phrases,term,medical_phrases,very_high,f8495fca4cae
+Antidepressant of the SSRI class.,مضاد اكتئاب من زمرة مثبطات استرداد السيروتونين الانتقائية.,curated_medical_phrases,term,medical_phrases,very_high,268797cb49d7
+Antipsychotic medication.,دواء مضاد للذهان.,curated_medical_phrases,term,medical_phrases,very_high,21ad807ae76a
+Anticonvulsant for the treatment of epilepsy.,مضاد اختلاج لعلاج الصرع.,curated_medical_phrases,sentence,medical_phrases,very_high,ef6b9fa9c070
+Bronchodilator for relief of bronchospasm.,موسع قصبات لتخفيف تشنج القصبات.,curated_medical_phrases,term,medical_phrases,very_high,5f99686acd0f
+Diuretic for the management of edema.,مدر بول لعلاج الوذمة.,curated_medical_phrases,sentence,medical_phrases,very_high,71200a32acc5
+Anticoagulant for the prevention of thrombosis.,مضاد تخثر للوقاية من الخثرة.,curated_medical_phrases,sentence,medical_phrases,very_high,b77db5d51b00
+Antiplatelet agent.,عامل مضاد للصفيحات.,curated_medical_phrases,term,medical_phrases,very_high,ec744091b7e9
+Lipid-lowering agent.,عامل خافض للشحوم.,curated_medical_phrases,term,medical_phrases,very_high,55b242c14567
+Thyroid hormone replacement therapy.,علاج بديل بهرمون الدرقية.,curated_medical_phrases,term,medical_phrases,very_high,c93ee4ff3060
+Iron supplement for treatment of iron deficiency anemia.,مكمل حديد لعلاج فقر الدم بعوز الحديد.,curated_medical_phrases,sentence,medical_phrases,very_high,3555b0d4dc7c
+Antiemetic for prevention of nausea and vomiting.,مضاد إقياء للوقاية من الغثيان والإقياء.,curated_medical_phrases,sentence,medical_phrases,very_high,8aacacc1dacc
+Antispasmodic for relief of abdominal cramps.,مضاد تشنج لتخفيف التشنجات البطنية.,curated_medical_phrases,sentence,medical_phrases,very_high,eff55e31e871
+Topical antifungal cream.,كريم مضاد فطريات موضعي.,curated_medical_phrases,term,medical_phrases,very_high,96f3bd9ab7da
+Nasal decongestant.,مزيل احتقان أنفي.,curated_medical_phrases,term,medical_phrases,very_high,a6699497a2ab
+Cough suppressant.,مضاد سعال.,curated_medical_phrases,term,medical_phrases,very_high,77ccf1dba75a
+Expectorant.,مقشع.,curated_medical_phrases,term,medical_phrases,very_high,e848b1ade8c4
+Antihistamine for relief of allergy symptoms.,مضاد هيستامين لتخفيف أعراض الحساسية.,curated_medical_phrases,sentence,medical_phrases,very_high,c0af0401ac0e
+Proton pump inhibitor for treatment of gastric ulcer.,مثبط مضخة البروتون لعلاج القرحة المعدية.,curated_medical_phrases,sentence,medical_phrases,very_high,6de7f5e062a1
+Laxative for relief of constipation.,ملين لتخفيف الإمساك.,curated_medical_phrases,term,medical_phrases,very_high,28c8f1acf116
+Antidiarrheal agent.,عامل مضاد للإسهال.,curated_medical_phrases,term,medical_phrases,very_high,000a9145fead
+Oral antidiabetic agent.,عامل خافض للسكر فموي.,curated_medical_phrases,term,medical_phrases,very_high,cc0bd39d2f99
+NSAID - Non-steroidal anti-inflammatory drug.,مضاد التهاب غير ستروئيدي.,curated_medical_phrases,term,medical_phrases,very_high,6ab7fb19d257
+Betalactam antibiotic.,مضاد حيوي بيتا لاكتامي.,curated_medical_phrases,term,medical_phrases,very_high,10192a8b7979
+Fluoroquinolone antibiotic.,مضاد حيوي فلوروكينولوني.,curated_medical_phrases,term,medical_phrases,very_high,f2f824adb8d1
+Macrolide antibiotic.,مضاد حيوي ماكروليدي.,curated_medical_phrases,term,medical_phrases,very_high,9b0138544a09
+Angiotensin converting enzyme inhibitor.,مثبط إنزيم تحويل الأنجيوتنسين.,curated_medical_phrases,term,medical_phrases,very_high,cc71f37b77f3
+Angiotensin II receptor blocker.,حاصر مستقبلات الأنجيوتنسين II.,curated_medical_phrases,term,medical_phrases,very_high,61f022e7a3a6
+Calcium channel blocker.,حاصر قنوات الكالسيوم.,curated_medical_phrases,term,medical_phrases,very_high,012e639732ee
+Beta-adrenergic receptor blocker.,حاصر مستقبلات بيتا الأدرينالية.,curated_medical_phrases,term,medical_phrases,very_high,d229a41e8861
+Indications: Treatment of mild to moderate pain.,الاستطبابات: علاج الألم الخفيف إلى المتوسط.,curated_medical_phrases,sentence,medical_phrases,very_high,ffa25c605acb
+"Overdose symptoms: May include confusion, dizziness, nausea.",أعراض الجرعة الزائدة: قد تشمل التشوش، الدوخة، الغثيان.,curated_medical_phrases,sentence,medical_phrases,very_high,86a831e082fd

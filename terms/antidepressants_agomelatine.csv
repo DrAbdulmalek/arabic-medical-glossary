@@ -1,0 +1,35 @@
+# قاعدة مصطلحات: مضادات الاكتئاب — أجوميلاتين
+# المصدر: النشرة الدوائية — PRICKSAGE (Agomelatine 25mg) Film-Coated Tablets
+# التاريخ: 2026-07-09
+# الفئة: علم الأدوية النفسية / مضادات الاكتئاب
+
+en,ar,category,source_section
+"Agomelatine","أجوميلاتين","generic_name","header"
+"Film-Coated Tablets","أقراص ملبسة بالفيلم","dosage_form","header"
+"Excipients","السواغات","pharmaceutical","composition"
+"Mechanism of action","آلية التأثير","pharmacology","mechanism_of_action"
+"Melatonergic agonist","شاد المستقبلات الميلاتونين","pharmacology","mechanism_of_action"
+"5-HT2C antagonist","ضاد المستقبلات 5-HT2C","pharmacology","mechanism_of_action"
+"Pharmacokinetics","الحرائك الدوائية","pharmacology","pharmacokinetics"
+"Bioavailability","التوافر الحيوي","pharmacology","pharmacokinetics"
+"Indications","الاستطبابات","clinical","indications"
+"Major depressive episodes","حوادث الاكتئاب الرئيسي","clinical","indications"
+"Contraindications","مضادات الاستطبابات","clinical","contraindications"
+"Hypersensitivity","فرط التحس","clinical","contraindications"
+"Adverse reactions","ردود الفعل السلبية","clinical","safety"
+"Liver injury","إصابة الكبد","clinical","safety"
+"Suicidal thoughts","أفكار انتحارية","clinical","safety"
+"Hepatic impairment","قصور كبدي / اعتلال كبدي","clinical","special_populations"
+"Renal impairment","اعتلال كلوي","clinical","special_populations"
+"Paediatric population","الأطفال","clinical","special_populations"
+"Pregnancy and lactation","الحمل والإرضاع","clinical","special_populations"
+"Overdosage","فرط الجرعة","clinical","safety"
+"Toxicity","السمية","clinical","safety"
+"Dosage and Administration","الجرعة وطريقة الاستعمال","clinical","dosage"
+"Recommended dose","الجرعة الموصى بها","clinical","dosage"
+"Once daily","مرة واحدة يوميا","clinical","dosage"
+"Bedtime","قبل النوم","clinical","dosage"
+"Treatment discontinuation","التوقف عن العلاج","clinical","dosage"
+"Dosage tapering","تخفيض الجرعة","clinical","dosage"
+"Store away from humidity","يحفظ بعيدا عن الرطوبة","storage","storage"
+"Direct light","الضوء المباشر","storage","storage"

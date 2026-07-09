@@ -1,0 +1,17 @@
+﻿en,ar,section
+Excipients,السواغات,header
+PHARMACOKINETICS,الحرائك الدوائية,header
+INDICATIONS,الاستطبابات,header
+CONTRAINDICATIONS,مضادات الاستطبابات,header
+WARNINGS AND PRECAUTIONS,التحذيرات والاحتياطات,header
+DRUG INTERACTIONS,التداخلات الدوائية,header
+DOSAGE AND ADMINISTRATION,الجرعة وطريقة الاستعمال,header
+"Adults: 4-6 tablets of (Spiramycin750,000 IU + Metronidazole e 125",أقراص,dosage_form
+"mg), or 2-3 tablets of (Spiramycin1,5 MIU + Metronidazole e 250 mg)",أقراص,dosage_form
+"may be increase to 8 tablets of (Spiramycin750,000 IU + Metronidazole",أقراص,dosage_form
+"e 125 mg) or 4 tablets of (Spiramycin1,5 MIU + Metronidazole e 250 mg).",أقراص,dosage_form
+"3 tablets of (Spiramycin750,000 IU +",أقراص,dosage_form
+"2 tablets of (Spiramycin750,000 IU +",أقراص,dosage_form
+OVERDOSAGE,فرط الجرعة,header
+"Packing: 2 Blisters, each contains 10 film-coated tablets/box.",أقراص ملبسة بالفيلم,dosage_form
+(Film Coated Tablets),أقراص ملبسة بالفيلم,dosage_form

@@ -1,0 +1,11 @@
+﻿en,ar,section
+COMPOSITION,التركيب,header
+MECHANISM OF ACTION,آلية التأثير,header
+PHARMACOKINETICS,الحرائك الدوائية,header
+INDICATIONS,الاستطبابات,header
+CONTRAINDICATIONS,مضادات الاستطبابات,header
+SIDE EFFECTS,الآثار الجانبية,header
+DOSAGE AND ADMINISTRATION,الجرعة وطريقة الاستعمال,header
+OVERDOSAGE,فرط الجرعة,header
+"2 blisters, each contains 10 tablets.",أقراص,dosage_form
+(TABLETS),أقراص,dosage_form

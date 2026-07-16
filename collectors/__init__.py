@@ -19,6 +19,7 @@ from .meddra import MedDRACollector
 from .ichi import ICHICollector
 from .icf import ICFCollector
 from .radlex import RadLexCollector
+from .custom_glossaries import CustomGlossariesCollector
 
 __all__ = [
     "BaseCollector",
@@ -38,5 +39,6 @@ __all__ = [
     "MedDRACollector",
     "ICHICollector",
     "ICFCollector",
-    "RadLexCollector"
+    "RadLexCollector",
+    "CustomGlossariesCollector"
 ]

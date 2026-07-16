@@ -96,7 +96,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        source: [atc, ichi, icf]
+        source: [atc, ichi, icf, custom_glossaries]
 
     steps:
       - name: Checkout

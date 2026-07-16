@@ -51,7 +51,7 @@ class SNOMEDCTCollector(BaseCollector):
 
                 except Exception as e:
                     self.logger.error(
-                        f"خطأ في جمع فئة '{category["term"]}': {e}"
+                        f"خطأ في جمع فئة '{category['term']}': {e}"
                     )
                     continue
 

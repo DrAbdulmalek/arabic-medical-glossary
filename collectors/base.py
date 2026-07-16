@@ -86,7 +86,7 @@ class BaseCollector(ABC):
         # Batch buffer لتقليل عمليات I/O
         self._data_cache = None
         self._dirty = False
-        self._buffer_size = config.get("collection", {}).get("buffer_size", 500)
+        self._buffer_size = self.config.get("collection", {}).get("buffer_size", 500)
         self._pending_count = 0
 
     def _setup_logger(self) -> logging.Logger:
@@ -149,6 +149,7 @@ class BaseCollector(ABC):
             existing = data["terms"][term_hash]
             if entry.confidence > existing.get("confidence", 0):
                 data["terms"][term_hash] = asdict(entry)
+                self.logger.info(f"🔄 تحديث: {entry.term}")
                 self._dirty = True
                 if self._pending_count >= self._buffer_size:
                     self.save_source_data(data)
@@ -165,6 +166,8 @@ class BaseCollector(ABC):
         if self._pending_count >= self._buffer_size:
             self.save_source_data(data)
             self.logger.info(f"💾 حفظ دفعة: {self._pending_count} مصطلح (إجمالي: {len(data['terms'])})")
+        else:
+            self.logger.info(f"✅ جديد: {entry.term}")
 
         return True
 

@@ -1,0 +1,71 @@
+name: Weekly Report
+
+on:
+  schedule:
+    - cron: '0 9 * * 0'
+  workflow_dispatch:
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate report
+        run: |
+          python -c "
+import json
+from datetime import datetime
+
+try:
+    with open('data/progress/state.json', 'r') as f:
+        progress = json.load(f)
+    with open('data/merged/glossary_master.json', 'r') as f:
+        merged = json.load(f)
+
+    report_lines = [
+        '# 📊 تقرير أسبوعي - Medical Glossary Collector',
+        '',
+        f'**التاريخ:** {datetime.now().strftime("%Y-%m-%d")}',
+        '',
+        '## 📈 الإحصائيات',
+        f'- **إجمالي المصطلحات:** {merged.get("metadata", {}).get("total_terms", 0)}',
+        f'- **عدد المصادر:** {len(progress.get("sources", {}))}',
+        f'- **آخر تحديث:** {progress.get("last_update", "غير معروف")}',
+        '',
+        '## 📡 حالة المصادر',
+        ''
+    ]
+
+    for source, info in progress.get('sources', {}).items():
+        status = info.get('status', 'unknown')
+        emoji = {'completed': '✅', 'failed': '❌', 'running': '🔄'}.get(status, '⚪')
+        report_lines.append(f'### {emoji} {source}')
+        report_lines.append(f'- المصطلحات: {info.get("terms_collected", 0)}')
+        report_lines.append(f'- الحالة: {status}')
+        report_lines.append(f'- آخر تشغيل: {info.get("last_run", "لم يتم")}')
+        report_lines.append('')
+
+    with open('WEEKLY_REPORT.md', 'w') as f:
+        f.write('\n'.join(report_lines))
+
+    print('✅ تم إنشاء التقرير')
+
+except FileNotFoundError:
+    print('⚠️ لا توجد بيانات كافية للتقرير')
+          "
+
+      - name: Commit report
+        run: |
+          git config user.name "Glossary Bot"
+          git config user.email "bot@example.com"
+          git add WEEKLY_REPORT.md
+          git diff --staged --quiet || git commit -m "📊 تقرير أسبوعي - $(date +'%Y-%m-%d')"
+          git push

@@ -1,0 +1,302 @@
+name: Daily Glossary Collection
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  collect-mesh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from MeSH
+        run: python -m collectors.mesh_run
+
+      - name: Upload artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-error-logs
+          path: data/logs/
+
+  collect-wikidata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-mesh
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from Wikidata
+        run: python -m collectors.wikidata_run
+
+  collect-icd10:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-wikidata
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from ICD-10-CM
+        run: python -m collectors.icd10_run
+
+  collect-icd11:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-icd10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from ICD-11
+        env:
+          ICD11_CLIENT_ID: ${{ secrets.ICD11_CLIENT_ID }}
+          ICD11_CLIENT_SECRET: ${{ secrets.ICD11_CLIENT_SECRET }}
+        run: python -m collectors.icd11_run
+
+  collect-hcpcs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-icd11
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from HCPCS
+        run: python -m collectors.hcpcs_run
+
+  collect-rxnorm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-hcpcs
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from RxNorm
+        run: python -m collectors.rxnorm_run
+
+  collect-loinc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-rxnorm
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from LOINC
+        env:
+          LOINC_USERNAME: ${{ secrets.LOINC_USERNAME }}
+          LOINC_PASSWORD: ${{ secrets.LOINC_PASSWORD }}
+        run: python -m collectors.loinc_run
+
+  collect-snomed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-loinc
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from SNOMED CT
+        run: python -m collectors.snomed_run
+
+  collect-umls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-snomed
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from UMLS
+        env:
+          UMLS_API_KEY: ${{ secrets.UMLS_API_KEY }}
+        run: python -m collectors.umls_run
+
+  collect-atc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-umls
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from ATC
+        run: python -m collectors.atc_run
+
+  collect-ichi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-atc
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from ICHI
+        run: python -m collectors.ichi_run
+
+  collect-icf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: collect-ichi
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect from ICF
+        run: python -m collectors.icf_run
+
+  merge-and-push:
+    runs-on: ubuntu-latest
+    needs: [collect-mesh, collect-wikidata, collect-icd10, collect-icd11, collect-hcpcs, collect-rxnorm, collect-loinc, collect-snomed, collect-umls, collect-atc, collect-ichi, collect-icf]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Merge all sources
+        run: python -m processors.merge_sources
+
+      - name: Commit and push
+        run: |
+          git config user.name "Glossary Bot"
+          git config user.email "bot@example.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "🤖 تحديث المسارد - $(date +'%Y-%m-%d %H:%M UTC')"
+          git push

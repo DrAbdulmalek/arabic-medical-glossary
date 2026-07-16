@@ -1,0 +1,113 @@
+# إعدادات مشروع جمع المسارد الطبية
+
+# إعدادات الجمع
+collection:
+  rate_limit: 0.1
+  max_retries: 5
+  timeout: 60
+
+# إعدادات التيليجرام
+telegram:
+  download_dir: "data/telegram_files"
+  max_file_size_mb: 100
+  batch_size: 10
+
+# إعدادات التخزين
+storage:
+  format: "json"
+  split_by_source: true
+
+# إعدادات التحليل
+parsing:
+  min_term_length: 2
+  min_definition_length: 5
+  max_term_length: 80
+  max_definition_length: 500
+
+# المصادر المتاحة
+sources:
+  mesh:
+    enabled: true
+    endpoint: "https://id.nlm.nih.gov/mesh/sparql"
+    auth: none
+    language: en
+  wikidata:
+    enabled: true
+    endpoint: "https://query.wikidata.org/sparql"
+    auth: none
+    language: en,ar
+  icd10:
+    enabled: true
+    endpoint: "https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search"
+    auth: none
+    language: en
+  icd11:
+    enabled: true
+    endpoint: "https://id.who.int/icd"
+    auth: oauth2
+    language: en
+    note: "يتطلب تسجيل مجاني + Client ID/Secret من https://icd.who.int/icdapi"
+  hcpcs:
+    enabled: true
+    endpoint: "https://clinicaltables.nlm.nih.gov/api/hcpcs/v3/search"
+    auth: none
+    language: en
+  rxnorm:
+    enabled: true
+    endpoint: "https://rxnav.nlm.nih.gov/REST"
+    auth: none
+    language: en
+  loinc:
+    enabled: true
+    endpoint: "https://fhir.loinc.org"
+    auth: basic
+    language: en
+    note: "يتطلب حساب LOINC مجاني"
+  snomed_ct:
+    enabled: true
+    endpoint: "https://snowstorm.ihtsdotools.org/snowstorm/snomed-ct"
+    auth: none
+    language: en
+    note: "للاستخدام المرجعي فقط - لا يصلح للإنتاج"
+  umls:
+    enabled: true
+    endpoint: "https://uts-ws.nlm.nih.gov/rest"
+    auth: api_key
+    language: en
+    note: "يتطلب API Key مجاني من https://uts.nlm.nih.gov/"
+  atc:
+    enabled: true
+    endpoint: "https://atcddd.fhi.no/"
+    auth: account
+    language: en
+    note: "يتطلب حساب WHO مجاني + تحميل ملف XML/Excel يدوي"
+  ichi:
+    enabled: true
+    endpoint: "https://www.who.int/standards/classifications/classification-of-health-interventions"
+    auth: account
+    language: en
+    note: "يتطلب حساب WHO مجاني + تحميل ملف يدوي"
+  icf:
+    enabled: true
+    endpoint: "https://www.who.int/standards/classifications/international-classification-of-functioning-disability-and-health"
+    auth: account
+    language: en
+    note: "يتطلب حساب WHO مجاني + تحميل ملف يدوي"
+  cpt:
+    enabled: false
+    endpoint: "https://www.ama-assn.org/practice-management/cpt"
+    auth: paid_license
+    language: en
+    note: "❌ مدفوع - يتطلب ترخيص AMA. استخدم HCPCS كبديل"
+  meddra:
+    enabled: false
+    endpoint: "https://www.meddra.org/"
+    auth: paid_subscription
+    language: en
+    note: "❌ مدفوع - يتطلب اشتراك MSSO. مجاني فقط للمنظمين الحكوميين"
+  radlex:
+    enabled: false
+    endpoint: "https://www.rsna.org/practice-management/data-science-and-ai/radlex"
+    auth: none
+    language: en
+    note: "⚠️ لا يوجد API مباشر - يتطلب تحميل ملف OWL/RDF يدوي أو استخدام BioPortal"

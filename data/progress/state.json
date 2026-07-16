@@ -1,0 +1,14 @@
+{
+  "sources": {
+    "CustomGlossaries": {
+      "status": "completed",
+      "last_run": "2026-07-16T22:49:41.746001",
+      "terms_collected": 21120,
+      "last_error": null,
+      "consecutive_failures": 0
+    }
+  },
+  "total_terms": 21120,
+  "last_update": "2026-07-16T22:50:00.078484",
+  "errors_log": []
+}

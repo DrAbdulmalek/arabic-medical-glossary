@@ -5,6 +5,7 @@ collection:
   rate_limit: 0.1
   max_retries: 5
   timeout: 60
+  buffer_size: 500
 
 # إعدادات التيليجرام
 telegram:
@@ -111,3 +112,9 @@ sources:
     auth: none
     language: en
     note: "⚠️ لا يوجد API مباشر - يتطلب تحميل ملف OWL/RDF يدوي أو استخدام BioPortal"
+  custom_glossaries:
+    enabled: true
+    endpoint: "local"
+    auth: none
+    language: en,ar
+    note: "مصادر محلية: 86 ملف CSV خام + ملفات منظفة + WHO UMD"

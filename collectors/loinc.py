@@ -62,9 +62,8 @@ class LOINCCollector(BaseCollector):
 
         for code in common_codes:
             try:
-                url = f"{self.api_base}/CodeSystem/$lookup"
+                url = f"{self.api_base}/CodeSystem/http://loinc.org/$lookup"
                 params = {
-                    "system": "http://loinc.org",
                     "code": code,
                     "_format": "json"
                 }
@@ -128,9 +127,8 @@ class LOINCCollector(BaseCollector):
     def _get_code_properties(self, code: str) -> dict:
         """جلب خصائص إضافية للكود"""
         try:
-            url = f"{self.api_base}/CodeSystem/$lookup"
+            url = f"{self.api_base}/CodeSystem/http://loinc.org/$lookup"
             params = {
-                "system": "http://loinc.org",
                 "code": code,
                 "property": "*",
                 "_format": "json"

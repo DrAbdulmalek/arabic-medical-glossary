@@ -11,24 +11,53 @@ st.set_page_config(
 
 st.title("📚 متتبع جمع المسارد الطبية")
 
+
+@st.cache_data(ttl=60)
+def load_progress_data():
+    """تحميل بيانات التقدم مع caching لمدة 60 ثانية"""
+    progress_file = "data/progress/state.json"
+    try:
+        with open(progress_file, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+@st.cache_data(ttl=60)
+def load_merged_data():
+    """تحميل البيانات المدمجة مع caching"""
+    merged_file = "data/merged/glossary_master.json"
+    try:
+        with open(merged_file, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+@st.cache_data(hash_funcs={dict: lambda _: None})
+def search_terms(search_term: str, _merged_data: dict):
+    """البحث في المسارد مع caching حسب المصطلح"""
+    if not _merged_data:
+        return []
+
+    results = []
+    search_lower = search_term.lower()
+
+    for key, data in _merged_data.get("terms", {}).items():
+        term = data.get("term", "").lower()
+        definition = data.get("definition", "").lower()
+
+        if search_lower in term or search_lower in definition:
+            results.append(data)
+            if len(results) >= 100:
+                break
+
+    return results
+
+
 # تحميل البيانات
-progress_file = "data/progress/state.json"
-merged_file = "data/merged/glossary_master.json"
-
-progress = {}
-merged = {}
-
-try:
-    with open(progress_file, "r", encoding="utf-8") as f:
-        progress = json.load(f)
-except FileNotFoundError:
-    st.warning("⚠️ لم يتم العثور على ملف التقدم. شغّل المجمع أولاً.")
-
-try:
-    with open(merged_file, "r", encoding="utf-8") as f:
-        merged = json.load(f)
-except FileNotFoundError:
-    pass
+progress = load_progress_data()
+merged = load_merged_data()
 
 # إحصائيات عامة
 col1, col2, col3, col4 = st.columns(4)
@@ -85,15 +114,7 @@ st.subheader("🔍 البحث في المسارد")
 search_term = st.text_input("أدخل المصطلح للبحث:", placeholder="مثال: diabetes, سكري, heart...")
 
 if search_term and merged:
-    results = []
-    search_lower = search_term.lower()
-
-    for key, data in merged.get("terms", {}).items():
-        term = data.get("term", "").lower()
-        definition = data.get("definition", "").lower()
-
-        if search_lower in term or search_lower in definition:
-            results.append(data)
+    results = search_terms(search_term, merged)
 
     st.write(f"تم العثور على **{len(results)}** نتيجة")
 
@@ -124,7 +145,7 @@ if merged and "by_language" in merged:
 
     for i, (lang, terms) in enumerate(lang_data.items()):
         lang_cols[i].metric(
-            f"{'🇦🇪 العربية' if lang == 'ar' else '🇬🇧 الإنجليزية' if lang == 'en' else lang}",
+            f"{'🇸🇦 العربية' if lang == 'ar' else '🇬🇧 الإنجليزية' if lang == 'en' else lang}",
             len(terms)
         )
 

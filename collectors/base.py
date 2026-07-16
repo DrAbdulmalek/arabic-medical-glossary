@@ -14,6 +14,7 @@ from dataclasses import dataclass, asdict
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from collectors.config_loader import load_config as _load_config
 
 logging.basicConfig(
     level=logging.INFO,
@@ -52,7 +53,7 @@ class BaseCollector(ABC):
     def __init__(self, source_name: str, source_url: str, config: dict = None):
         self.source_name = source_name
         self.source_url = source_url
-        self.config = config or {}
+        self.config = config or _load_config()
 
         self.data_dir = os.path.join("data", "sources")
         self.progress_dir = os.path.join("data", "progress")
@@ -82,6 +83,12 @@ class BaseCollector(ABC):
 
         self.logger = self._setup_logger()
 
+        # Batch buffer لتقليل عمليات I/O
+        self._data_cache = None
+        self._dirty = False
+        self._buffer_size = 100
+        self._pending_count = 0
+
     def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger(self.source_name)
         handler = logging.FileHandler(self.log_file, encoding='utf-8')
@@ -109,22 +116,30 @@ class BaseCollector(ABC):
             json.dump(progress, f, ensure_ascii=False, indent=2)
 
     def load_source_data(self) -> dict:
+        # استخدام الذاكرة المؤقتة إن وجدت
+        if self._data_cache is not None:
+            return self._data_cache
         try:
             with open(self.source_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                self._data_cache = json.load(f)
+                return self._data_cache
         except FileNotFoundError:
-            return {
+            self._data_cache = {
                 "terms": {},
                 "metadata": {
                     "source": self.source_name,
                     "created": datetime.now().isoformat()
                 }
             }
+            return self._data_cache
 
     def save_source_data(self, data: dict):
         data["metadata"]["last_updated"] = datetime.now().isoformat()
         with open(self.source_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
+        self._data_cache = data
+        self._dirty = False
+        self._pending_count = 0
 
     def add_term(self, entry: TermEntry) -> bool:
         data = self.load_source_data()
@@ -135,14 +150,32 @@ class BaseCollector(ABC):
             if entry.confidence > existing.get("confidence", 0):
                 data["terms"][term_hash] = asdict(entry)
                 self.logger.info(f"🔄 تحديث: {entry.term}")
-                self.save_source_data(data)
+                self._dirty = True
+                if self._pending_count >= self._buffer_size:
+                    self.save_source_data(data)
+                else:
+                    self._pending_count += 1
                 return True
             return False
 
         data["terms"][term_hash] = asdict(entry)
-        self.save_source_data(data)
-        self.logger.info(f"✅ جديد: {entry.term}")
+        self._dirty = True
+        self._pending_count += 1
+
+        # حفظ دفعي عند الوصول للحد
+        if self._pending_count >= self._buffer_size:
+            self.save_source_data(data)
+            self.logger.info(f"💾 حفظ دفعة: {self._buffer_size} مصطلح")
+        else:
+            self.logger.info(f"✅ جديد: {entry.term}")
+
         return True
+
+    def flush(self):
+        """حفظ أي مصطلحات متبقية في الذاكرة"""
+        if self._dirty and self._data_cache is not None:
+            self.save_source_data(self._data_cache)
+            self.logger.info("💾 تم حفظ المصطلحات المتبقية")
 
     def get_stats(self) -> dict:
         data = self.load_source_data()
@@ -182,6 +215,8 @@ class BaseCollector(ABC):
 
         try:
             new_count = self.collect()
+            # حفظ أي مصطلحات متبقية في الـ buffer
+            self.flush()
 
             source_progress["status"] = "completed"
             source_progress["terms_collected"] = len(

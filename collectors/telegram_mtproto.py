@@ -1,6 +1,7 @@
 """
 Telegram collector using Telethon (MTProto) for private channel access.
 Bypasses 20MB Bot API limit and can read full channel history.
+Supports StringSession for CI/CD environments.
 """
 
 import os
@@ -8,16 +9,16 @@ import json
 import asyncio
 from datetime import datetime
 from telethon import TelegramClient
+from telethon.sessions import StringSession
 
 from collectors.base import BaseCollector, TermEntry
-from processors.text_extractor import extract_text_from_file
-from processors.glossary_parser import parse_glossary_from_text
 
 
 class TelegramCollector(BaseCollector):
     """
     مجمع مصطلحات من قناة تيليجرام خاصة
     يستخدم Telethon للوصول الكامل
+    يدعم StringSession للعمل في CI/CD
     """
 
     def __init__(self, config: dict = None):
@@ -27,7 +28,7 @@ class TelegramCollector(BaseCollector):
         self.api_hash = os.getenv("TELEGRAM_API_HASH", "")
         self.phone = os.getenv("TELEGRAM_PHONE", "")
         self.channel_id = os.getenv("TELEGRAM_CHANNEL_ID", "")
-        self.session_name = os.getenv("TELEGRAM_SESSION", "glossary_session")
+        self.session_string = os.getenv("TELEGRAM_SESSION", "")
 
         self.download_dir = os.path.join("data", "telegram_files")
         os.makedirs(self.download_dir, exist_ok=True)
@@ -35,6 +36,24 @@ class TelegramCollector(BaseCollector):
         self.processed_log = os.path.join(
             self.progress_dir, "telegram_processed.json"
         )
+
+    def _create_session(self):
+        """إنشاء جلسة Telethon — تدعم StringSession وملف الجلسة"""
+        if self.session_string:
+            return StringSession(self.session_string)
+
+        # محاولة فك تشفير الجلسة من base64 (للتوافق مع الإعدادات القديمة)
+        session_b64 = os.getenv("TELEGRAM_SESSION_B64", "")
+        if session_b64:
+            import base64
+            try:
+                decoded = base64.b64decode(session_b64).decode('utf-8')
+                return StringSession(decoded)
+            except Exception as e:
+                self.logger.error(f"فشل فك تشفير TELEGRAM_SESSION_B64: {e}")
+
+        # Fallback: ملف جلسة محلي (للتشغيل اليدوي فقط)
+        return "glossary_session"
 
     def load_processed(self) -> set:
         try:
@@ -75,6 +94,9 @@ class TelegramCollector(BaseCollector):
                             f"📥 تم التحميل: {os.path.basename(file_path)}"
                         )
 
+                        from processors.text_extractor import extract_text_from_file
+                        from processors.glossary_parser import parse_glossary_from_text
+
                         text = extract_text_from_file(file_path)
 
                         if text:
@@ -87,7 +109,11 @@ class TelegramCollector(BaseCollector):
                                 if self.add_term(entry):
                                     new_terms += 1
 
-                        os.remove(file_path)
+                        # حذف الملف بعد المعالجة
+                        try:
+                            os.remove(file_path)
+                        except OSError:
+                            pass
                         processed.add(file_id)
 
                 except Exception as e:
@@ -96,6 +122,7 @@ class TelegramCollector(BaseCollector):
                     )
 
         elif message.text:
+            from processors.glossary_parser import parse_glossary_from_text
             entries = parse_glossary_from_text(
                 message.text,
                 source=f"telegram:message:{message.id}"
@@ -110,13 +137,14 @@ class TelegramCollector(BaseCollector):
         total_new = 0
         processed = self.load_processed()
 
-        async with TelegramClient(
-            self.session_name, self.api_id, self.api_hash
-        ) as client:
+        session = self._create_session()
 
+        async with TelegramClient(session, self.api_id, self.api_hash) as client:
             if not await client.is_user_authorized():
-                await client.send_code_request(self.phone)
-                self.logger.error("⚠️ يجب تسجيل الدخول يدوياً أول مرة!")
+                self.logger.error(
+                    "❌ Telegram session غير صالح أو منتهي. "
+                    "أنشئ session string جديد وضعه في TELEGRAM_SESSION."
+                )
                 return 0
 
             entity = await client.get_entity(int(self.channel_id))

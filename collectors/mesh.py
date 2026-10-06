@@ -31,15 +31,12 @@ class MeSHCollector(BaseCollector):
 
         headers = {
             "Accept": "application/sparql-results+json",
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
         }
 
         try:
             response = self.session.post(
-                self.sparql_endpoint,
-                data={"query": query},
-                headers=headers,
-                timeout=60
+                self.sparql_endpoint, data={"query": query}, headers=headers, timeout=60
             )
             response.raise_for_status()
 
@@ -56,7 +53,7 @@ class MeSHCollector(BaseCollector):
                         definition=definition or f"MeSH Descriptor: {term}",
                         source="MeSH",
                         language="en",
-                        confidence=0.95
+                        confidence=0.95,
                     )
                     if self.add_term(entry):
                         new_count += 1

@@ -26,11 +26,7 @@ class MedDRACollector(BaseCollector):
     """
 
     def __init__(self, config: dict = None):
-        super().__init__(
-            "MedDRA",
-            "https://www.meddra.org/",
-            config
-        )
+        super().__init__("MedDRA", "https://www.meddra.org/", config)
 
     def collect(self) -> int:
         self.logger.error(

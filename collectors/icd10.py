@@ -15,19 +15,27 @@ class ICD10Collector(BaseCollector):
     """
 
     def __init__(self, config: dict = None):
-        super().__init__(
-            "ICD-10-CM",
-            "https://clinicaltables.nlm.nih.gov/",
-            config
-        )
+        super().__init__("ICD-10-CM", "https://clinicaltables.nlm.nih.gov/", config)
         self.api_base = "https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search"
 
         # فئات بحث ICD-10-CM الرئيسية
         self.search_queries = [
-            "diabetes", "hypertension", "pneumonia", "heart failure",
-            "asthma", "stroke", "cancer", "fracture",
-            "anemia", "hepatitis", "tuberculosis", "depression",
-            "alzheimer", "arthritis", "migraine", "epilepsy"
+            "diabetes",
+            "hypertension",
+            "pneumonia",
+            "heart failure",
+            "asthma",
+            "stroke",
+            "cancer",
+            "fracture",
+            "anemia",
+            "hepatitis",
+            "tuberculosis",
+            "depression",
+            "alzheimer",
+            "arthritis",
+            "migraine",
+            "epilepsy",
         ]
 
     def collect(self) -> int:
@@ -42,11 +50,7 @@ class ICD10Collector(BaseCollector):
                     "df": "code,name",  # display fields
                 }
 
-                response = self.session.get(
-                    self.api_base,
-                    params=params,
-                    timeout=30
-                )
+                response = self.session.get(self.api_base, params=params, timeout=30)
                 response.raise_for_status()
                 data = response.json()
 
@@ -65,7 +69,7 @@ class ICD10Collector(BaseCollector):
                         source="ICD-10-CM",
                         language="en",
                         confidence=0.92,
-                        tags=["icd10", code, query]
+                        tags=["icd10", code, query],
                     )
 
                     if self.add_term(entry):

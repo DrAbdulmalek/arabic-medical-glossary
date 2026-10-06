@@ -29,7 +29,7 @@ class WikidataCollector(BaseCollector):
 
         headers = {
             "Accept": "application/sparql-results+json",
-            "User-Agent": "MedicalGlossaryBot/1.0"
+            "User-Agent": "MedicalGlossaryBot/1.0",
         }
 
         try:
@@ -37,7 +37,7 @@ class WikidataCollector(BaseCollector):
                 self.sparql_endpoint,
                 params={"query": query},
                 headers=headers,
-                timeout=60
+                timeout=60,
             )
             response.raise_for_status()
 
@@ -57,7 +57,7 @@ class WikidataCollector(BaseCollector):
                         definition=en_def or f"Wikidata: {en_term}",
                         source="Wikidata",
                         language="en",
-                        confidence=0.85
+                        confidence=0.85,
                     )
                     if self.add_term(entry):
                         new_count += 1
@@ -69,7 +69,7 @@ class WikidataCollector(BaseCollector):
                         definition=ar_def or en_def or f"Wikidata: {ar_term}",
                         source="Wikidata",
                         language="ar",
-                        confidence=0.8
+                        confidence=0.8,
                     )
                     if self.add_term(entry):
                         new_count += 1

@@ -16,18 +16,23 @@ class HCPCSCollector(BaseCollector):
     """
 
     def __init__(self, config: dict = None):
-        super().__init__(
-            "HCPCS",
-            "https://clinicaltables.nlm.nih.gov/",
-            config
-        )
+        super().__init__("HCPCS", "https://clinicaltables.nlm.nih.gov/", config)
         self.api_base = "https://clinicaltables.nlm.nih.gov/api/hcpcs/v3/search"
 
         # فئات HCPCS الرئيسية (A-V)
         self.search_queries = [
-            "transportation", "dental", "durable medical equipment",
-            "prosthetics", "orthotics", "drugs", "lab", "radiology",
-            "surgery", "therapy", "diagnostic", "vaccine"
+            "transportation",
+            "dental",
+            "durable medical equipment",
+            "prosthetics",
+            "orthotics",
+            "drugs",
+            "lab",
+            "radiology",
+            "surgery",
+            "therapy",
+            "diagnostic",
+            "vaccine",
         ]
 
     def collect(self) -> int:
@@ -38,15 +43,11 @@ class HCPCSCollector(BaseCollector):
                 params = {
                     "terms": query,
                     "maxList": 50,
-                    "sf": "code,desc",   # search fields
-                    "df": "code,desc",   # display fields
+                    "sf": "code,desc",  # search fields
+                    "df": "code,desc",  # display fields
                 }
 
-                response = self.session.get(
-                    self.api_base,
-                    params=params,
-                    timeout=30
-                )
+                response = self.session.get(self.api_base, params=params, timeout=30)
                 response.raise_for_status()
                 data = response.json()
 
@@ -67,7 +68,7 @@ class HCPCSCollector(BaseCollector):
                         source="HCPCS",
                         language="en",
                         confidence=0.93,
-                        tags=["hcpcs", code, category.lower().replace(" ", "_")]
+                        tags=["hcpcs", code, category.lower().replace(" ", "_")],
                     )
 
                     if self.add_term(entry):
@@ -102,6 +103,6 @@ class HCPCSCollector(BaseCollector):
             "S": "Temporary National Codes",
             "T": "State Medicaid Agency",
             "U": "Medicare",
-            "V": "Vision/Hearing Services"
+            "V": "Vision/Hearing Services",
         }
         return categories.get(letter.upper(), "Other")

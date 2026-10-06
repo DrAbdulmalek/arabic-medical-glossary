@@ -36,68 +36,74 @@ def parse_glossary_from_text(text: str, source: str = "unknown") -> List[TermEnt
 
 def _pattern_colon(text: str, source: str) -> List[TermEntry]:
     entries = []
-    pattern = r'([^\n:]{2,80})[:：]\s*([^\n]{5,500})'
+    pattern = r"([^\n:]{2,80})[:：]\s*([^\n]{5,500})"
     matches = re.findall(pattern, text)
 
     for term, definition in matches:
         term = term.strip()
         definition = definition.strip()
 
-        if re.match(r'^(الفصل|Chapter|Section|القسم)', term):
+        if re.match(r"^(الفصل|Chapter|Section|القسم)", term):
             continue
 
         lang = _detect_language(term)
-        entries.append(TermEntry(
-            term=term,
-            definition=definition,
-            source=source,
-            language=lang,
-            confidence=0.8
-        ))
+        entries.append(
+            TermEntry(
+                term=term,
+                definition=definition,
+                source=source,
+                language=lang,
+                confidence=0.8,
+            )
+        )
 
     return entries
 
 
 def _pattern_numbered(text: str, source: str) -> List[TermEntry]:
     entries = []
-    pattern = r'(?:^|\n)\s*\d+[.)]\s*([^\n-]{2,80})\s*[-–]\s*([^\n]{5,500})'
+    pattern = r"(?:^|\n)\s*\d+[.)]\s*([^\n-]{2,80})\s*[-–]\s*([^\n]{5,500})"
     matches = re.findall(pattern, text)
 
     for term, definition in matches:
         lang = _detect_language(term)
-        entries.append(TermEntry(
-            term=term.strip(),
-            definition=definition.strip(),
-            source=source,
-            language=lang,
-            confidence=0.75
-        ))
+        entries.append(
+            TermEntry(
+                term=term.strip(),
+                definition=definition.strip(),
+                source=source,
+                language=lang,
+                confidence=0.75,
+            )
+        )
 
     return entries
 
 
 def _pattern_table(text: str, source: str) -> List[TermEntry]:
     entries = []
-    lines = text.split('\n')
+    lines = text.split("\n")
 
     for line in lines:
-        parts = re.split(r'\s*[|\t]\s*', line.strip())
+        parts = re.split(r"\s*[|\t]\s*", line.strip())
         if len(parts) == 2 and len(parts[0]) > 1 and len(parts[1]) > 5:
             lang = _detect_language(parts[0])
-            entries.append(TermEntry(
-                term=parts[0].strip(),
-                definition=parts[1].strip(),
-                source=source,
-                language=lang,
-                confidence=0.7
-            ))
+            entries.append(
+                TermEntry(
+                    term=parts[0].strip(),
+                    definition=parts[1].strip(),
+                    source=source,
+                    language=lang,
+                    confidence=0.7,
+                )
+            )
 
     return entries
 
 
 def _pattern_parentheses(text: str, source: str) -> List[TermEntry]:
     entries = []
-    pattern = r'([^\n(]{2,50})\s*\(\s*([^\)]{5,200})\s*\)'
+    pattern = r"([^\n(]{2,50})\s*\(\s*([^\)]{5,200})\s*\)"
     matches = re.findall(pattern, text)
 
     for term, definition in matches:
@@ -105,20 +111,22 @@ def _pattern_parentheses(text: str, source: str) -> List[TermEntry]:
             continue
 
         lang = _detect_language(term)
-        entries.append(TermEntry(
-            term=term.strip(),
-            definition=definition.strip(),
-            source=source,
-            language=lang,
-            confidence=0.6
-        ))
+        entries.append(
+            TermEntry(
+                term=term.strip(),
+                definition=definition.strip(),
+                source=source,
+                language=lang,
+                confidence=0.6,
+            )
+        )
 
     return entries
 
 
 def _detect_language(text: str) -> str:
-    arabic_chars = len(re.findall(r'[\u0600-\u06FF]', text))
-    total_chars = len(re.findall(r'[a-zA-Z\u0600-\u06FF]', text))
+    arabic_chars = len(re.findall(r"[\u0600-\u06FF]", text))
+    total_chars = len(re.findall(r"[a-zA-Z\u0600-\u06FF]", text))
 
     if total_chars == 0:
         return "unknown"

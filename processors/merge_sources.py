@@ -15,13 +15,10 @@ def merge_all_sources():
     os.makedirs(merged_dir, exist_ok=True)
 
     master = {
-        "metadata": {
-            "created": datetime.now().isoformat(),
-            "sources": []
-        },
+        "metadata": {"created": datetime.now().isoformat(), "sources": []},
         "terms": {},
         "by_language": {"ar": [], "en": []},
-        "by_source": defaultdict(list)
+        "by_source": defaultdict(list),
     }
 
     if not os.path.exists(sources_dir):
@@ -29,13 +26,13 @@ def merge_all_sources():
         return master
 
     for filename in os.listdir(sources_dir):
-        if not filename.endswith('.json'):
+        if not filename.endswith(".json"):
             continue
 
-        source_name = filename.replace('.json', '')
+        source_name = filename.replace(".json", "")
         filepath = os.path.join(sources_dir, filename)
 
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         source_terms = 0
@@ -50,19 +47,19 @@ def merge_all_sources():
 
             master["by_source"][source_name].append(term_hash)
 
-        master["metadata"]["sources"].append({
-            "name": source_name,
-            "terms_count": source_terms,
-            "file": filename
-        })
+        master["metadata"]["sources"].append(
+            {"name": source_name, "terms_count": source_terms, "file": filename}
+        )
 
     master["metadata"]["total_terms"] = len(master["terms"])
 
     merged_file = os.path.join(merged_dir, "glossary_master.json")
-    with open(merged_file, 'w', encoding='utf-8') as f:
+    with open(merged_file, "w", encoding="utf-8") as f:
         json.dump(master, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ تم دمج {len(master['terms'])} مصطلح من {len(master['metadata']['sources'])} مصدر")
+    print(
+        f"✅ تم دمج {len(master['terms'])} مصطلح من {len(master['metadata']['sources'])} مصدر"
+    )
     return master
 
 

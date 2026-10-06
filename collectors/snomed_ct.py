@@ -19,21 +19,17 @@ class SNOMEDCTCollector(BaseCollector):
     """
 
     def __init__(self, config: dict = None):
-        super().__init__(
-            "SNOMED_CT",
-            "https://snowstorm.ihtsdotools.org/",
-            config
-        )
+        super().__init__("SNOMED_CT", "https://snowstorm.ihtsdotools.org/", config)
         self.api_base = "https://snowstorm.ihtsdotools.org/snowstorm/snomed-ct"
         self.branch = "MAIN"
 
         # فئات SNOMED CT الرئيسية للبحث
         self.search_categories = [
-            {"term": "disease", "ecl": "<< 404684003"},      # Clinical finding
-            {"term": "procedure", "ecl": "<< 71388002"},    # Procedure
+            {"term": "disease", "ecl": "<< 404684003"},  # Clinical finding
+            {"term": "procedure", "ecl": "<< 71388002"},  # Procedure
             {"term": "substance", "ecl": "<< 105590001"},  # Substance
             {"term": "body structure", "ecl": "<< 123037004"},  # Body structure
-            {"term": "organism", "ecl": "<< 410607006"},   # Organism
+            {"term": "organism", "ecl": "<< 410607006"},  # Organism
         ]
 
     def collect(self) -> int:
@@ -43,16 +39,13 @@ class SNOMEDCTCollector(BaseCollector):
             for category in self.search_categories:
                 try:
                     category_count = self._collect_category(
-                        category["term"],
-                        category["ecl"]
+                        category["term"], category["ecl"]
                     )
                     new_count += category_count
                     self.rate_limit(1.0)  # احترام rate limit
 
                 except Exception as e:
-                    self.logger.error(
-                        f"خطأ في جمع فئة '{category['term']}': {e}"
-                    )
+                    self.logger.error(f"خطأ في جمع فئة '{category['term']}': {e}")
                     continue
 
             self.logger.info(f"✅ SNOMED CT: {new_count} مصطلح جديد")
@@ -69,12 +62,7 @@ class SNOMEDCTCollector(BaseCollector):
 
         # البحث عن المفاهيم في الفئة
         search_url = f"{self.api_base}/{self.branch}/concepts"
-        params = {
-            "ecl": ecl,
-            "limit": 100,
-            "offset": 0,
-            "activeFilter": "true"
-        }
+        params = {"ecl": ecl, "limit": 100, "offset": 0, "activeFilter": "true"}
 
         response = self.session.get(search_url, params=params, timeout=30)
         response.raise_for_status()
@@ -85,7 +73,7 @@ class SNOMEDCTCollector(BaseCollector):
         for item in items:
             concept_id = item.get("conceptId", "")
             fsn = item.get("fsn", {}).get("term", "")  # Fully Specified Name
-            pt = item.get("pt", {}).get("term", "")     # Preferred Term
+            pt = item.get("pt", {}).get("term", "")  # Preferred Term
 
             # استخدام Preferred Term أو FSN
             term = pt or fsn
@@ -104,7 +92,7 @@ class SNOMEDCTCollector(BaseCollector):
                 source="SNOMED_CT",
                 language="en",
                 confidence=0.88,
-                tags=["snomed", category_name, concept_id]
+                tags=["snomed", category_name, concept_id],
             )
 
             if self.add_term(entry):
@@ -138,5 +126,6 @@ class SNOMEDCTCollector(BaseCollector):
     def _clean_term(self, term: str) -> str:
         """تنظيف المصطلح من الأقواس التصنيفية"""
         import re
+
         # إزالة (disorder), (procedure), إلخ
-        return re.sub(r'\s*\([^)]+\)$', '', term).strip()
+        return re.sub(r"\s*\([^)]+\)$", "", term).strip()

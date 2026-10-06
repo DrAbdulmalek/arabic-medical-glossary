@@ -12,12 +12,20 @@ logger = logging.getLogger(__name__)
 class SourceMerger:
     """Merge glossary data from multiple files or dataframes with conflict resolution."""
 
-    STRATEGIES = ("highest_confidence", "longest_translation", "most_sources", "most_recent", "manual")
+    STRATEGIES = (
+        "highest_confidence",
+        "longest_translation",
+        "most_sources",
+        "most_recent",
+        "manual",
+    )
     DEFAULT_STRATEGY = "highest_confidence"
 
     def __init__(self, strategy: str = DEFAULT_STRATEGY) -> None:
         if strategy not in self.STRATEGIES:
-            raise ValueError(f"Unknown strategy '{strategy}'. Choose from {self.STRATEGIES}")
+            raise ValueError(
+                f"Unknown strategy '{strategy}'. Choose from {self.STRATEGIES}"
+            )
         self.strategy = strategy
         self._report: dict[str, Any] = {
             "sources_processed": 0,
@@ -47,12 +55,12 @@ class SourceMerger:
         self._report["total_input"] = len(all_terms)
         merged = self.deduplicate(all_terms)
         self._report["total_output"] = len(merged)
-        self._report["duplicates_removed"] = self._report["total_input"] - self._report["total_output"]
+        self._report["duplicates_removed"] = (
+            self._report["total_input"] - self._report["total_output"]
+        )
         return merged
 
-    def merge_dataframes(
-        self, df_list: list[tuple["Any", str]]
-    ) -> "Any":
+    def merge_dataframes(self, df_list: list[tuple["Any", str]]) -> "Any":
         """Merge a list of (DataFrame, source_name) tuples.
 
         Requires pandas. Falls back gracefully if not installed.
@@ -78,7 +86,10 @@ class SourceMerger:
 
         # Deduplicate by (english, arabic) keeping best
         combined["_key"] = (
-            combined.get("english", pd.Series(dtype=str)).astype(str).str.strip().str.lower()
+            combined.get("english", pd.Series(dtype=str))
+            .astype(str)
+            .str.strip()
+            .str.lower()
             + "||"
             + combined.get("arabic", pd.Series(dtype=str)).astype(str).str.strip()
         )
@@ -97,7 +108,9 @@ class SourceMerger:
         deduped = combined.groupby("_key", as_index=False).apply(_pick)
         deduped = deduped.drop(columns=["_key"], errors="ignore")
         self._report["total_output"] = len(deduped)
-        self._report["duplicates_removed"] = self._report["total_input"] - self._report["total_output"]
+        self._report["duplicates_removed"] = (
+            self._report["total_input"] - self._report["total_output"]
+        )
         return deduped
 
     def deduplicate(
@@ -121,7 +134,9 @@ class SourceMerger:
     def _resolve_conflict(self, existing: dict, new: dict) -> dict:
         """Pick the better of two conflicting entries using the configured strategy."""
         if self.strategy == "highest_confidence":
-            if DataCleaner.normalize_confidence(new.get("confidence", 0)) > DataCleaner.normalize_confidence(existing.get("confidence", 0)):
+            if DataCleaner.normalize_confidence(
+                new.get("confidence", 0)
+            ) > DataCleaner.normalize_confidence(existing.get("confidence", 0)):
                 return new
             return existing
         elif self.strategy == "longest_translation":
@@ -143,9 +158,7 @@ class SourceMerger:
         # manual / default — keep existing
         return existing
 
-    def merge_with_database(
-        self, terms: list[dict], db_manager: Any
-    ) -> int:
+    def merge_with_database(self, terms: list[dict], db_manager: Any) -> int:
         """Merge terms into the database. Returns count of newly added terms."""
         added = 0
         for t in terms:
@@ -155,10 +168,14 @@ class SourceMerger:
                     arabic=t.get("arabic", ""),
                     category=t.get("category", ""),
                     source=t.get("source", ""),
-                    confidence=DataCleaner.normalize_confidence(t.get("confidence", 0.5)),
+                    confidence=DataCleaner.normalize_confidence(
+                        t.get("confidence", 0.5)
+                    ),
                     type=DataCleaner.normalize_type(t.get("type", "")),
                     section=t.get("section", ""),
-                    hash=DataCleaner.generate_hash(t.get("english", ""), t.get("arabic", "")),
+                    hash=DataCleaner.generate_hash(
+                        t.get("english", ""), t.get("arabic", "")
+                    ),
                 )
                 added += 1
             except Exception:
@@ -197,7 +214,9 @@ class SourceMerger:
         self._report["total_input"] = len(all_terms)
         merged = self.deduplicate(all_terms)
         self._report["total_output"] = len(merged)
-        self._report["duplicates_removed"] = self._report["total_input"] - self._report["total_output"]
+        self._report["duplicates_removed"] = (
+            self._report["total_input"] - self._report["total_output"]
+        )
 
         if output_path:
             output_path = Path(output_path)
@@ -206,6 +225,7 @@ class SourceMerger:
                 self._write_csv(merged, output_path)
             elif output_path.suffix == ".json":
                 import json
+
                 with open(output_path, "w", encoding="utf-8") as f:
                     json.dump(merged, f, ensure_ascii=False, indent=2)
 
@@ -221,6 +241,7 @@ class SourceMerger:
     @staticmethod
     def _read_csv(path: Path, en_col: str, ar_col: str) -> list[dict]:
         import csv
+
         terms: list[dict] = []
         with open(path, newline="", encoding="utf-8-sig") as f:
             reader = csv.DictReader(f)
@@ -236,6 +257,7 @@ class SourceMerger:
     @staticmethod
     def _read_tsv(path: Path) -> list[dict]:
         import csv
+
         terms: list[dict] = []
         with open(path, newline="", encoding="utf-8-sig") as f:
             reader = csv.DictReader(f, delimiter="\t")
@@ -251,6 +273,7 @@ class SourceMerger:
     @staticmethod
     def _read_json(path: Path) -> list[dict]:
         import json
+
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
         if isinstance(data, list):
@@ -262,6 +285,7 @@ class SourceMerger:
     @staticmethod
     def _write_csv(terms: list[dict], path: Path) -> None:
         import csv
+
         if not terms:
             return
         fieldnames: list[str] = []

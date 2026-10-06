@@ -41,10 +41,7 @@ class UMLSCollector(BaseCollector):
         data = {"apikey": self.api_key}
 
         response = self.session.post(
-            self.auth_endpoint,
-            data=data,
-            headers=headers,
-            timeout=30
+            self.auth_endpoint, data=data, headers=headers, timeout=30
         )
         response.raise_for_status()
 
@@ -53,10 +50,11 @@ class UMLSCollector(BaseCollector):
         if not self.tgt:
             # fallback: استخراج من الـ HTML
             from bs4 import BeautifulSoup
-            soup = BeautifulSoup(response.text, 'html.parser')
-            form = soup.find('form')
+
+            soup = BeautifulSoup(response.text, "html.parser")
+            form = soup.find("form")
             if form:
-                self.tgt = form.get('action')
+                self.tgt = form.get("action")
 
         self.logger.info("✅ تم الحصول على TGT")
         return self.tgt
@@ -68,12 +66,7 @@ class UMLSCollector(BaseCollector):
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         data = {"service": "http://umlsks.nlm.nih.gov"}
 
-        response = self.session.post(
-            tgt,
-            data=data,
-            headers=headers,
-            timeout=30
-        )
+        response = self.session.post(tgt, data=data, headers=headers, timeout=30)
         response.raise_for_status()
 
         return response.text
@@ -108,9 +101,18 @@ class UMLSCollector(BaseCollector):
         try:
             # البحث عن مصطلحات طبية شائعة
             search_terms = [
-                "diabetes", "hypertension", "pneumonia", "cancer",
-                "heart disease", "stroke", "asthma", "arthritis",
-                "depression", "alzheimer", "hepatitis", "tuberculosis"
+                "diabetes",
+                "hypertension",
+                "pneumonia",
+                "cancer",
+                "heart disease",
+                "stroke",
+                "asthma",
+                "arthritis",
+                "depression",
+                "alzheimer",
+                "hepatitis",
+                "tuberculosis",
             ]
 
             for search_term in search_terms:
@@ -121,7 +123,7 @@ class UMLSCollector(BaseCollector):
                         "string": search_term,
                         "searchType": "words",
                         "pageSize": 25,
-                        "pageNumber": 1
+                        "pageNumber": 1,
                     }
 
                     data = self._make_authenticated_request(search_url, params)
@@ -144,7 +146,7 @@ class UMLSCollector(BaseCollector):
                             source=f"UMLS:{root_source}",
                             language="en",
                             confidence=0.9,
-                            tags=["umls", root_source.lower(), ui]
+                            tags=["umls", root_source.lower(), ui],
                         )
 
                         if self.add_term(entry):

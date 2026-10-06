@@ -15,6 +15,7 @@ class GlossaryService:
     خدمة المسرد — أحادية النسخة (Singleton).
     تحمل البيانات مرة واحدة وتحتفظ بها في الذاكرة.
     """
+
     _instance = None
     _lock = threading.Lock()
 
@@ -46,7 +47,7 @@ class GlossaryService:
             self._load_from_sources()
             return
 
-        with open(self.MERGED_FILE, 'r', encoding='utf-8') as f:
+        with open(self.MERGED_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         self._terms = data.get("terms", {})
@@ -70,7 +71,7 @@ class GlossaryService:
             return
         for fp in self.SOURCES_DIR.glob("*.json"):
             try:
-                with open(fp, 'r', encoding='utf-8') as f:
+                with open(fp, "r", encoding="utf-8") as f:
                     src = json.load(f)
                 for hash_key, term_data in src.get("terms", {}).items():
                     self._terms[hash_key] = term_data
@@ -135,16 +136,23 @@ class GlossaryService:
             seen_hashes.add(hash_key)
 
         # 2. بحث ثنائي اللغة: إذا كان البحث EN، أضف المرادفات AR (والعكس)
-        self._add_bilingual_matches(query_lower, results, seen_hashes, language, source, min_confidence, tags)
+        self._add_bilingual_matches(
+            query_lower, results, seen_hashes, language, source, min_confidence, tags
+        )
 
         total = len(results)
-        paginated = results[offset:offset + limit]
+        paginated = results[offset : offset + limit]
         return paginated, total
 
     def _add_bilingual_matches(
-        self, query_lower: str, results: list, seen_hashes: set,
-        language: Optional[str], source: Optional[str],
-        min_confidence: Optional[float], tags: Optional[List[str]],
+        self,
+        query_lower: str,
+        results: list,
+        seen_hashes: set,
+        language: Optional[str],
+        source: Optional[str],
+        min_confidence: Optional[float],
+        tags: Optional[List[str]],
     ):
         """إضافة تطابقات ثنائية اللغة — إذا وجد تطابق EN يُضيف AR والعكس."""
         matched_keys = self._en_to_ar.get(query_lower, [])
@@ -204,14 +212,18 @@ class GlossaryService:
         for en in en_matches:
             for ar in ar_matches:
                 if en.get("source") == ar.get("source"):
-                    pairs.append({
-                        "en_term": en.get("term", ""),
-                        "ar_term": ar.get("term", ""),
-                        "en_definition": en.get("definition", ""),
-                        "ar_definition": ar.get("definition", ""),
-                        "source": en.get("source", ""),
-                        "confidence": min(en.get("confidence", 0), ar.get("confidence", 0)),
-                    })
+                    pairs.append(
+                        {
+                            "en_term": en.get("term", ""),
+                            "ar_term": ar.get("term", ""),
+                            "en_definition": en.get("definition", ""),
+                            "ar_definition": ar.get("definition", ""),
+                            "source": en.get("source", ""),
+                            "confidence": min(
+                                en.get("confidence", 0), ar.get("confidence", 0)
+                            ),
+                        }
+                    )
         return pairs
 
     def browse(
@@ -230,12 +242,15 @@ class GlossaryService:
             filtered = [t for t in filtered if t.get("source") == source]
 
         total = len(filtered)
-        paginated = filtered[offset:offset + limit]
+        paginated = filtered[offset : offset + limit]
         return paginated, total
 
-    def random_terms(self, count: int = 5, language: Optional[str] = None) -> List[dict]:
+    def random_terms(
+        self, count: int = 5, language: Optional[str] = None
+    ) -> List[dict]:
         """مصطلحات عشوائية — مفيد للـ Dashboard و RTL."""
         import random
+
         filtered = list(self._terms.values())
         if language:
             filtered = [t for t in filtered if t.get("language") == language]

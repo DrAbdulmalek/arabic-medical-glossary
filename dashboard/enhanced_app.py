@@ -22,15 +22,19 @@ st.set_page_config(
 
 # ─── CSS مخصص ────────────────────────────────────────────────────
 
-st.markdown("""
+st.markdown(
+    """
 <style>
     .stMetric { background: #f8f9fa; border-radius: 8px; padding: 12px; }
     .block-container { padding-top: 2rem; }
 </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 
 # ─── تحميل البيانات ──────────────────────────────────────────────
+
 
 @st.cache_data(ttl=120)
 def load_data():
@@ -86,7 +90,9 @@ col1, col2, col3, col4 = st.columns(4)
 col1.metric("📖 المصطلحات", f"{total:,}")
 
 last_update = progress.get("last_update", "غير معروف")
-col2.metric("🕐 آخر تحديث", last_update[:16] if len(str(last_update)) > 16 else last_update)
+col2.metric(
+    "🕐 آخر تحديث", last_update[:16] if len(str(last_update)) > 16 else last_update
+)
 
 src_count = len(progress.get("sources", {}))
 col3.metric("📡 المصادر", src_count)
@@ -109,7 +115,9 @@ with col1:
             "العدد": [len(v) for v in lang_data.values()],
         }
         fig = px.pie(
-            lang_df, values="العدد", names="اللغة",
+            lang_df,
+            values="العدد",
+            names="اللغة",
             color_discrete_sequence=px.colors.qualitative.Set2,
             hole=0.4,
         )
@@ -125,8 +133,11 @@ with col2:
             for s, v in sorted(source_data.items(), key=lambda x: -len(x[1]))
         ]
         fig = px.bar(
-            source_df, x="العدد", y="المصدر",
-            orientation="h", color="العدد",
+            source_df,
+            x="العدد",
+            y="المصدر",
+            orientation="h",
+            color="العدد",
             color_continuous_scale="Blues",
         )
         fig.update_layout(showlegend=False, height=max(200, len(source_df) * 30))
@@ -141,13 +152,18 @@ sources_info = progress.get("sources", {})
 if sources_info:
     for src, info in sources_info.items():
         status = info.get("status", "unknown")
-        emoji = {"completed": "🟢", "running": "🟡", "failed": "🔴", "idle": "⚪"}.get(status, "⚪")
+        emoji = {"completed": "🟢", "running": "🟡", "failed": "🔴", "idle": "⚪"}.get(
+            status, "⚪"
+        )
         with st.expander(f"{emoji} {src}"):
             c1, c2, c3 = st.columns(3)
             c1.metric("المصطلحات", f"{info.get('terms_collected', 0):,}")
             c2.metric("الحالة", status)
             last_run = info.get("last_run", "أبداً")
-            c3.metric("آخر تشغيل", str(last_run)[:16] if last_run and last_run != "أبداً" else "أبداً")
+            c3.metric(
+                "آخر تشغيل",
+                str(last_run)[:16] if last_run and last_run != "أبداً" else "أبداً",
+            )
 
 st.markdown("---")
 
@@ -199,18 +215,25 @@ with ec1:
             "terms": list(terms.values()),
         }
         st.download_button(
-            "⬇️ تحميل JSON", json.dumps(export, ensure_ascii=False, indent=2),
-            file_name="glossary_export.json", mime="application/json",
+            "⬇️ تحميل JSON",
+            json.dumps(export, ensure_ascii=False, indent=2),
+            file_name="glossary_export.json",
+            mime="application/json",
         )
 
 with ec2:
     if st.button("CSV"):
         output = io.StringIO()
-        writer = csv.DictWriter(output, fieldnames=["term", "definition", "source", "language", "confidence"])
+        writer = csv.DictWriter(
+            output,
+            fieldnames=["term", "definition", "source", "language", "confidence"],
+        )
         writer.writeheader()
         for td in terms.values():
             writer.writerow({k: td.get(k, "") for k in writer.fieldnames})
         st.download_button(
-            "⬇️ تحميل CSV", output.getvalue(),
-            file_name="glossary_export.csv", mime="text/csv",
+            "⬇️ تحميل CSV",
+            output.getvalue(),
+            file_name="glossary_export.csv",
+            mime="text/csv",
         )

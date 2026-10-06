@@ -8,6 +8,7 @@ import tempfile
 import unittest
 
 import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from processors.text_extractor import extract_text_from_file
@@ -24,7 +25,7 @@ class TestTextExtractor(unittest.TestCase):
     def test_extract_txt(self):
         """اختبار استخراج من ملف TXT"""
         path = os.path.join(self.tmp_dir, "test.txt")
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write("Diabetes: A chronic metabolic disease\n")
 
         result = extract_text_from_file(path)
@@ -33,7 +34,7 @@ class TestTextExtractor(unittest.TestCase):
     def test_extract_txt_arabic(self):
         """اختبار استخراج نص عربي"""
         path = os.path.join(self.tmp_dir, "ar.txt")
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write("السكري: مرض مزمن يؤثر على مستوى السكر")
 
         result = extract_text_from_file(path)
@@ -47,7 +48,7 @@ class TestTextExtractor(unittest.TestCase):
     def test_extract_unsupported_format(self):
         """اختبار صيغة غير مدعومة — يجب أن يستخدم fallback"""
         path = os.path.join(self.tmp_dir, "test.xyz")
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write("Some text content here")
 
         result = extract_text_from_file(path)
@@ -58,7 +59,7 @@ class TestTextExtractor(unittest.TestCase):
     def test_extract_empty_file(self):
         """اختبار ملف فارغ"""
         path = os.path.join(self.tmp_dir, "empty.txt")
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write("")
 
         result = extract_text_from_file(path)

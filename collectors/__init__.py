@@ -40,5 +40,5 @@ __all__ = [
     "ICHICollector",
     "ICFCollector",
     "RadLexCollector",
-    "CustomGlossariesCollector"
+    "CustomGlossariesCollector",
 ]

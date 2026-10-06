@@ -5,11 +5,12 @@
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
 
-
 # ─── نماذج المصطلح ───────────────────────────────────────────────
+
 
 class TermResponse(BaseModel):
     """مصطلح واحد في الاستجابة"""
+
     term: str = Field(..., description="المصطلح", examples=["Diabetes"])
     definition: str = Field(..., description="التعريف / الترجمة", examples=["السكري"])
     source: str = Field(..., description="مصدر المصطلح", examples=["MeSH", "Wikidata"])
@@ -23,6 +24,7 @@ class TermResponse(BaseModel):
 
 class TermPair(BaseModel):
     """زوج مصطلح ثنائي اللغة"""
+
     en_term: str = Field(..., description="المصطلح الإنجليزي")
     ar_term: str = Field(..., description="المصطلح العربي")
     en_definition: str = Field(default="", description="التعريف الإنجليزي")
@@ -33,12 +35,20 @@ class TermPair(BaseModel):
 
 # ─── نماذج البحث ─────────────────────────────────────────────────
 
+
 class SearchRequest(BaseModel):
     """معاملات البحث المتقدم"""
-    query: str = Field(..., min_length=1, description="نص البحث", examples=["سكري", "diabetes"])
-    language: Optional[str] = Field(None, description="تصفية حسب اللغة (ar/en)", pattern="^(ar|en)$")
+
+    query: str = Field(
+        ..., min_length=1, description="نص البحث", examples=["سكري", "diabetes"]
+    )
+    language: Optional[str] = Field(
+        None, description="تصفية حسب اللغة (ar/en)", pattern="^(ar|en)$"
+    )
     source: Optional[str] = Field(None, description="تصفية حسب المصدر")
-    min_confidence: Optional[float] = Field(None, ge=0, le=1, description="الحد الأدنى للثقة")
+    min_confidence: Optional[float] = Field(
+        None, ge=0, le=1, description="الحد الأدنى للثقة"
+    )
     tags: Optional[List[str]] = Field(None, description="تصفية حسب الوسوم")
     limit: int = Field(20, ge=1, le=200, description="عدد النتائج الأقصى")
     offset: int = Field(0, ge=0, description="عدد النتائج للتخطي (pagination)")
@@ -46,8 +56,10 @@ class SearchRequest(BaseModel):
 
 # ─── نماذج الاستجابة العامة ─────────────────────────────────────
 
+
 class PaginatedResponse(BaseModel):
     """استجابة مُصفَّحة"""
+
     results: List[TermResponse] = Field(..., description="قائمة النتائج")
     total: int = Field(..., description="إجمالي النتائج المتطابقة")
     limit: int = Field(..., description="عدد النتائج في هذه الصفحة")
@@ -57,15 +69,19 @@ class PaginatedResponse(BaseModel):
 
 class StatsResponse(BaseModel):
     """إحصائيات المسرد"""
+
     total_terms: int = Field(..., description="إجمالي المصطلحات")
     by_language: Dict[str, int] = Field(..., description="عدد المصطلحات حسب اللغة")
     by_source: Dict[str, int] = Field(..., description="عدد المصطلحات حسب المصدر")
-    sources: List[Dict[str, Any]] = Field(default_factory=list, description="تفاصيل المصادر")
+    sources: List[Dict[str, Any]] = Field(
+        default_factory=list, description="تفاصيل المصادر"
+    )
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
 class SourceInfo(BaseModel):
     """معلومات عن مصدر واحد"""
+
     name: str
     terms_count: int
     file: Optional[str] = None
@@ -73,6 +89,7 @@ class SourceInfo(BaseModel):
 
 class HealthResponse(BaseModel):
     """فحص صحة الخادم"""
+
     status: str = Field("ok", examples=["ok"])
     version: str
     total_terms: int

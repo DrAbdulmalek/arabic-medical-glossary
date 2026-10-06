@@ -11,6 +11,7 @@ from datetime import datetime
 
 # نحتاج لتعديل مسار العمل ليشمل المشروع
 import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from collectors.base import BaseCollector, TermEntry
@@ -18,6 +19,7 @@ from collectors.base import BaseCollector, TermEntry
 
 class MockCollector(BaseCollector):
     """مجمع وهمي للاختبار"""
+
     def __init__(self, tmp_dir, config=None):
         self._test_dir = tmp_dir
         # تجاوز المسارات الافتراضية
@@ -33,9 +35,27 @@ class MockCollector(BaseCollector):
 
     def collect(self) -> int:
         entries = [
-            TermEntry(term="Diabetes", definition="A chronic metabolic disease", source="TestSource", language="en", confidence=0.95),
-            TermEntry(term="Hypertension", definition="High blood pressure", source="TestSource", language="en", confidence=0.9),
-            TermEntry(term="السكري", definition="مرض أيضي مزمن", source="TestSource", language="ar", confidence=0.85),
+            TermEntry(
+                term="Diabetes",
+                definition="A chronic metabolic disease",
+                source="TestSource",
+                language="en",
+                confidence=0.95,
+            ),
+            TermEntry(
+                term="Hypertension",
+                definition="High blood pressure",
+                source="TestSource",
+                language="en",
+                confidence=0.9,
+            ),
+            TermEntry(
+                term="السكري",
+                definition="مرض أيضي مزمن",
+                source="TestSource",
+                language="ar",
+                confidence=0.85,
+            ),
         ]
         count = 0
         for e in entries:
@@ -55,7 +75,9 @@ class TestBaseCollector(unittest.TestCase):
     def test_add_term_new(self):
         """اختبار إضافة مصطلح جديد"""
         collector = MockCollector(self.tmp_dir)
-        entry = TermEntry(term="Test", definition="A test term", source="Test", language="en")
+        entry = TermEntry(
+            term="Test", definition="A test term", source="Test", language="en"
+        )
         result = collector.add_term(entry)
         self.assertTrue(result)
 
@@ -65,7 +87,9 @@ class TestBaseCollector(unittest.TestCase):
     def test_add_term_duplicate(self):
         """اختبار عدم التكرار"""
         collector = MockCollector(self.tmp_dir)
-        entry = TermEntry(term="Test", definition="A test term", source="Test", language="en")
+        entry = TermEntry(
+            term="Test", definition="A test term", source="Test", language="en"
+        )
         collector.add_term(entry)
         result = collector.add_term(entry)
         self.assertFalse(result)
@@ -76,8 +100,20 @@ class TestBaseCollector(unittest.TestCase):
     def test_add_term_higher_confidence(self):
         """اختبار تحديث بثقة أعلى"""
         collector = MockCollector(self.tmp_dir)
-        entry1 = TermEntry(term="Test", definition="Old def", source="Test", language="en", confidence=0.5)
-        entry2 = TermEntry(term="Test", definition="New def", source="Test", language="en", confidence=0.9)
+        entry1 = TermEntry(
+            term="Test",
+            definition="Old def",
+            source="Test",
+            language="en",
+            confidence=0.5,
+        )
+        entry2 = TermEntry(
+            term="Test",
+            definition="New def",
+            source="Test",
+            language="en",
+            confidence=0.9,
+        )
 
         collector.add_term(entry1)
         result = collector.add_term(entry2)
@@ -97,8 +133,10 @@ class TestBaseCollector(unittest.TestCase):
 
         for i in range(10):
             entry = TermEntry(
-                term=f"Term{i}", definition=f"Definition {i}",
-                source="Test", language="en"
+                term=f"Term{i}",
+                definition=f"Definition {i}",
+                source="Test",
+                language="en",
             )
             collector.add_term(entry)
 
@@ -128,7 +166,9 @@ class TestBaseCollector(unittest.TestCase):
 
     def test_term_entry_default_values(self):
         """اختبار القيم الافتراضية لـ TermEntry"""
-        entry = TermEntry(term="Test", definition="Definition", source="S", language="en")
+        entry = TermEntry(
+            term="Test", definition="Definition", source="S", language="en"
+        )
         self.assertEqual(entry.confidence, 1.0)
         self.assertEqual(entry.tags, [])
         self.assertIsNotNone(entry.date_added)

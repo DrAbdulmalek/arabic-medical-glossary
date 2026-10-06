@@ -58,7 +58,7 @@ class TestMedicalNER(unittest.TestCase):
         entities = self.extractor.extract(text)
         # لا يجب أن يكون هناك تداخل في الفترات
         for i, e1 in enumerate(entities):
-            for e2 in entities[i+1:]:
+            for e2 in entities[i + 1 :]:
                 self.assertFalse(e1.start < e2.end and e2.start < e1.end)
 
     def test_glossary_matching(self):
@@ -66,12 +66,20 @@ class TestMedicalNER(unittest.TestCase):
         # إنشاء مسرد مؤقت
         tmp_dir = tempfile.mkdtemp()
         glossary_path = os.path.join(tmp_dir, "test_glossary.json")
-        with open(glossary_path, 'w', encoding='utf-8') as f:
-            json.dump({
-                "terms": {
-                    "abc123": {"term": "hypoglycemia", "definition": "انخفاض السكر", "confidence": 0.95, "source": "Test"}
-                }
-            }, f)
+        with open(glossary_path, "w", encoding="utf-8") as f:
+            json.dump(
+                {
+                    "terms": {
+                        "abc123": {
+                            "term": "hypoglycemia",
+                            "definition": "انخفاض السكر",
+                            "confidence": 0.95,
+                            "source": "Test",
+                        }
+                    }
+                },
+                f,
+            )
 
         ext = MedicalNERExtractor(glossary_path=glossary_path)
         entities = ext.extract("monitor for hypoglycemia")
@@ -104,14 +112,34 @@ class TestActiveLearning(unittest.TestCase):
         # إنشاء مسرد اختبار
         self.test_glossary = {
             "terms": {
-                "h1": {"term": "Diabetes", "definition": "السكري", "source": "A", "confidence": 0.95},
-                "h2": {"term": "Heart Attack", "definition": "نوبة قلبية", "source": "A", "confidence": 0.3},
-                "h3": {"term": "Heart Attack", "definition": "احتشاء عضلة القلب", "source": "B", "confidence": 0.9},
-                "h4": {"term": "Hypertension", "definition": "ارتفاع ضغط الدم", "source": "A", "confidence": 0.5},
+                "h1": {
+                    "term": "Diabetes",
+                    "definition": "السكري",
+                    "source": "A",
+                    "confidence": 0.95,
+                },
+                "h2": {
+                    "term": "Heart Attack",
+                    "definition": "نوبة قلبية",
+                    "source": "A",
+                    "confidence": 0.3,
+                },
+                "h3": {
+                    "term": "Heart Attack",
+                    "definition": "احتشاء عضلة القلب",
+                    "source": "B",
+                    "confidence": 0.9,
+                },
+                "h4": {
+                    "term": "Hypertension",
+                    "definition": "ارتفاع ضغط الدم",
+                    "source": "A",
+                    "confidence": 0.5,
+                },
             },
             "metadata": {"total_terms": 4},
         }
-        with open(self.glossary_file, 'w', encoding='utf-8') as f:
+        with open(self.glossary_file, "w", encoding="utf-8") as f:
             json.dump(self.test_glossary, f)
 
     def tearDown(self):
@@ -140,13 +168,17 @@ class TestActiveLearning(unittest.TestCase):
 
         # مراجعة أول عنصر
         item = pending[0]
-        self.mgr.review(item.term_hash, action="correct", correction="تعريف مصحح", reviewer="test")
+        self.mgr.review(
+            item.term_hash, action="correct", correction="تعريف مصحح", reviewer="test"
+        )
 
         # التحقق: عنصر أقل في الانتظار
         remaining = self.mgr.get_pending(limit=999)
         self.assertEqual(len(remaining), len(pending) - 1)
         # التحقق: العنصر مُراجَع فعلاً
-        reviewed_item = [i for i in self.mgr.pending_items if i.term_hash == item.term_hash]
+        reviewed_item = [
+            i for i in self.mgr.pending_items if i.term_hash == item.term_hash
+        ]
         self.assertTrue(reviewed_item[0].reviewed)
 
     def test_apply_corrections(self):
@@ -160,7 +192,7 @@ class TestActiveLearning(unittest.TestCase):
             self.assertEqual(applied, 1)
 
             # التحقق من الملف
-            with open(self.glossary_file, 'r', encoding='utf-8') as f:
+            with open(self.glossary_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
             self.assertEqual(data["terms"][item.term_hash]["definition"], "تعريف جديد")
 

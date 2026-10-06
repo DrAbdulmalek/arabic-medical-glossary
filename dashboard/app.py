@@ -6,7 +6,7 @@ from datetime import datetime
 st.set_page_config(
     page_title="Medical Glossary Collector",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
 )
 
 st.title("📚 متتبع جمع المسارد الطبية")
@@ -86,7 +86,7 @@ for source, info in progress.get("sources", {}).items():
         "completed": "🟢",
         "running": "🟡",
         "failed": "🔴",
-        "idle": "⚪"
+        "idle": "⚪",
     }.get(info.get("status", "idle"), "⚪")
 
     with st.expander(f"{status_color} {source}"):
@@ -111,7 +111,9 @@ st.divider()
 
 # البحث
 st.subheader("🔍 البحث في المسارد")
-search_term = st.text_input("أدخل المصطلح للبحث:", placeholder="مثال: diabetes, سكري, heart...")
+search_term = st.text_input(
+    "أدخل المصطلح للبحث:", placeholder="مثال: diabetes, سكري, heart..."
+)
 
 if search_term and merged:
     results = search_terms(search_term, merged)
@@ -146,7 +148,7 @@ if merged and "by_language" in merged:
     for i, (lang, terms) in enumerate(lang_data.items()):
         lang_cols[i].metric(
             f"{'🇸🇦 العربية' if lang == 'ar' else '🇬🇧 الإنجليزية' if lang == 'en' else lang}",
-            len(terms)
+            len(terms),
         )
 
 # إحصائيات حسب المصدر

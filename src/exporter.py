@@ -135,16 +135,23 @@ class MultiExporter:
 
             # FTS5
             fts_cols = ", ".join(
-                f'"{c}"' for c in fieldnames
+                f'"{c}"'
+                for c in fieldnames
                 if c in ("english", "arabic", "category", "source", "section")
             )
             if fts_cols:
                 conn.execute(
                     f"CREATE VIRTUAL TABLE terms_fts USING fts5({fts_cols}, content='terms', content_rowid='rowid')"
                 )
-                idx_cols = [c for c in fieldnames if c in ("english", "arabic", "category", "source", "section")]
+                idx_cols = [
+                    c
+                    for c in fieldnames
+                    if c in ("english", "arabic", "category", "source", "section")
+                ]
                 sel_cols = ", ".join(f'"{c}"' for c in idx_cols)
-                conn.execute(f"INSERT INTO terms_fts({sel_cols}) SELECT {sel_cols} FROM terms")
+                conn.execute(
+                    f"INSERT INTO terms_fts({sel_cols}) SELECT {sel_cols} FROM terms"
+                )
 
         conn.commit()
         conn.close()
@@ -161,7 +168,9 @@ class MultiExporter:
             from openpyxl import Workbook
             from openpyxl.styles import Alignment
         except ImportError:
-            raise ImportError("openpyxl is required for Excel export. Install with: pip install openpyxl")
+            raise ImportError(
+                "openpyxl is required for Excel export. Install with: pip install openpyxl"
+            )
 
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -190,7 +199,9 @@ class MultiExporter:
                     for cell in row:
                         if cell.value:
                             max_len = max(max_len, min(len(str(cell.value)), 60))
-                ws.column_dimensions[ws.cell(row=1, column=col_idx).column_letter].width = max_len + 4
+                ws.column_dimensions[
+                    ws.cell(row=1, column=col_idx).column_letter
+                ].width = (max_len + 4)
 
         wb.save(str(output_path))
         self._log("xlsx", output_path, len(data))
@@ -200,8 +211,10 @@ class MultiExporter:
     # HuggingFace datasets
     # ------------------------------------------------------------------
     def export_to_huggingface(
-        self, output_dir: str | Path, terms: Optional[list[dict]] = None,
-        test_size: float = 0.1
+        self,
+        output_dir: str | Path,
+        terms: Optional[list[dict]] = None,
+        test_size: float = 0.1,
     ) -> Path:
         try:
             from datasets import Dataset, DatasetDict
@@ -216,7 +229,9 @@ class MultiExporter:
 
         ds = Dataset.from_list(data)
         split = ds.train_test_split(test_size=test_size, seed=42)
-        ds_dict: DatasetDict = DatasetDict({"train": split["train"], "test": split["test"]})
+        ds_dict: DatasetDict = DatasetDict(
+            {"train": split["train"], "test": split["test"]}
+        )
         ds_dict.save_to_disk(str(output_dir))
         self._log("huggingface", output_dir, len(data))
         return output_dir
@@ -256,12 +271,22 @@ class MultiExporter:
             '  <header creationtool="arabic-medical-glossary" creationtoolversion="1.0"',
             '          datatype="plaintext" segtype="sentence" adminlang="en-US"',
             '          srclang="en" o-tmf="arabic-medical-glossary">',
-            '  </header>',
-            '  <body>',
+            "  </header>",
+            "  <body>",
         ]
         for t in data:
-            en = str(t.get("english", "")).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            ar = str(t.get("arabic", "")).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            en = (
+                str(t.get("english", ""))
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+            )
+            ar = (
+                str(t.get("arabic", ""))
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+            )
             lines.append("    <tu>")
             lines.append(f'      <tuv xml:lang="en"><seg>{en}</seg></tuv>')
             lines.append(f'      <tuv xml:lang="ar"><seg>{ar}</seg></tuv>')
@@ -288,9 +313,13 @@ class MultiExporter:
         results["json"] = self.export_to_json(output_dir / "glossary.json", data)
         results["jsonl"] = self.export_to_jsonl(output_dir / "glossary.jsonl", data)
         results["tsv"] = self.export_to_tsv(output_dir / "glossary.tsv", data)
-        results["sqlite"] = self.export_to_sqlite(output_dir / "glossary_export.db", data)
+        results["sqlite"] = self.export_to_sqlite(
+            output_dir / "glossary_export.db", data
+        )
         results["tmx"] = self.export_to_tmx(output_dir / "glossary.tmx", data)
-        results["fasttext"] = self.export_to_fasttext(output_dir / "glossary_fasttext.txt", data)
+        results["fasttext"] = self.export_to_fasttext(
+            output_dir / "glossary_fasttext.txt", data
+        )
         try:
             results["xlsx"] = self.export_to_excel(output_dir / "glossary.xlsx", data)
         except ImportError:

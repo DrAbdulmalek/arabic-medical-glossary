@@ -32,11 +32,11 @@ class StatisticsGenerator:
         return {
             "total_terms": total,
             "total_sources": len(sources),
-            "database_size_mb": round(
-                self.db.db_path.stat().st_size / (1024 * 1024), 2
-            )
-            if self.db.db_path.exists()
-            else 0,
+            "database_size_mb": (
+                round(self.db.db_path.stat().st_size / (1024 * 1024), 2)
+                if self.db.db_path.exists()
+                else 0
+            ),
             "generated_at": datetime.now(timezone.utc).isoformat(),
         }
 
@@ -146,7 +146,9 @@ class StatisticsGenerator:
 
         lines.append(f"{sep}Top Sources\n")
         for s in sources[:15]:
-            lines.append(f"  {s['source']}: {s['count']:,} terms (avg conf: {s.get('avg_confidence', 0):.2f})")
+            lines.append(
+                f"  {s['source']}: {s['count']:,} terms (avg conf: {s.get('avg_confidence', 0):.2f})"
+            )
 
         lines.append(f"\n{sep}Term Types\n")
         for t in types:
@@ -154,7 +156,9 @@ class StatisticsGenerator:
 
         lines.append(f"\n{sep}Confidence Distribution\n")
         for c in conf_dist:
-            lines.append(f"  {c['range']}: {c['count']:,} (avg: {c.get('avg_conf', 0):.3f})")
+            lines.append(
+                f"  {c['range']}: {c['count']:,} (avg: {c.get('avg_conf', 0):.3f})"
+            )
 
         return "\n".join(lines)
 

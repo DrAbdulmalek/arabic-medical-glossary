@@ -146,7 +146,9 @@ class DataCleaner:
         for t in terms:
             key = (t.get("english", "").strip().lower(), t.get("arabic", "").strip())
             existing = seen.get(key)
-            if existing is None or t.get("confidence", 0) > existing.get("confidence", 0):
+            if existing is None or t.get("confidence", 0) > existing.get(
+                "confidence", 0
+            ):
                 seen[key] = t
         return list(seen.values())
 
@@ -203,22 +205,26 @@ class DataCleaner:
             return df
 
         if "english" in df.columns:
-            df["english"] = df["english"].astype(str).apply(
-                lambda x: DataCleaner.normalize_term(x, "en")
+            df["english"] = (
+                df["english"]
+                .astype(str)
+                .apply(lambda x: DataCleaner.normalize_term(x, "en"))
             )
         if "arabic" in df.columns:
-            df["arabic"] = df["arabic"].astype(str).apply(
-                lambda x: DataCleaner.normalize_term(x, "ar")
+            df["arabic"] = (
+                df["arabic"]
+                .astype(str)
+                .apply(lambda x: DataCleaner.normalize_term(x, "ar"))
             )
         if "confidence" in df.columns:
-            df["confidence"] = df["confidence"].apply(
-                DataCleaner.normalize_confidence
-            )
+            df["confidence"] = df["confidence"].apply(DataCleaner.normalize_confidence)
         if "type" in df.columns:
             df["type"] = df["type"].apply(DataCleaner.normalize_type)
         if "hash" not in df.columns:
             df["hash"] = df.apply(
-                lambda r: DataCleaner.generate_hash(r.get("english", ""), r.get("arabic", "")),
+                lambda r: DataCleaner.generate_hash(
+                    r.get("english", ""), r.get("arabic", "")
+                ),
                 axis=1,
             )
         return df

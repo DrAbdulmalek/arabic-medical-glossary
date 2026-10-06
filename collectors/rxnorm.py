@@ -16,19 +16,27 @@ class RxNormCollector(BaseCollector):
     """
 
     def __init__(self, config: dict = None):
-        super().__init__(
-            "RxNorm",
-            "https://rxnav.nlm.nih.gov/",
-            config
-        )
+        super().__init__("RxNorm", "https://rxnav.nlm.nih.gov/", config)
         self.api_base = "https://rxnav.nlm.nih.gov/REST"
 
         # أدوية شائعة للبحث
         self.drug_names = [
-            "aspirin", "ibuprofen", "acetaminophen", "amoxicillin",
-            "metformin", "atorvastatin", "lisinopril", "amlodipine",
-            "omeprazole", "albuterol", "insulin", "warfarin",
-            "prednisone", "azithromycin", "ciprofloxacin", "fluconazole"
+            "aspirin",
+            "ibuprofen",
+            "acetaminophen",
+            "amoxicillin",
+            "metformin",
+            "atorvastatin",
+            "lisinopril",
+            "amlodipine",
+            "omeprazole",
+            "albuterol",
+            "insulin",
+            "warfarin",
+            "prednisone",
+            "azithromycin",
+            "ciprofloxacin",
+            "fluconazole",
         ]
 
     def collect(self) -> int:
@@ -40,11 +48,7 @@ class RxNormCollector(BaseCollector):
                 search_url = f"{self.api_base}/drugs.json"
                 params = {"name": drug_name}
 
-                response = self.session.get(
-                    search_url,
-                    params=params,
-                    timeout=30
-                )
+                response = self.session.get(search_url, params=params, timeout=30)
                 response.raise_for_status()
                 data = response.json()
 
@@ -68,7 +72,9 @@ class RxNormCollector(BaseCollector):
 
                         definition = f"RxNorm {tty}: {name}"
                         if related_info.get("ingredient"):
-                            definition += f" | المادة الفعالة: {related_info['ingredient']}"
+                            definition += (
+                                f" | المادة الفعالة: {related_info['ingredient']}"
+                            )
 
                         entry = TermEntry(
                             term=name,
@@ -76,7 +82,7 @@ class RxNormCollector(BaseCollector):
                             source="RxNorm",
                             language="en",
                             confidence=0.88,
-                            tags=["rxnorm", rxcui, tty, drug_name]
+                            tags=["rxnorm", rxcui, tty, drug_name],
                         )
 
                         if self.add_term(entry):
@@ -90,7 +96,7 @@ class RxNormCollector(BaseCollector):
                                 source="RxNorm",
                                 language="en",
                                 confidence=0.75,
-                                tags=["rxnorm", rxcui, "synonym", drug_name]
+                                tags=["rxnorm", rxcui, "synonym", drug_name],
                             )
                             if self.add_term(entry_syn):
                                 new_count += 1

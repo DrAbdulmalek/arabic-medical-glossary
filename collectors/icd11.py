@@ -18,11 +18,7 @@ class ICD11Collector(BaseCollector):
     """
 
     def __init__(self, config: dict = None):
-        super().__init__(
-            "ICD-11",
-            "https://icd.who.int/",
-            config
-        )
+        super().__init__("ICD-11", "https://icd.who.int/", config)
         self.api_base = "https://id.who.int/icd"
         self.auth_url = "https://icdaccessmanagement.who.int/connect/token"
         self.client_id = os.getenv("ICD11_CLIENT_ID", "")
@@ -45,14 +41,10 @@ class ICD11Collector(BaseCollector):
             "grant_type": "client_credentials",
             "client_id": self.client_id,
             "client_secret": self.client_secret,
-            "scope": "icdapi_access"
+            "scope": "icdapi_access",
         }
 
-        response = self.session.post(
-            self.auth_url,
-            data=data,
-            timeout=30
-        )
+        response = self.session.post(self.auth_url, data=data, timeout=30)
         response.raise_for_status()
 
         token_data = response.json()
@@ -71,7 +63,7 @@ class ICD11Collector(BaseCollector):
             "Authorization": f"Bearer {token}",
             "Accept": "application/json",
             "Accept-Language": "en",
-            "API-Version": "v2"
+            "API-Version": "v2",
         }
 
         response = self.session.get(url, params=params, headers=headers, timeout=30)
@@ -94,27 +86,40 @@ class ICD11Collector(BaseCollector):
 
         # استعلامات بحث ICD-11
         search_terms = [
-            "diabetes", "hypertension", "pneumonia", "heart disease",
-            "asthma", "stroke", "cancer", "fracture",
-            "anemia", "hepatitis", "tuberculosis", "depression"
+            "diabetes",
+            "hypertension",
+            "pneumonia",
+            "heart disease",
+            "asthma",
+            "stroke",
+            "cancer",
+            "fracture",
+            "anemia",
+            "hepatitis",
+            "tuberculosis",
+            "depression",
         ]
 
         for term in search_terms:
             try:
                 # البحث في ICD-11
                 search_url = f"{self.api_base}/release/11/2025-01/mms/search"
-                params = {
-                    "q": term,
-                    "useFlexisearch": "true",
-                    "flatResults": "true"
-                }
+                params = {"q": term, "useFlexisearch": "true", "flatResults": "true"}
 
                 data = self._make_authenticated_request(search_url, params)
 
                 for result in data.get("destinationEntities", []):
                     code = result.get("theCode", "")
-                    title = result.get("title", "").get("@value", "") if isinstance(result.get("title"), dict) else result.get("title", "")
-                    definition = result.get("definition", "").get("@value", "") if isinstance(result.get("definition"), dict) else ""
+                    title = (
+                        result.get("title", "").get("@value", "")
+                        if isinstance(result.get("title"), dict)
+                        else result.get("title", "")
+                    )
+                    definition = (
+                        result.get("definition", "").get("@value", "")
+                        if isinstance(result.get("definition"), dict)
+                        else ""
+                    )
 
                     if not code or not title:
                         continue
@@ -125,7 +130,7 @@ class ICD11Collector(BaseCollector):
                         source="ICD-11",
                         language="en",
                         confidence=0.94,
-                        tags=["icd11", code, "mms"]
+                        tags=["icd11", code, "mms"],
                     )
 
                     if self.add_term(entry):

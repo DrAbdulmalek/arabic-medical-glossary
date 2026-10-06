@@ -17,8 +17,7 @@ from urllib3.util.retry import Retry
 from collectors.config_loader import load_config as _load_config
 
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
@@ -26,6 +25,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class TermEntry:
     """بنية موحدة لكل مصطلح"""
+
     term: str
     definition: str
     source: str
@@ -63,23 +63,19 @@ class BaseCollector(ABC):
             os.makedirs(d, exist_ok=True)
 
         self.source_file = os.path.join(
-            self.data_dir, 
-            f"{source_name.lower().replace(' ', '_')}.json"
+            self.data_dir, f"{source_name.lower().replace(' ', '_')}.json"
         )
         self.progress_file = os.path.join(self.progress_dir, "state.json")
         self.log_file = os.path.join(
-            self.log_dir, 
-            f"{source_name}_{datetime.now().strftime('%Y%m%d')}.log"
+            self.log_dir, f"{source_name}_{datetime.now().strftime('%Y%m%d')}.log"
         )
 
         self.session = requests.Session()
         retries = Retry(
-            total=5,
-            backoff_factor=1,
-            status_forcelist=[429, 500, 502, 503, 504]
+            total=5, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504]
         )
-        self.session.mount('https://', HTTPAdapter(max_retries=retries))
-        self.session.mount('http://', HTTPAdapter(max_retries=retries))
+        self.session.mount("https://", HTTPAdapter(max_retries=retries))
+        self.session.mount("http://", HTTPAdapter(max_retries=retries))
 
         self.logger = self._setup_logger()
 
@@ -91,28 +87,28 @@ class BaseCollector(ABC):
 
     def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger(self.source_name)
-        handler = logging.FileHandler(self.log_file, encoding='utf-8')
-        handler.setFormatter(logging.Formatter(
-            '%(asctime)s - %(levelname)s - %(message)s'
-        ))
+        handler = logging.FileHandler(self.log_file, encoding="utf-8")
+        handler.setFormatter(
+            logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+        )
         logger.addHandler(handler)
         return logger
 
     def load_progress(self) -> dict:
         try:
-            with open(self.progress_file, 'r', encoding='utf-8') as f:
+            with open(self.progress_file, "r", encoding="utf-8") as f:
                 return json.load(f)
         except FileNotFoundError:
             return {
                 "sources": {},
                 "total_terms": 0,
                 "last_update": None,
-                "errors_log": []
+                "errors_log": [],
             }
 
     def save_progress(self, progress: dict):
         progress["last_update"] = datetime.now().isoformat()
-        with open(self.progress_file, 'w', encoding='utf-8') as f:
+        with open(self.progress_file, "w", encoding="utf-8") as f:
             json.dump(progress, f, ensure_ascii=False, indent=2)
 
     def load_source_data(self) -> dict:
@@ -120,7 +116,7 @@ class BaseCollector(ABC):
         if self._data_cache is not None:
             return self._data_cache
         try:
-            with open(self.source_file, 'r', encoding='utf-8') as f:
+            with open(self.source_file, "r", encoding="utf-8") as f:
                 self._data_cache = json.load(f)
                 return self._data_cache
         except FileNotFoundError:
@@ -128,14 +124,14 @@ class BaseCollector(ABC):
                 "terms": {},
                 "metadata": {
                     "source": self.source_name,
-                    "created": datetime.now().isoformat()
-                }
+                    "created": datetime.now().isoformat(),
+                },
             }
             return self._data_cache
 
     def save_source_data(self, data: dict):
         data["metadata"]["last_updated"] = datetime.now().isoformat()
-        with open(self.source_file, 'w', encoding='utf-8') as f:
+        with open(self.source_file, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         self._data_cache = data
         self._dirty = False
@@ -165,7 +161,9 @@ class BaseCollector(ABC):
         # حفظ دفعي عند الوصول للحد
         if self._pending_count >= self._buffer_size:
             self.save_source_data(data)
-            self.logger.info(f"💾 حفظ دفعة: {self._pending_count} مصطلح (إجمالي: {len(data['terms'])})")
+            self.logger.info(
+                f"💾 حفظ دفعة: {self._pending_count} مصطلح (إجمالي: {len(data['terms'])})"
+            )
         else:
             self.logger.info(f"✅ جديد: {entry.term}")
 
@@ -182,10 +180,12 @@ class BaseCollector(ABC):
         return {
             "source": self.source_name,
             "total_terms": len(data["terms"]),
-            "file_size_mb": round(
-                os.path.getsize(self.source_file) / (1024*1024), 2
-            ) if os.path.exists(self.source_file) else 0,
-            "last_updated": data.get("metadata", {}).get("last_updated", "غير معروف")
+            "file_size_mb": (
+                round(os.path.getsize(self.source_file) / (1024 * 1024), 2)
+                if os.path.exists(self.source_file)
+                else 0
+            ),
+            "last_updated": data.get("metadata", {}).get("last_updated", "غير معروف"),
         }
 
     def rate_limit(self, delay: float = 1.0):
@@ -205,7 +205,7 @@ class BaseCollector(ABC):
                 "last_run": None,
                 "terms_collected": 0,
                 "last_error": None,
-                "consecutive_failures": 0
+                "consecutive_failures": 0,
             }
 
         source_progress = progress["sources"][self.source_name]
@@ -219,9 +219,7 @@ class BaseCollector(ABC):
             self.flush()
 
             source_progress["status"] = "completed"
-            source_progress["terms_collected"] = len(
-                self.load_source_data()["terms"]
-            )
+            source_progress["terms_collected"] = len(self.load_source_data()["terms"])
             source_progress["consecutive_failures"] = 0
             source_progress["last_error"] = None
 
@@ -231,18 +229,17 @@ class BaseCollector(ABC):
             source_progress["status"] = "failed"
             source_progress["last_error"] = str(e)
             source_progress["consecutive_failures"] += 1
-            progress["errors_log"].append({
-                "source": self.source_name,
-                "error": str(e),
-                "time": datetime.now().isoformat()
-            })
+            progress["errors_log"].append(
+                {
+                    "source": self.source_name,
+                    "error": str(e),
+                    "time": datetime.now().isoformat(),
+                }
+            )
             self.logger.error(f"❌ فشل: {e}")
             new_count = 0
 
-        total = sum(
-            s.get("terms_collected", 0) 
-            for s in progress["sources"].values()
-        )
+        total = sum(s.get("terms_collected", 0) for s in progress["sources"].values())
         progress["total_terms"] = total
         self.save_progress(progress)
 
@@ -250,5 +247,5 @@ class BaseCollector(ABC):
             "source": self.source_name,
             "new_terms": new_count if source_progress["status"] == "completed" else 0,
             "status": source_progress["status"],
-            "total_in_source": source_progress["terms_collected"]
+            "total_in_source": source_progress["terms_collected"],
         }

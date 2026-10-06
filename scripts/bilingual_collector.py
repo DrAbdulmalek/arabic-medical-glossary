@@ -50,12 +50,15 @@ logging.basicConfig(
 )
 log = logging.getLogger("collector")
 
+
 # ── HTTP Session ───────────────────────────────────────────────────────
 def create_session() -> requests.Session:
     s = requests.Session()
-    s.headers.update({
-        "User-Agent": "ArabicMedicalGlossaryBot/1.0 (https://github.com/DrAbdulmalek/arabic-medical-glossary)"
-    })
+    s.headers.update(
+        {
+            "User-Agent": "ArabicMedicalGlossaryBot/1.0 (https://github.com/DrAbdulmalek/arabic-medical-glossary)"
+        }
+    )
     retry = Retry(total=3, backoff_factor=2, status_forcelist=[429, 500, 502, 503, 504])
     adapter = HTTPAdapter(max_retries=retry)
     s.mount("https://", adapter)
@@ -66,21 +69,25 @@ def create_session() -> requests.Session:
 # ── Utility Functions ──────────────────────────────────────────────────
 def is_arabic(text: str) -> bool:
     """Check if text contains Arabic characters."""
-    return bool(re.search(r'[\u0600-\u06FF]', text))
+    return bool(re.search(r"[\u0600-\u06FF]", text))
+
 
 def is_latin(text: str) -> bool:
     """Check if text contains Latin characters."""
-    return bool(re.search(r'[a-zA-Z]', text))
+    return bool(re.search(r"[a-zA-Z]", text))
+
 
 def clean_text(text: str) -> str:
     """Clean whitespace and normalize text."""
-    text = re.sub(r'\s+', ' ', text.strip())
-    text = text.replace('\u200f', '').replace('\u200e', '')  # Remove RTL/LTR marks
+    text = re.sub(r"\s+", " ", text.strip())
+    text = text.replace("\u200f", "").replace("\u200e", "")  # Remove RTL/LTR marks
     return text
+
 
 def pair_hash(en: str, ar: str) -> str:
     """Generate a stable hash for a pair to deduplicate."""
     return hashlib.md5(f"{en.lower().strip()}|||{ar.strip()}".encode()).hexdigest()[:12]
+
 
 def load_existing_cleaned() -> list[dict]:
     """Load the existing cleaned_glossary.csv."""
@@ -95,15 +102,17 @@ def load_existing_cleaned() -> list[dict]:
             en = clean_text(row.get("en", ""))
             ar = clean_text(row.get("ar", ""))
             if en and ar and is_arabic(ar):
-                pairs.append({
-                    "en": en,
-                    "ar": ar,
-                    "source": row.get("source", "hama_pharma_ocr"),
-                    "type": row.get("type", "term"),
-                    "section": row.get("section", ""),
-                    "confidence": row.get("confidence", "medium"),
-                    "hash": pair_hash(en, ar),
-                })
+                pairs.append(
+                    {
+                        "en": en,
+                        "ar": ar,
+                        "source": row.get("source", "hama_pharma_ocr"),
+                        "type": row.get("type", "term"),
+                        "section": row.get("section", ""),
+                        "confidence": row.get("confidence", "medium"),
+                        "hash": pair_hash(en, ar),
+                    }
+                )
     log.info(f"Loaded {len(pairs)} pairs from cleaned_glossary.csv")
     return pairs
 
@@ -153,7 +162,11 @@ class WikipediaCollector:
                 members = data.get("query", {}).get("categorymembers", [])
                 for m in members:
                     title = m.get("title", "")
-                    if title and not title.startswith("Category:") and not title.startswith("Template:"):
+                    if (
+                        title
+                        and not title.startswith("Category:")
+                        and not title.startswith("Template:")
+                    ):
                         titles.append(title)
                 if "continue" in data:
                     cmcontinue = data["continue"].get("cmcontinue")
@@ -192,7 +205,7 @@ class WikipediaCollector:
             return pairs
         # Batch request (max 50 at a time)
         for i in range(0, min(len(qids), 200), 50):
-            batch = qids[i:i+50]
+            batch = qids[i : i + 50]
             try:
                 params = {
                     "action": "wbgetentities",
@@ -212,15 +225,17 @@ class WikipediaCollector:
                         h = pair_hash(en_label, ar_label)
                         if h not in self.seen_hashes:
                             self.seen_hashes.add(h)
-                            pairs.append({
-                                "en": clean_text(en_label),
-                                "ar": clean_text(ar_label),
-                                "source": "wikidata",
-                                "type": "term",
-                                "section": "wikipedia_medical",
-                                "confidence": "medium",
-                                "hash": h,
-                            })
+                            pairs.append(
+                                {
+                                    "en": clean_text(en_label),
+                                    "ar": clean_text(ar_label),
+                                    "source": "wikidata",
+                                    "type": "term",
+                                    "section": "wikipedia_medical",
+                                    "confidence": "medium",
+                                    "hash": h,
+                                }
+                            )
             except Exception as e:
                 log.error(f"Wikidata batch error: {e}")
         return pairs
@@ -250,15 +265,17 @@ class WikipediaCollector:
                 h = pair_hash(title, ar_title)
                 if h not in self.seen_hashes:
                     self.seen_hashes.add(h)
-                    all_pairs.append({
-                        "en": clean_text(title),
-                        "ar": clean_text(ar_title),
-                        "source": "wikipedia_langlinks",
-                        "type": "term",
-                        "section": "wikipedia_medical",
-                        "confidence": "medium",
-                        "hash": h,
-                    })
+                    all_pairs.append(
+                        {
+                            "en": clean_text(title),
+                            "ar": clean_text(ar_title),
+                            "source": "wikipedia_langlinks",
+                            "type": "term",
+                            "section": "wikipedia_medical",
+                            "confidence": "medium",
+                            "hash": h,
+                        }
+                    )
             if (i + 1) % 100 == 0:
                 log.info(f"  Progress: {i+1}/{len(all_titles)}")
                 time.sleep(1)  # Rate limit
@@ -287,19 +304,23 @@ class WikipediaCollector:
                     h = pair_hash(en_label, ar_label)
                     if h not in self.seen_hashes:
                         self.seen_hashes.add(h)
-                        all_pairs.append({
-                            "en": clean_text(en_label),
-                            "ar": clean_text(ar_label),
-                            "source": "wikidata_medical",
-                            "type": "term",
-                            "section": "wikidata_entities",
-                            "confidence": "high",
-                            "hash": h,
-                        })
+                        all_pairs.append(
+                            {
+                                "en": clean_text(en_label),
+                                "ar": clean_text(ar_label),
+                                "source": "wikidata_medical",
+                                "type": "term",
+                                "section": "wikidata_entities",
+                                "confidence": "high",
+                                "hash": h,
+                            }
+                        )
         except Exception as e:
             log.error(f"Wikidata medical entities error: {e}")
 
-        log.info(f"Wikidata: collected additional pairs, total Wikipedia+Wikidata: {len(all_pairs)}")
+        log.info(
+            f"Wikidata: collected additional pairs, total Wikipedia+Wikidata: {len(all_pairs)}"
+        )
         return all_pairs
 
 
@@ -312,17 +333,53 @@ class MedlinePlusCollector:
 
     # Common medical topics that exist in both EN and AR
     TOPIC_SLUGS = [
-        "diabetes", "hypertension", "asthma", "arthritis", "cancer",
-        "heart-disease", "stroke", "depression", "anxiety", "migraine",
-        "anemia", "pneumonia", "tuberculosis", "malaria", "hepatitis",
-        "kidney-disease", "liver-disease", "thyroid-disease", "epilepsy",
-        "parkinsons-disease", "alzheimers-disease", "osteoporosis",
-        "allergies", "obesity", "malnutrition", "dehydration",
-        "influenza", "chickenpox", "measles", "mumps", "rubella",
-        "meningitis", "appendicitis", "gallstones", "ulcer",
-        "glaucoma", "cataract", "eczema", "psoriasis",
-        "bronchitis", "sinusitis", "tonsillitis", "otitis",
-        "scoliosis", "gout", "lupus", "sarcoidosis",
+        "diabetes",
+        "hypertension",
+        "asthma",
+        "arthritis",
+        "cancer",
+        "heart-disease",
+        "stroke",
+        "depression",
+        "anxiety",
+        "migraine",
+        "anemia",
+        "pneumonia",
+        "tuberculosis",
+        "malaria",
+        "hepatitis",
+        "kidney-disease",
+        "liver-disease",
+        "thyroid-disease",
+        "epilepsy",
+        "parkinsons-disease",
+        "alzheimers-disease",
+        "osteoporosis",
+        "allergies",
+        "obesity",
+        "malnutrition",
+        "dehydration",
+        "influenza",
+        "chickenpox",
+        "measles",
+        "mumps",
+        "rubella",
+        "meningitis",
+        "appendicitis",
+        "gallstones",
+        "ulcer",
+        "glaucoma",
+        "cataract",
+        "eczema",
+        "psoriasis",
+        "bronchitis",
+        "sinusitis",
+        "tonsillitis",
+        "otitis",
+        "scoliosis",
+        "gout",
+        "lupus",
+        "sarcoidosis",
     ]
 
     def __init__(self, session: requests.Session):
@@ -331,27 +388,35 @@ class MedlinePlusCollector:
     def _extract_title(self, html: str) -> Optional[str]:
         """Extract the main title from MedlinePlus page."""
         import re
+
         # Try h1 tag
-        m = re.search(r'<h1[^>]*>(.*?)</h1>', html, re.DOTALL)
+        m = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.DOTALL)
         if m:
             # Strip HTML tags
-            title = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+            title = re.sub(r"<[^>]+>", "", m.group(1)).strip()
             return title if title else None
         # Try title tag
-        m = re.search(r'<title>(.*?)</title>', html, re.DOTALL)
+        m = re.search(r"<title>(.*?)</title>", html, re.DOTALL)
         if m:
-            title = m.group(1).split(' | ')[0].split(' - ')[0].strip()
+            title = m.group(1).split(" | ")[0].split(" - ")[0].strip()
             return title if title else None
         return None
 
     def _extract_summary(self, html: str) -> Optional[str]:
         """Extract first paragraph / summary from MedlinePlus page."""
         import re
-        m = re.search(r'<p[^>]*class="[^"]*summary[^"]*"[^>]*>(.*?)</p>', html, re.DOTALL)
+
+        m = re.search(
+            r'<p[^>]*class="[^"]*summary[^"]*"[^>]*>(.*?)</p>', html, re.DOTALL
+        )
         if not m:
-            m = re.search(r'<div[^>]*class="[^"]*description[^"]*"[^>]*>(.*?)</div>', html, re.DOTALL)
+            m = re.search(
+                r'<div[^>]*class="[^"]*description[^"]*"[^>]*>(.*?)</div>',
+                html,
+                re.DOTALL,
+            )
         if m:
-            text = re.sub(r'<[^>]+>', ' ', m.group(1))
+            text = re.sub(r"<[^>]+>", " ", m.group(1))
             return clean_text(text)
         return None
 
@@ -368,14 +433,18 @@ class MedlinePlusCollector:
                 if ar_resp.status_code != 200:
                     # Try alternative slug format
                     ar_url = f"{self.MEDLINEPLUS_AR}articles/{slug}.html"
-                    ar_resp = self.session.get(ar_url, timeout=10, allow_redirects=False)
+                    ar_resp = self.session.get(
+                        ar_url, timeout=10, allow_redirects=False
+                    )
 
                 # Fetch English page
                 en_url = f"{self.MEDLINEPLUS_EN}{slug}.html"
                 en_resp = self.session.get(en_url, timeout=10, allow_redirects=False)
                 if en_resp.status_code != 200:
                     en_url = f"{self.MEDLINEPLUS_EN}articles/{slug}.html"
-                    en_resp = self.session.get(en_url, timeout=10, allow_redirects=False)
+                    en_resp = self.session.get(
+                        en_url, timeout=10, allow_redirects=False
+                    )
 
                 if ar_resp.status_code == 200 and en_resp.status_code == 200:
                     ar_title = self._extract_title(ar_resp.text)
@@ -385,32 +454,41 @@ class MedlinePlusCollector:
                         h = pair_hash(en_title, ar_title)
                         if h not in seen_hashes:
                             seen_hashes.add(h)
-                            pairs.append({
-                                "en": clean_text(en_title),
-                                "ar": clean_text(ar_title),
-                                "source": "medlineplus",
-                                "type": "term",
-                                "section": "medical_encyclopedia",
-                                "confidence": "high",
-                                "hash": h,
-                            })
+                            pairs.append(
+                                {
+                                    "en": clean_text(en_title),
+                                    "ar": clean_text(ar_title),
+                                    "source": "medlineplus",
+                                    "type": "term",
+                                    "section": "medical_encyclopedia",
+                                    "confidence": "high",
+                                    "hash": h,
+                                }
+                            )
 
                     # Also try to get summary sentences
                     ar_summary = self._extract_summary(ar_resp.text)
                     en_summary = self._extract_summary(en_resp.text)
-                    if ar_summary and en_summary and is_arabic(ar_summary) and len(ar_summary) > 20:
+                    if (
+                        ar_summary
+                        and en_summary
+                        and is_arabic(ar_summary)
+                        and len(ar_summary) > 20
+                    ):
                         h = pair_hash(en_summary[:200], ar_summary[:200])
                         if h not in seen_hashes:
                             seen_hashes.add(h)
-                            pairs.append({
-                                "en": clean_text(en_summary[:500]),
-                                "ar": clean_text(ar_summary[:500]),
-                                "source": "medlineplus",
-                                "type": "sentence",
-                                "section": "medical_encyclopedia",
-                                "confidence": "medium",
-                                "hash": h,
-                            })
+                            pairs.append(
+                                {
+                                    "en": clean_text(en_summary[:500]),
+                                    "ar": clean_text(ar_summary[:500]),
+                                    "source": "medlineplus",
+                                    "type": "sentence",
+                                    "section": "medical_encyclopedia",
+                                    "confidence": "medium",
+                                    "hash": h,
+                                }
+                            )
 
                 time.sleep(random.uniform(0.5, 1.5))
 
@@ -591,21 +669,25 @@ class WHOCollector:
     def collect(self, seen_hashes: set[str]) -> list[dict]:
         """Return WHO essential medicine pairs."""
         pairs = []
-        log.info(f"Collecting from WHO Essential Medicines ({len(self.ESSENTIAL_MEDICINES)} entries)...")
+        log.info(
+            f"Collecting from WHO Essential Medicines ({len(self.ESSENTIAL_MEDICINES)} entries)..."
+        )
 
         for en, ar in self.ESSENTIAL_MEDICINES.items():
             h = pair_hash(en, ar)
             if h not in seen_hashes:
                 seen_hashes.add(h)
-                pairs.append({
-                    "en": clean_text(en),
-                    "ar": clean_text(ar),
-                    "source": "who_essential_medicines",
-                    "type": "term",
-                    "section": "pharmacology",
-                    "confidence": "very_high",
-                    "hash": h,
-                })
+                pairs.append(
+                    {
+                        "en": clean_text(en),
+                        "ar": clean_text(ar),
+                        "source": "who_essential_medicines",
+                        "type": "term",
+                        "section": "pharmacology",
+                        "confidence": "very_high",
+                        "hash": h,
+                    }
+                )
 
         log.info(f"WHO Essential Medicines: collected {len(pairs)} new pairs")
         return pairs
@@ -616,66 +698,162 @@ class MedicalPhrasesCollector:
     """Curated common medical phrases and sentences."""
 
     PHRASES = [
-        ("Take one tablet three times a day after meals.", "خذ قرصاً واحداً ثلاث مرات يومياً بعد الوجبات."),
+        (
+            "Take one tablet three times a day after meals.",
+            "خذ قرصاً واحداً ثلاث مرات يومياً بعد الوجبات.",
+        ),
         ("Take two tablets daily with water.", "خذ قرصين يومياً مع الماء."),
-        ("Store in a cool dry place below 25 degrees Celsius.", "يحفظ في مكان بارد وجاف تحت 25 درجة مئوية."),
+        (
+            "Store in a cool dry place below 25 degrees Celsius.",
+            "يحفظ في مكان بارد وجاف تحت 25 درجة مئوية.",
+        ),
         ("Keep out of reach of children.", "يحفظ بعيداً عن متناول الأطفال."),
         ("Do not exceed the recommended dose.", "لا تتجاوز الجرعة الموصى بها."),
         ("Consult your doctor before use.", "استشر طبيبك قبل الاستعمال."),
-        ("Not recommended for use during pregnancy.", "لا يوصى بالاستعمال أثناء الحمل."),
-        ("Contraindicated in patients with known hypersensitivity.", "مضاد استطباب عند المرضى الذين يعانون من فرط حساسية معروف."),
-        ("May cause drowsiness. Do not drive or operate machinery.", "قد يسبب النعاس. لا تقُد أو تشغل الآلات."),
-        ("Discontinue use and consult a physician if adverse reactions occur.", "أوقف الاستعمال واستشر الطبيب في حال حدوث تفاعلات ضارة."),
+        (
+            "Not recommended for use during pregnancy.",
+            "لا يوصى بالاستعمال أثناء الحمل.",
+        ),
+        (
+            "Contraindicated in patients with known hypersensitivity.",
+            "مضاد استطباب عند المرضى الذين يعانون من فرط حساسية معروف.",
+        ),
+        (
+            "May cause drowsiness. Do not drive or operate machinery.",
+            "قد يسبب النعاس. لا تقُد أو تشغل الآلات.",
+        ),
+        (
+            "Discontinue use and consult a physician if adverse reactions occur.",
+            "أوقف الاستعمال واستشر الطبيب في حال حدوث تفاعلات ضارة.",
+        ),
         ("For oral administration only.", "للاستعمال الفموي فقط."),
         ("Shake well before use.", "يرجّز جيداً قبل الاستعمال."),
-        ("This medication should not be used after the expiry date.", "لا يجب استعمال هذا الدواء بعد تاريخ انتهاء الصلاحية."),
-        ("Seek immediate medical attention in case of overdose.", "اطلب العناية الطبية فوراً في حالة الجرعة الزائدة."),
-        ("Use with caution in patients with renal impairment.", "يستعمل بحذر عند المرضى الذين يعانون من قصور كلوي."),
-        ("Use with caution in patients with hepatic impairment.", "يستعمل بحذر عند المرضى الذين يعانون من قصور كبدي."),
-        ("Not recommended for children under 12 years of age.", "لا يوصى به للأطفال تحت سن 12 عاماً."),
-        ("Take on an empty stomach, 30 minutes before meals.", "يؤخذ على معدة فارغة، 30 دقيقة قبل الوجبات."),
-        ("Do not crush or chew the tablet. Swallow whole.", "لا تسحق أو تمضغ القرص. ابتلعه كاملاً."),
+        (
+            "This medication should not be used after the expiry date.",
+            "لا يجب استعمال هذا الدواء بعد تاريخ انتهاء الصلاحية.",
+        ),
+        (
+            "Seek immediate medical attention in case of overdose.",
+            "اطلب العناية الطبية فوراً في حالة الجرعة الزائدة.",
+        ),
+        (
+            "Use with caution in patients with renal impairment.",
+            "يستعمل بحذر عند المرضى الذين يعانون من قصور كلوي.",
+        ),
+        (
+            "Use with caution in patients with hepatic impairment.",
+            "يستعمل بحذر عند المرضى الذين يعانون من قصور كبدي.",
+        ),
+        (
+            "Not recommended for children under 12 years of age.",
+            "لا يوصى به للأطفال تحت سن 12 عاماً.",
+        ),
+        (
+            "Take on an empty stomach, 30 minutes before meals.",
+            "يؤخذ على معدة فارغة، 30 دقيقة قبل الوجبات.",
+        ),
+        (
+            "Do not crush or chew the tablet. Swallow whole.",
+            "لا تسحق أو تمضغ القرص. ابتلعه كاملاً.",
+        ),
         ("Active ingredient: ", "المادة الفعالة: "),
         ("Each tablet contains:", "كل قرص يحتوي على:"),
         ("Dosage form: Film-coated tablet", "الشكل الصيدلاني: قرص مغلف بغشاء"),
-        ("Indications: Treatment of mild to moderate pain.", "الاستطبابات: علاج الألم الخفيف إلى المتوسط."),
-        ("Side effects: Nausea, vomiting, abdominal pain.", "الآثار الجانبية: غثيان، إقياء، ألم بطني."),
-        ("Drug interactions: May increase the effect of anticoagulants.", "التداخلات الدوائية: قد يزيد من تأثير مضادات التخثر."),
-        ("Pharmacokinetics: Rapidly absorbed after oral administration.", "الحرائك الدوائية: يمتص بسرعة بعد الإعطاء الفموي."),
-        ("Mechanism of action: Inhibits cyclooxygenase enzyme.", "آلية التأثير: يثبط إنزيم السيكلوأوكسيجيناز."),
+        (
+            "Indications: Treatment of mild to moderate pain.",
+            "الاستطبابات: علاج الألم الخفيف إلى المتوسط.",
+        ),
+        (
+            "Side effects: Nausea, vomiting, abdominal pain.",
+            "الآثار الجانبية: غثيان، إقياء، ألم بطني.",
+        ),
+        (
+            "Drug interactions: May increase the effect of anticoagulants.",
+            "التداخلات الدوائية: قد يزيد من تأثير مضادات التخثر.",
+        ),
+        (
+            "Pharmacokinetics: Rapidly absorbed after oral administration.",
+            "الحرائك الدوائية: يمتص بسرعة بعد الإعطاء الفموي.",
+        ),
+        (
+            "Mechanism of action: Inhibits cyclooxygenase enzyme.",
+            "آلية التأثير: يثبط إنزيم السيكلوأوكسيجيناز.",
+        ),
         ("Half-life: approximately 6 hours.", "عمر النصف: حوالي 6 ساعات."),
         ("Excreted mainly in urine.", "يُفرز بشكل رئيسي في البول."),
-        ("Contraindicated in patients with severe liver disease.", "مضاد استطباب عند المرضى الذين يعانون من أمراض الكبد الشديدة."),
-        ("Pregnancy category: Should be used only if clearly needed.", "فئة الحمل: يُستعمل فقط في حال الضرورة القصوى."),
-        ("Breastfeeding: Not recommended during lactation.", "الرضاعة: لا يوصى به أثناء الإرضاع."),
-        ("Overdose symptoms: May include confusion, dizziness, nausea.", "أعراض الجرعة الزائدة: قد تشمل التشوش، الدوخة، الغثيان."),
+        (
+            "Contraindicated in patients with severe liver disease.",
+            "مضاد استطباب عند المرضى الذين يعانون من أمراض الكبد الشديدة.",
+        ),
+        (
+            "Pregnancy category: Should be used only if clearly needed.",
+            "فئة الحمل: يُستعمل فقط في حال الضرورة القصوى.",
+        ),
+        (
+            "Breastfeeding: Not recommended during lactation.",
+            "الرضاعة: لا يوصى به أثناء الإرضاع.",
+        ),
+        (
+            "Overdose symptoms: May include confusion, dizziness, nausea.",
+            "أعراض الجرعة الزائدة: قد تشمل التشوش، الدوخة، الغثيان.",
+        ),
         ("Treatment of essential hypertension.", "علاج ارتفاع الضغط الشرياني الأساسي."),
         ("Management of type 2 diabetes mellitus.", "علاج داء السكري النمط الثاني."),
         ("Prophylaxis of angina pectoris.", "وقاية الذبحة الصدرية."),
-        ("Antibiotic for the treatment of bacterial infections.", "مضاد حيوي لعلاج الانتانات الجرثومية."),
+        (
+            "Antibiotic for the treatment of bacterial infections.",
+            "مضاد حيوي لعلاج الانتانات الجرثومية.",
+        ),
         ("Anti-inflammatory and analgesic.", "مضاد للالتهاب ومسكن."),
         ("Sedative and anxiolytic.", "مهدئ ومضاد للقلق."),
-        ("Antidepressant of the SSRI class.", "مضاد اكتئاب من زمرة مثبطات استرداد السيروتونين الانتقائية."),
+        (
+            "Antidepressant of the SSRI class.",
+            "مضاد اكتئاب من زمرة مثبطات استرداد السيروتونين الانتقائية.",
+        ),
         ("Antipsychotic medication.", "دواء مضاد للذهان."),
         ("Anticonvulsant for the treatment of epilepsy.", "مضاد اختلاج لعلاج الصرع."),
-        ("Bronchodilator for relief of bronchospasm.", "موسع قصبات لتخفيف تشنج القصبات."),
+        (
+            "Bronchodilator for relief of bronchospasm.",
+            "موسع قصبات لتخفيف تشنج القصبات.",
+        ),
         ("Diuretic for the management of edema.", "مدر بول لعلاج الوذمة."),
-        ("Anticoagulant for the prevention of thrombosis.", "مضاد تخثر للوقاية من الخثرة."),
+        (
+            "Anticoagulant for the prevention of thrombosis.",
+            "مضاد تخثر للوقاية من الخثرة.",
+        ),
         ("Antiplatelet agent.", "عامل مضاد للصفيحات."),
         ("Lipid-lowering agent.", "عامل خافض للشحوم."),
         ("Thyroid hormone replacement therapy.", "علاج بديل بهرمون الدرقية."),
-        ("Calcium supplement for prevention of osteoporosis.", "مكمل كالسيوم للوقاية من هشاشة العظام."),
+        (
+            "Calcium supplement for prevention of osteoporosis.",
+            "مكمل كالسيوم للوقاية من هشاشة العظام.",
+        ),
         ("Oral rehydration salts.", "أملاح الإماهة الفموية."),
         ("Vitamin D supplement.", "مكمل فيتامين د."),
-        ("Iron supplement for treatment of iron deficiency anemia.", "مكمل حديد لعلاج فقر الدم بعوز الحديد."),
-        ("Antiemetic for prevention of nausea and vomiting.", "مضاد إقياء للوقاية من الغثيان والإقياء."),
-        ("Antispasmodic for relief of abdominal cramps.", "مضاد تشنج لتخفيف التشنجات البطنية."),
+        (
+            "Iron supplement for treatment of iron deficiency anemia.",
+            "مكمل حديد لعلاج فقر الدم بعوز الحديد.",
+        ),
+        (
+            "Antiemetic for prevention of nausea and vomiting.",
+            "مضاد إقياء للوقاية من الغثيان والإقياء.",
+        ),
+        (
+            "Antispasmodic for relief of abdominal cramps.",
+            "مضاد تشنج لتخفيف التشنجات البطنية.",
+        ),
         ("Topical antifungal cream.", "كريم مضاد فطريات موضعي."),
         ("Nasal decongestant.", "مزيل احتقان أنفي."),
         ("Cough suppressant.", "مضاد سعال."),
         ("Expectorant.", "مقشع."),
-        ("Antihistamine for relief of allergy symptoms.", "مضاد هيستامين لتخفيف أعراض الحساسية."),
-        ("Proton pump inhibitor for treatment of gastric ulcer.", "مثبط مضخة البروتون لعلاج القرحة المعدية."),
+        (
+            "Antihistamine for relief of allergy symptoms.",
+            "مضاد هيستامين لتخفيف أعراض الحساسية.",
+        ),
+        (
+            "Proton pump inhibitor for treatment of gastric ulcer.",
+            "مثبط مضخة البروتون لعلاج القرحة المعدية.",
+        ),
         ("H2 receptor antagonist.", "مضاد مستقبلات الهيستامين H2."),
         ("Laxative for relief of constipation.", "ملين لتخفيف الإمساك."),
         ("Antidiarrheal agent.", "عامل مضاد للإسهال."),
@@ -701,15 +879,17 @@ class MedicalPhrasesCollector:
             h = pair_hash(en, ar)
             if h not in seen_hashes:
                 seen_hashes.add(h)
-                pairs.append({
-                    "en": clean_text(en),
-                    "ar": clean_text(ar),
-                    "source": "curated_medical_phrases",
-                    "type": "sentence" if len(en.split()) > 5 else "term",
-                    "section": "medical_phrases",
-                    "confidence": "very_high",
-                    "hash": h,
-                })
+                pairs.append(
+                    {
+                        "en": clean_text(en),
+                        "ar": clean_text(ar),
+                        "source": "curated_medical_phrases",
+                        "type": "sentence" if len(en.split()) > 5 else "term",
+                        "section": "medical_phrases",
+                        "confidence": "very_high",
+                        "hash": h,
+                    }
+                )
 
         log.info(f"Curated phrases: collected {len(pairs)} new pairs")
         return pairs
@@ -736,7 +916,9 @@ class DatasetManager:
                 unique.append(p)
         removed = len(self.all_pairs) - len(unique)
         self.all_pairs = unique
-        log.info(f"Deduplication: removed {removed} duplicates, {len(self.all_pairs)} unique pairs remain")
+        log.info(
+            f"Deduplication: removed {removed} duplicates, {len(self.all_pairs)} unique pairs remain"
+        )
 
     def export_csv(self, path: Path, pair_type: str = "all"):
         """Export pairs to CSV."""
@@ -771,7 +953,9 @@ class DatasetManager:
         token = os.environ.get("HF_TOKEN")
         if not token:
             log.warning("HF_TOKEN not set. Skipping HuggingFace upload.")
-            log.info("To upload, set HF_TOKEN environment variable or add it to GitHub Secrets.")
+            log.info(
+                "To upload, set HF_TOKEN environment variable or add it to GitHub Secrets."
+            )
             return False
 
         try:
@@ -814,7 +998,12 @@ class DatasetManager:
                     log.info(f"Uploaded {fpath.name} to HF")
 
             # Upload cleaned glossary files
-            for csv_name in ["cleaned_glossary.csv", "terms.csv", "sentences.csv", "section_headers.csv"]:
+            for csv_name in [
+                "cleaned_glossary.csv",
+                "terms.csv",
+                "sentences.csv",
+                "section_headers.csv",
+            ]:
                 src = CLEANED_DIR / csv_name
                 if src.exists():
                     api.upload_file(
@@ -826,7 +1015,9 @@ class DatasetManager:
                     )
                     log.info(f"Uploaded cleaned/{csv_name} to HF")
 
-            log.info(f"Successfully pushed dataset to https://huggingface.co/datasets/{HF_DATASET_ID}")
+            log.info(
+                f"Successfully pushed dataset to https://huggingface.co/datasets/{HF_DATASET_ID}"
+            )
             return True
 
         except ImportError:

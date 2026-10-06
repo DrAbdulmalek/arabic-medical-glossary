@@ -29,7 +29,7 @@ class RadLexCollector(BaseCollector):
         super().__init__(
             "RadLex",
             "https://www.rsna.org/practice-management/data-science-and-ai/radlex",
-            config
+            config,
         )
 
     def collect(self) -> int:

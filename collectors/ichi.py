@@ -28,7 +28,7 @@ class ICHICollector(BaseCollector):
         super().__init__(
             "ICHI",
             "https://www.who.int/standards/classifications/classification-of-health-interventions",
-            config
+            config,
         )
 
         self.download_dir = os.path.join("data", "ichi")
@@ -65,7 +65,7 @@ class ICHICollector(BaseCollector):
         new_count = 0
 
         try:
-            with open(self.local_json, 'r', encoding='utf-8') as f:
+            with open(self.local_json, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
             for item in data:
@@ -82,7 +82,7 @@ class ICHICollector(BaseCollector):
                     source="ICHI",
                     language="en",
                     confidence=0.95,
-                    tags=["ichi", code, f"level_{level}"]
+                    tags=["ichi", code, f"level_{level}"],
                 )
 
                 if self.add_term(entry):
@@ -102,7 +102,11 @@ class ICHICollector(BaseCollector):
         sample_data = [
             {"code": "1", "title": "Diagnostic interventions", "level": "1"},
             {"code": "1.1", "title": "History-taking", "level": "2"},
-            {"code": "1.1.1", "title": "Taking history of presenting problem", "level": "3"},
+            {
+                "code": "1.1.1",
+                "title": "Taking history of presenting problem",
+                "level": "3",
+            },
             {"code": "1.2", "title": "Physical examination", "level": "2"},
             {"code": "1.2.1", "title": "General physical examination", "level": "3"},
             {"code": "1.3", "title": "Diagnostic imaging", "level": "2"},
@@ -112,8 +116,16 @@ class ICHICollector(BaseCollector):
             {"code": "1.3.4", "title": "Ultrasound imaging", "level": "3"},
             {"code": "2", "title": "Therapeutic interventions", "level": "1"},
             {"code": "2.1", "title": "Pharmacotherapy", "level": "2"},
-            {"code": "2.1.1", "title": "Administration of oral medication", "level": "3"},
-            {"code": "2.1.2", "title": "Administration of injectable medication", "level": "3"},
+            {
+                "code": "2.1.1",
+                "title": "Administration of oral medication",
+                "level": "3",
+            },
+            {
+                "code": "2.1.2",
+                "title": "Administration of injectable medication",
+                "level": "3",
+            },
             {"code": "2.2", "title": "Surgical procedures", "level": "2"},
             {"code": "2.2.1", "title": "Incision and drainage", "level": "3"},
             {"code": "2.2.2", "title": "Excision and biopsy", "level": "3"},
@@ -122,7 +134,11 @@ class ICHICollector(BaseCollector):
             {"code": "3.1.1", "title": "Therapeutic exercise", "level": "3"},
             {"code": "3.1.2", "title": "Manual therapy", "level": "3"},
             {"code": "3.2", "title": "Occupational therapy", "level": "2"},
-            {"code": "3.2.1", "title": "Activities of daily living training", "level": "3"},
+            {
+                "code": "3.2.1",
+                "title": "Activities of daily living training",
+                "level": "3",
+            },
             {"code": "4", "title": "Supportive interventions", "level": "1"},
             {"code": "4.1", "title": "Nutritional support", "level": "2"},
             {"code": "4.1.1", "title": "Enteral nutrition", "level": "3"},
@@ -131,7 +147,7 @@ class ICHICollector(BaseCollector):
             {"code": "4.2.1", "title": "Counseling", "level": "3"},
         ]
 
-        with open(self.local_json, 'w', encoding='utf-8') as f:
+        with open(self.local_json, "w", encoding="utf-8") as f:
             json.dump(sample_data, f, ensure_ascii=False, indent=2)
 
         self.logger.info(f"✅ تم إنشاء {len(sample_data)} مصطلح نموذجي")

@@ -27,21 +27,21 @@ class CustomGlossariesCollector(BaseCollector):
 
     # أنماط للصفوف غير المرغوب فيها
     JUNK_PATTERNS = [
-        r'^HAMAPHARMA',
-        r'^LEAF/',
-        r'^\s*–\s*HAMAPHARMA',
-        r'^\s*\*\*',
-        r'^\(Arab ',
-        r'^\(Council ',
-        r'^Size:',
-        r'^Packaging',
+        r"^HAMAPHARMA",
+        r"^LEAF/",
+        r"^\s*–\s*HAMAPHARMA",
+        r"^\s*\*\*",
+        r"^\(Arab ",
+        r"^\(Council ",
+        r"^Size:",
+        r"^Packaging",
     ]
 
     def __init__(self, config: dict = None):
         super().__init__(
             "CustomGlossaries",
             "https://github.com/DrAbdulmalek/arabic-medical-glossary",
-            config
+            config,
         )
 
     def collect(self) -> int:
@@ -118,7 +118,7 @@ class CustomGlossariesCollector(BaseCollector):
                     source="CustomGlossaries",
                     language="en",
                     confidence=confidence,
-                    tags=["local_csv", source_tag, section]
+                    tags=["local_csv", source_tag, section],
                 )
                 if self.add_term(entry_en):
                     new_count += 1
@@ -130,7 +130,7 @@ class CustomGlossariesCollector(BaseCollector):
                     source="CustomGlossaries",
                     language="ar",
                     confidence=confidence,
-                    tags=["local_csv", source_tag, section]
+                    tags=["local_csv", source_tag, section],
                 )
                 if self.add_term(entry_ar):
                     new_count += 1
@@ -199,20 +199,24 @@ class CustomGlossariesCollector(BaseCollector):
 
                 # en → ar
                 entry_en = TermEntry(
-                    term=en, definition=ar,
-                    source="CustomGlossaries", language="en",
+                    term=en,
+                    definition=ar,
+                    source="CustomGlossaries",
+                    language="en",
                     confidence=base_confidence,
-                    tags=["cleaned", source_tag]
+                    tags=["cleaned", source_tag],
                 )
                 if self.add_term(entry_en):
                     new_count += 1
 
                 # ar → en
                 entry_ar = TermEntry(
-                    term=ar, definition=en,
-                    source="CustomGlossaries", language="ar",
+                    term=ar,
+                    definition=en,
+                    source="CustomGlossaries",
+                    language="ar",
                     confidence=base_confidence,
-                    tags=["cleaned", source_tag]
+                    tags=["cleaned", source_tag],
                 )
                 if self.add_term(entry_ar):
                     new_count += 1
@@ -237,8 +241,12 @@ class CustomGlossariesCollector(BaseCollector):
 
                 # اكتشاف أسماء الأعمدة تلقائياً
                 fieldnames = reader.fieldnames or []
-                en_key = self._find_column(fieldnames, ["en", "english", "term_en", "source_term"])
-                ar_key = self._find_column(fieldnames, ["ar", "arabic", "term_ar", "target_term"])
+                en_key = self._find_column(
+                    fieldnames, ["en", "english", "term_en", "source_term"]
+                )
+                ar_key = self._find_column(
+                    fieldnames, ["ar", "arabic", "term_ar", "target_term"]
+                )
 
                 if not en_key or not ar_key:
                     self.logger.warning(
@@ -254,19 +262,23 @@ class CustomGlossariesCollector(BaseCollector):
                         continue
 
                     entry_en = TermEntry(
-                        term=en, definition=ar,
-                        source="WHO_UMD", language="en",
+                        term=en,
+                        definition=ar,
+                        source="WHO_UMD",
+                        language="en",
                         confidence=0.95,
-                        tags=["who_umd"]
+                        tags=["who_umd"],
                     )
                     if self.add_term(entry_en):
                         new_count += 1
 
                     entry_ar = TermEntry(
-                        term=ar, definition=en,
-                        source="WHO_UMD", language="ar",
+                        term=ar,
+                        definition=en,
+                        source="WHO_UMD",
+                        language="ar",
                         confidence=0.95,
-                        tags=["who_umd"]
+                        tags=["who_umd"],
                     )
                     if self.add_term(entry_ar):
                         new_count += 1
@@ -290,7 +302,7 @@ class CustomGlossariesCollector(BaseCollector):
             return True
 
         # تخطي الأسطر التي تحتوي على أرقام فقط
-        if re.match(r'^[\d\s,.\-]+$', en):
+        if re.match(r"^[\d\s,.\-]+$", en):
             return True
 
         return False
@@ -304,13 +316,13 @@ class CustomGlossariesCollector(BaseCollector):
         text = text.lstrip("\ufeff")
 
         # إزالة علامات الترقيم الزائدة في البداية
-        text = re.sub(r'^[\-\–\—\*\(\)\[\]\s]+', '', text)
+        text = re.sub(r"^[\-\–\—\*\(\)\[\]\s]+", "", text)
 
         # إزالة مسافات متعددة
-        text = re.sub(r'\s+', ' ', text)
+        text = re.sub(r"\s+", " ", text)
 
         # إزالة علامات Markdown
-        text = re.sub(r'\*+', '', text)
+        text = re.sub(r"\*+", "", text)
 
         return text.strip()
 
@@ -318,10 +330,14 @@ class CustomGlossariesCollector(BaseCollector):
         """تصنيف الثقة حسب القسم وطول النص"""
         # الأقسام الموثوقة
         high_confidence_sections = {
-            "indications", "mechanism_of_action",
-            "pharmacokinetics", "contraindications",
-            "side_effects", "dosage_and_administration",
-            "drug_interactions", "warnings",
+            "indications",
+            "mechanism_of_action",
+            "pharmacokinetics",
+            "contraindications",
+            "side_effects",
+            "dosage_and_administration",
+            "drug_interactions",
+            "warnings",
         }
 
         section_lower = section.lower().replace(" ", "_")

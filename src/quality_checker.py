@@ -37,7 +37,10 @@ class QualityChecker:
         seen: dict[tuple[str, str], dict] = {}
         dupes: list[dict] = []
         for t in data:
-            key = (str(t.get("english", "")).strip().lower(), str(t.get("arabic", "")).strip())
+            key = (
+                str(t.get("english", "")).strip().lower(),
+                str(t.get("arabic", "")).strip(),
+            )
             if key in seen:
                 dupes.append({"term": t, "duplicate_of": seen[key]})
             else:
@@ -56,11 +59,13 @@ class QualityChecker:
                 en_j = str(data[j].get("english", "")).lower()
                 ratio = SequenceMatcher(None, en_i, en_j).ratio()
                 if ratio >= threshold:
-                    results.append({
-                        "term_a": data[i],
-                        "term_b": data[j],
-                        "similarity": round(ratio, 4),
-                    })
+                    results.append(
+                        {
+                            "term_a": data[i],
+                            "term_b": data[j],
+                            "similarity": round(ratio, 4),
+                        }
+                    )
         return results
 
     def check_empty_fields(self, terms: Optional[list[dict]] = None) -> list[dict]:
@@ -76,7 +81,9 @@ class QualityChecker:
                 issues.append({"term": t, "issue": "empty_arabic"})
         return issues
 
-    def check_arabic_cleanliness(self, terms: Optional[list[dict]] = None) -> list[dict]:
+    def check_arabic_cleanliness(
+        self, terms: Optional[list[dict]] = None
+    ) -> list[dict]:
         """Check Arabic text for tashkeel, HTML, markdown, excessive Latin chars."""
         data = terms or self._get_terms()
         issues: list[dict] = []
@@ -94,11 +101,16 @@ class QualityChecker:
             # Latin ratio
             latin_chars = sum(1 for c in ar if c.isascii() and c.isalpha())
             total_alpha = sum(1 for c in ar if c.isalpha())
-            if total_alpha > 0 and (latin_chars / total_alpha) > MAX_LATIN_IN_ARABIC_RATIO:
+            if (
+                total_alpha > 0
+                and (latin_chars / total_alpha) > MAX_LATIN_IN_ARABIC_RATIO
+            ):
                 issues.append({"term": t, "issue": "high_latin_ratio"})
         return issues
 
-    def check_english_cleanliness(self, terms: Optional[list[dict]] = None) -> list[dict]:
+    def check_english_cleanliness(
+        self, terms: Optional[list[dict]] = None
+    ) -> list[dict]:
         """Check English text for HTML, markdown, non-Latin characters."""
         data = terms or self._get_terms()
         issues: list[dict] = []
@@ -123,7 +135,9 @@ class QualityChecker:
             try:
                 conf_f = float(conf)
                 if conf_f < 0.0 or conf_f > 1.0:
-                    issues.append({"term": t, "issue": "confidence_out_of_range", "value": conf_f})
+                    issues.append(
+                        {"term": t, "issue": "confidence_out_of_range", "value": conf_f}
+                    )
             except (TypeError, ValueError):
                 issues.append({"term": t, "issue": "invalid_confidence", "value": conf})
         return issues
@@ -136,12 +150,18 @@ class QualityChecker:
             en = str(t.get("english", ""))
             ar = str(t.get("arabic", ""))
             if len(en) > MAX_ENGLISH_LENGTH:
-                issues.append({"term": t, "issue": "english_too_long", "length": len(en)})
+                issues.append(
+                    {"term": t, "issue": "english_too_long", "length": len(en)}
+                )
             if len(ar) > MAX_ARABIC_LENGTH:
-                issues.append({"term": t, "issue": "arabic_too_long", "length": len(ar)})
+                issues.append(
+                    {"term": t, "issue": "arabic_too_long", "length": len(ar)}
+                )
         return issues
 
-    def check_source_consistency(self, terms: Optional[list[dict]] = None) -> list[dict]:
+    def check_source_consistency(
+        self, terms: Optional[list[dict]] = None
+    ) -> list[dict]:
         """Find terms with empty or inconsistent source fields."""
         data = terms or self._get_terms()
         issues: list[dict] = []
@@ -155,9 +175,20 @@ class QualityChecker:
         """Find terms with unusual or empty type fields."""
         data = terms or self._get_terms()
         valid_types = {
-            "term", "abbreviation", "phrase", "sentence", "drug_name",
-            "brand_name", "generic_name", "medical_device", "anatomy",
-            "procedure", "diagnosis", "symptom", "lab_test", "unit",
+            "term",
+            "abbreviation",
+            "phrase",
+            "sentence",
+            "drug_name",
+            "brand_name",
+            "generic_name",
+            "medical_device",
+            "anatomy",
+            "procedure",
+            "diagnosis",
+            "symptom",
+            "lab_test",
+            "unit",
         }
         issues: list[dict] = []
         for t in data:
@@ -188,7 +219,9 @@ class QualityChecker:
             for field in ("english", "arabic"):
                 val = str(t.get(field, ""))
                 if "\ufffd" in val:
-                    issues.append({"term": t, "issue": "replacement_character", "field": field})
+                    issues.append(
+                        {"term": t, "issue": "replacement_character", "field": field}
+                    )
                 if re.search(r"&[a-zA-Z]+;", val):
                     issues.append({"term": t, "issue": "html_entity", "field": field})
                 # Mojibake: many accented Latin chars in what should be Arabic

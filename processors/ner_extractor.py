@@ -16,8 +16,9 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ExtractedEntity:
     """كيان طبي مُستخرج"""
+
     text: str
-    label: str          # DISEASE, SYMPTOM, DRUG, PROCEDURE, ANATOMY, BODY_FUNCTION
+    label: str  # DISEASE, SYMPTOM, DRUG, PROCEDURE, ANATOMY, BODY_FUNCTION
     confidence: float
     start: int
     end: int
@@ -124,7 +125,7 @@ class MedicalNERExtractor:
         if not os.path.exists(self._glossary_path):
             return
         try:
-            with open(self._glossary_path, 'r', encoding='utf-8') as f:
+            with open(self._glossary_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
             for hash_key, td in data.get("terms", {}).items():
                 term = td.get("term", "").strip().lower()
@@ -155,22 +156,21 @@ class MedicalNERExtractor:
 
                     ctx_start = max(0, match.start() - 60)
                     ctx_end = min(len(text), match.end() + 60)
-                    results.append(ExtractedEntity(
-                        text=match.group(),
-                        label=label,
-                        confidence=0.85,
-                        start=match.start(),
-                        end=match.end(),
-                        context=text[ctx_start:ctx_end],
-                        source="pattern",
-                    ))
+                    results.append(
+                        ExtractedEntity(
+                            text=match.group(),
+                            label=label,
+                            confidence=0.85,
+                            start=match.start(),
+                            end=match.end(),
+                            context=text[ctx_start:ctx_end],
+                            source="pattern",
+                        )
+                    )
 
         # 2. مطابقة المسرد (فقط الأطول أولاً لتجنب التداخل)
         self._ensure_glossary()
-        sorted_terms = sorted(
-            self._glossary_terms.keys(),
-            key=len, reverse=True
-        )
+        sorted_terms = sorted(self._glossary_terms.keys(), key=len, reverse=True)
         text_lower = text.lower()
         for term in sorted_terms:
             if len(term) < 3:
@@ -184,15 +184,17 @@ class MedicalNERExtractor:
                 td = self._glossary_terms[term]
                 ctx_start = max(0, m.start() - 60)
                 ctx_end = min(len(text), m.end() + 60)
-                results.append(ExtractedEntity(
-                    text=text[m.start():m.end()],
-                    label="MEDICAL_TERM",
-                    confidence=td.get("confidence", 0.9),
-                    start=m.start(),
-                    end=m.end(),
-                    context=text[ctx_start:ctx_end],
-                    source=f"glossary:{td.get('source', '')}",
-                ))
+                results.append(
+                    ExtractedEntity(
+                        text=text[m.start() : m.end()],
+                        label="MEDICAL_TERM",
+                        confidence=td.get("confidence", 0.9),
+                        start=m.start(),
+                        end=m.end(),
+                        context=text[ctx_start:ctx_end],
+                        source=f"glossary:{td.get('source', '')}",
+                    )
+                )
 
         # ترتيب حسب الموقع في النص
         results.sort(key=lambda e: e.start)
@@ -231,7 +233,7 @@ class MedicalNERExtractor:
     def _overlaps(span: tuple, existing: set) -> bool:
         """فحص تداخل الفترات."""
         s, e = span
-        for (es, ee) in existing:
+        for es, ee in existing:
             if s < ee and e > es:
                 return True
         return False
@@ -241,8 +243,9 @@ class MedicalNERExtractor:
 
 if __name__ == "__main__":
     import sys
+
     if len(sys.argv) < 2:
-        print("الاستخدام: python -m processors.ner_extractor \"النص الطبي\"")
+        print('الاستخدام: python -m processors.ner_extractor "النص الطبي"')
         sys.exit(1)
 
     text = " ".join(sys.argv[1:])
@@ -251,8 +254,10 @@ if __name__ == "__main__":
 
     print(f"\nتم العثور على {len(entities)} كيان طبي:\n")
     for ent in entities:
-        print(f"  [{ent['label']}] {ent['entity']}  "
-              f"(ثقة: {ent['confidence']:.2f} | المصدر: {ent['source']})")
+        print(
+            f"  [{ent['label']}] {ent['entity']}  "
+            f"(ثقة: {ent['confidence']:.2f} | المصدر: {ent['source']})"
+        )
         if "definition" in ent:
             print(f"    الترجمة: {ent['definition']}")
         if ent.get("context"):

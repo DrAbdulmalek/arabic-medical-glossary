@@ -21,9 +21,21 @@ for _d in (BACKUP_DIR, PLUGINS_DIR, INGESTION_DIR):
 # Supported file extensions
 # ---------------------------------------------------------------------------
 SUPPORTED_EXTENSIONS: set = {
-    ".csv", ".tsv", ".json", ".jsonl", ".txt",
-    ".xlsx", ".xls", ".pdf", ".docx", ".doc",
-    ".epub", ".html", ".htm", ".xml", ".tmx",
+    ".csv",
+    ".tsv",
+    ".json",
+    ".jsonl",
+    ".txt",
+    ".xlsx",
+    ".xls",
+    ".pdf",
+    ".docx",
+    ".doc",
+    ".epub",
+    ".html",
+    ".htm",
+    ".xml",
+    ".tmx",
 }
 
 # ---------------------------------------------------------------------------

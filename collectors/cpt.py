@@ -26,9 +26,7 @@ class CPTCollector(BaseCollector):
 
     def __init__(self, config: dict = None):
         super().__init__(
-            "CPT",
-            "https://www.ama-assn.org/practice-management/cpt",
-            config
+            "CPT", "https://www.ama-assn.org/practice-management/cpt", config
         )
 
     def collect(self) -> int:

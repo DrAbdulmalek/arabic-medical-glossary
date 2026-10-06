@@ -9,6 +9,7 @@ import tempfile
 import unittest
 
 import sys
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from processors.merge_sources import merge_all_sources
@@ -36,10 +37,10 @@ class TestMergeSources(unittest.TestCase):
         """إنشاء ملف مصدر وهمي"""
         data = {
             "terms": terms,
-            "metadata": {"source": name, "created": "2024-01-01T00:00:00"}
+            "metadata": {"source": name, "created": "2024-01-01T00:00:00"},
         }
         path = os.path.join(self.sources_dir, f"{name}.json")
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
     def test_merge_empty(self):
@@ -55,7 +56,7 @@ class TestMergeSources(unittest.TestCase):
                 "definition": "A chronic disease",
                 "source": "MeSH",
                 "language": "en",
-                "confidence": 0.9
+                "confidence": 0.9,
             }
         }
         self._create_source("mesh", term_data)
@@ -68,10 +69,22 @@ class TestMergeSources(unittest.TestCase):
     def test_merge_multiple_sources(self):
         """اختبار دمج عدة مصادر"""
         mesh_terms = {
-            "aaa": {"term": "Diabetes", "definition": "Metabolic disease", "source": "MeSH", "language": "en", "confidence": 0.9}
+            "aaa": {
+                "term": "Diabetes",
+                "definition": "Metabolic disease",
+                "source": "MeSH",
+                "language": "en",
+                "confidence": 0.9,
+            }
         }
         icd_terms = {
-            "bbb": {"term": "Hypertension", "definition": "High BP", "source": "ICD10", "language": "en", "confidence": 0.85}
+            "bbb": {
+                "term": "Hypertension",
+                "definition": "High BP",
+                "source": "ICD10",
+                "language": "en",
+                "confidence": 0.85,
+            }
         }
         self._create_source("mesh", mesh_terms)
         self._create_source("icd10", icd_terms)
@@ -83,8 +96,20 @@ class TestMergeSources(unittest.TestCase):
     def test_merge_by_language(self):
         """اختبار التوزيع حسب اللغة"""
         terms = {
-            "a1": {"term": "Diabetes", "definition": "...", "source": "S", "language": "en", "confidence": 0.9},
-            "a2": {"term": "السكري", "definition": "...", "source": "S", "language": "ar", "confidence": 0.9},
+            "a1": {
+                "term": "Diabetes",
+                "definition": "...",
+                "source": "S",
+                "language": "en",
+                "confidence": 0.9,
+            },
+            "a2": {
+                "term": "السكري",
+                "definition": "...",
+                "source": "S",
+                "language": "ar",
+                "confidence": 0.9,
+            },
         }
         self._create_source("test", terms)
 
@@ -97,7 +122,13 @@ class TestMergeSources(unittest.TestCase):
     def test_merge_output_file_created(self):
         """اختبار إنشاء ملف الدمج"""
         terms = {
-            "x": {"term": "X", "definition": "...", "source": "S", "language": "en", "confidence": 0.9}
+            "x": {
+                "term": "X",
+                "definition": "...",
+                "source": "S",
+                "language": "en",
+                "confidence": 0.9,
+            }
         }
         self._create_source("test", terms)
         merge_all_sources()
@@ -105,7 +136,7 @@ class TestMergeSources(unittest.TestCase):
         merged_file = os.path.join(self.merged_dir, "glossary_master.json")
         self.assertTrue(os.path.exists(merged_file))
 
-        with open(merged_file, 'r') as f:
+        with open(merged_file, "r") as f:
             data = json.load(f)
         self.assertEqual(data["metadata"]["total_terms"], 1)
 

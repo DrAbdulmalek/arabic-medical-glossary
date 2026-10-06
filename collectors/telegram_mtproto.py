@@ -33,9 +33,7 @@ class TelegramCollector(BaseCollector):
         self.download_dir = os.path.join("data", "telegram_files")
         os.makedirs(self.download_dir, exist_ok=True)
 
-        self.processed_log = os.path.join(
-            self.progress_dir, "telegram_processed.json"
-        )
+        self.processed_log = os.path.join(self.progress_dir, "telegram_processed.json")
 
     def _create_session(self):
         """إنشاء جلسة Telethon — تدعم StringSession وملف الجلسة"""
@@ -46,8 +44,9 @@ class TelegramCollector(BaseCollector):
         session_b64 = os.getenv("TELEGRAM_SESSION_B64", "")
         if session_b64:
             import base64
+
             try:
-                decoded = base64.b64decode(session_b64).decode('utf-8')
+                decoded = base64.b64decode(session_b64).decode("utf-8")
                 return StringSession(decoded)
             except Exception as e:
                 self.logger.error(f"فشل فك تشفير TELEGRAM_SESSION_B64: {e}")
@@ -57,23 +56,25 @@ class TelegramCollector(BaseCollector):
 
     def load_processed(self) -> set:
         try:
-            with open(self.processed_log, 'r', encoding='utf-8') as f:
+            with open(self.processed_log, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 return set(data.get("file_ids", []))
         except FileNotFoundError:
             return set()
 
     def save_processed(self, file_ids: set):
-        with open(self.processed_log, 'w', encoding='utf-8') as f:
-            json.dump({
-                "file_ids": list(file_ids),
-                "last_update": datetime.now().isoformat()
-            }, f, ensure_ascii=False, indent=2)
+        with open(self.processed_log, "w", encoding="utf-8") as f:
+            json.dump(
+                {"file_ids": list(file_ids), "last_update": datetime.now().isoformat()},
+                f,
+                ensure_ascii=False,
+                indent=2,
+            )
 
     async def _process_message(self, client, message, processed: set) -> int:
         new_terms = 0
 
-        if message.document or (message.media and hasattr(message.media, 'document')):
+        if message.document or (message.media and hasattr(message.media, "document")):
             doc = message.document or message.media.document
 
             if doc.size > 100 * 1024 * 1024:
@@ -85,8 +86,7 @@ class TelegramCollector(BaseCollector):
             if file_id not in processed:
                 try:
                     file_path = await client.download_media(
-                        message,
-                        file=os.path.join(self.download_dir, file_id)
+                        message, file=os.path.join(self.download_dir, file_id)
                     )
 
                     if file_path:
@@ -101,8 +101,7 @@ class TelegramCollector(BaseCollector):
 
                         if text:
                             entries = parse_glossary_from_text(
-                                text, 
-                                source=f"telegram:{file_id}"
+                                text, source=f"telegram:{file_id}"
                             )
 
                             for entry in entries:
@@ -117,15 +116,13 @@ class TelegramCollector(BaseCollector):
                         processed.add(file_id)
 
                 except Exception as e:
-                    self.logger.error(
-                        f"❌ خطأ في معالجة الملف {file_id}: {e}"
-                    )
+                    self.logger.error(f"❌ خطأ في معالجة الملف {file_id}: {e}")
 
         elif message.text:
             from processors.glossary_parser import parse_glossary_from_text
+
             entries = parse_glossary_from_text(
-                message.text,
-                source=f"telegram:message:{message.id}"
+                message.text, source=f"telegram:message:{message.id}"
             )
             for entry in entries:
                 if self.add_term(entry):

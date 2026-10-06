@@ -15,12 +15,13 @@ logger = __import__("logging").getLogger(__name__)
 @dataclass
 class ReviewItem:
     """عنصر بانتظار المراجعة."""
+
     term_hash: str
     term: str
     definition: str
     source: str
     confidence: float
-    reason: str             # low_confidence | duplicate | ambiguous
+    reason: str  # low_confidence | duplicate | ambiguous
     suggested_correction: Optional[str] = None
     reviewed: bool = False
     reviewed_at: Optional[str] = None
@@ -48,16 +49,18 @@ class ActiveLearningManager:
         if not os.path.exists(self.review_file):
             return []
         try:
-            with open(self.review_file, 'r', encoding='utf-8') as f:
+            with open(self.review_file, "r", encoding="utf-8") as f:
                 return [ReviewItem(**item) for item in json.load(f)]
         except Exception:
             return []
 
     def _save(self):
-        with open(self.review_file, 'w', encoding='utf-8') as f:
+        with open(self.review_file, "w", encoding="utf-8") as f:
             json.dump(
                 [asdict(i) for i in self.pending_items],
-                f, ensure_ascii=False, indent=2,
+                f,
+                ensure_ascii=False,
+                indent=2,
             )
 
     # ─── التحديد ───────────────────────────────────────────────
@@ -71,7 +74,7 @@ class ActiveLearningManager:
         if not os.path.exists(glossary_path):
             return 0
 
-        with open(glossary_path, 'r', encoding='utf-8') as f:
+        with open(glossary_path, "r", encoding="utf-8") as f:
             terms = json.load(f).get("terms", {})
 
         existing_hashes = {i.term_hash for i in self.pending_items}
@@ -81,14 +84,16 @@ class ActiveLearningManager:
             if h in existing_hashes:
                 continue
             if td.get("confidence", 1.0) < threshold:
-                self.pending_items.append(ReviewItem(
-                    term_hash=h,
-                    term=td.get("term", ""),
-                    definition=td.get("definition", ""),
-                    source=td.get("source", ""),
-                    confidence=td.get("confidence", 0),
-                    reason="low_confidence",
-                ))
+                self.pending_items.append(
+                    ReviewItem(
+                        term_hash=h,
+                        term=td.get("term", ""),
+                        definition=td.get("definition", ""),
+                        source=td.get("source", ""),
+                        confidence=td.get("confidence", 0),
+                        reason="low_confidence",
+                    )
+                )
                 new += 1
 
         self._save()
@@ -102,7 +107,7 @@ class ActiveLearningManager:
         if not os.path.exists(glossary_path):
             return 0
 
-        with open(glossary_path, 'r', encoding='utf-8') as f:
+        with open(glossary_path, "r", encoding="utf-8") as f:
             terms = json.load(f).get("terms", {})
 
         # تجميع حسب المصطلح (normalized)
@@ -122,14 +127,16 @@ class ActiveLearningManager:
             for h, td in group[1:]:
                 if h in existing_hashes:
                     continue
-                self.pending_items.append(ReviewItem(
-                    term_hash=h,
-                    term=td.get("term", ""),
-                    definition=td.get("definition", ""),
-                    source=td.get("source", ""),
-                    confidence=td.get("confidence", 0),
-                    reason="duplicate",
-                ))
+                self.pending_items.append(
+                    ReviewItem(
+                        term_hash=h,
+                        term=td.get("term", ""),
+                        definition=td.get("definition", ""),
+                        source=td.get("source", ""),
+                        confidence=td.get("confidence", 0),
+                        reason="duplicate",
+                    )
+                )
                 new += 1
 
         self._save()
@@ -144,7 +151,7 @@ class ActiveLearningManager:
         if not os.path.exists(glossary_path):
             return 0
 
-        with open(glossary_path, 'r', encoding='utf-8') as f:
+        with open(glossary_path, "r", encoding="utf-8") as f:
             terms = json.load(f).get("terms", {})
 
         groups: Dict[str, list] = {}
@@ -165,14 +172,16 @@ class ActiveLearningManager:
             for h, td in group:
                 if h in existing_hashes:
                     continue
-                self.pending_items.append(ReviewItem(
-                    term_hash=h,
-                    term=td.get("term", ""),
-                    definition=td.get("definition", ""),
-                    source=td.get("source", ""),
-                    confidence=td.get("confidence", 0),
-                    reason="ambiguous",
-                ))
+                self.pending_items.append(
+                    ReviewItem(
+                        term_hash=h,
+                        term=td.get("term", ""),
+                        definition=td.get("definition", ""),
+                        source=td.get("source", ""),
+                        confidence=td.get("confidence", 0),
+                        reason="ambiguous",
+                    )
+                )
                 new += 1
 
         self._save()
@@ -181,7 +190,9 @@ class ActiveLearningManager:
     # ─── المراجعة ──────────────────────────────────────────────
 
     def get_pending(
-        self, limit: int = 50, reason: Optional[str] = None,
+        self,
+        limit: int = 50,
+        reason: Optional[str] = None,
     ) -> List[ReviewItem]:
         """جلب العناصر بانتظار المراجعة (الأقل ثقة أولاً)."""
         items = [i for i in self.pending_items if not i.reviewed]
@@ -193,7 +204,7 @@ class ActiveLearningManager:
     def review(
         self,
         term_hash: str,
-        action: str,       # approve | correct | remove
+        action: str,  # approve | correct | remove
         correction: Optional[str] = None,
         reviewer: Optional[str] = None,
     ):
@@ -218,7 +229,7 @@ class ActiveLearningManager:
         if not os.path.exists(glossary_path):
             return 0
 
-        with open(glossary_path, 'r', encoding='utf-8') as f:
+        with open(glossary_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         terms = data.get("terms", {})
@@ -240,13 +251,12 @@ class ActiveLearningManager:
         data["metadata"]["total_terms"] = len(terms)
         data["metadata"]["last_corrected"] = datetime.now().isoformat()
 
-        with open(glossary_path, 'w', encoding='utf-8') as f:
+        with open(glossary_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
         # إزالة العناصر المُطبَّقة
         self.pending_items = [
-            i for i in self.pending_items
-            if not (i.reviewed and i.suggested_correction)
+            i for i in self.pending_items if not (i.reviewed and i.suggested_correction)
         ]
         self._save()
         return applied
@@ -301,7 +311,9 @@ if __name__ == "__main__":
 
     elif cmd == "stats":
         s = mgr.get_stats()
-        print(f"\n📊 المراجعة: {s['reviewed']}/{s['total']} مُراجَع، {s['pending']} بانتظار")
+        print(
+            f"\n📊 المراجعة: {s['reviewed']}/{s['total']} مُراجَع، {s['pending']} بانتظار"
+        )
         for reason, d in s["by_reason"].items():
             print(f"    {reason}: {d['reviewed']}/{d['total']}")
 

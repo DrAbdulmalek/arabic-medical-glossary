@@ -135,7 +135,8 @@ class DatabaseManager:
                notes, created_at, updated_at)
                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (
-                english, arabic,
+                english,
+                arabic,
                 kwargs.get("category", ""),
                 kwargs.get("source", ""),
                 kwargs.get("confidence", 0.5),
@@ -150,7 +151,8 @@ class DatabaseManager:
                 kwargs.get("region", "global"),
                 kwargs.get("validation_status", "unverified"),
                 kwargs.get("notes", ""),
-                now, now,
+                now,
+                now,
             ),
         )
         self.conn.commit()
@@ -161,25 +163,28 @@ class DatabaseManager:
         now = datetime.now(timezone.utc).isoformat()
         rows = []
         for t in terms_list:
-            rows.append((
-                t.get("english", ""),
-                t.get("arabic", ""),
-                t.get("category", ""),
-                t.get("source", ""),
-                t.get("confidence", 0.5),
-                t.get("type", "term"),
-                t.get("section", ""),
-                t.get("hash", ""),
-                t.get("verified", "unverified"),
-                t.get("usage_count", 0),
-                t.get("priority", 0),
-                t.get("medical_specialty", ""),
-                t.get("term_complexity", ""),
-                t.get("region", "global"),
-                t.get("validation_status", "unverified"),
-                t.get("notes", ""),
-                now, now,
-            ))
+            rows.append(
+                (
+                    t.get("english", ""),
+                    t.get("arabic", ""),
+                    t.get("category", ""),
+                    t.get("source", ""),
+                    t.get("confidence", 0.5),
+                    t.get("type", "term"),
+                    t.get("section", ""),
+                    t.get("hash", ""),
+                    t.get("verified", "unverified"),
+                    t.get("usage_count", 0),
+                    t.get("priority", 0),
+                    t.get("medical_specialty", ""),
+                    t.get("term_complexity", ""),
+                    t.get("region", "global"),
+                    t.get("validation_status", "unverified"),
+                    t.get("notes", ""),
+                    now,
+                    now,
+                )
+            )
         cur = self.conn.executemany(
             """INSERT OR IGNORE INTO terms (english, arabic, category, source,
                confidence, type, section, hash, verified, usage_count, priority,
@@ -309,7 +314,11 @@ class DatabaseManager:
         return [dict(r) for r in rows]
 
     def add_source(
-        self, name: str, description: str = "", url: str = "", quality_score: float = 0.5
+        self,
+        name: str,
+        description: str = "",
+        url: str = "",
+        quality_score: float = 0.5,
     ) -> None:
         now = datetime.now(timezone.utc).isoformat()
         self.conn.execute(
@@ -348,7 +357,8 @@ class DatabaseManager:
     # ------------------------------------------------------------------
     def get_term_history(self, term_id: int) -> list[dict]:
         rows = self.conn.execute(
-            "SELECT * FROM change_log WHERE term_id=? ORDER BY timestamp DESC", (term_id,)
+            "SELECT * FROM change_log WHERE term_id=? ORDER BY timestamp DESC",
+            (term_id,),
         ).fetchall()
         return [dict(r) for r in rows]
 

@@ -50,20 +50,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - source: icd11
-            env: |
-              ICD11_CLIENT_ID: ${{ secrets.ICD11_CLIENT_ID }}
-              ICD11_CLIENT_SECRET: ${{ secrets.ICD11_CLIENT_SECRET }}
-          - source: loinc
-            env: |
-              LOINC_USERNAME: ${{ secrets.LOINC_USERNAME }}
-              LOINC_PASSWORD: ${{ secrets.LOINC_PASSWORD }}
-          - source: umls
-            env: |
-              UMLS_API_KEY: ${{ secrets.UMLS_API_KEY }}
-          - source: snomed
-            env: ""
+        source: [icd11, loinc, umls, snomed]
 
     steps:
       - name: Checkout
@@ -79,7 +66,14 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Collect from ${{ matrix.source }}
-        env: ${{ matrix.env }}
+        # secrets are only available in step-level env — each collector reads
+        # the variables it needs from this shared environment
+        env:
+          ICD11_CLIENT_ID: ${{ secrets.ICD11_CLIENT_ID }}
+          ICD11_CLIENT_SECRET: ${{ secrets.ICD11_CLIENT_SECRET }}
+          LOINC_USERNAME: ${{ secrets.LOINC_USERNAME }}
+          LOINC_PASSWORD: ${{ secrets.LOINC_PASSWORD }}
+          UMLS_API_KEY: ${{ secrets.UMLS_API_KEY }}
         run: python -m collectors.${{ matrix.source }}_run
 
       - name: Upload artifacts on failure
@@ -125,26 +119,40 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     needs: collect
-    if: ${{ secrets.TELEGRAM_API_ID != '' }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Guard — skip when Telegram secrets are absent
+        id: guard
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+        run: |
+          if [ -z "${TELEGRAM_API_ID:-}" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Python
+        if: steps.guard.outputs.skip != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
       - name: Install dependencies
+        if: steps.guard.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       - name: Restore Telegram session
+        if: steps.guard.outputs.skip != 'true'
         run: |
           echo "${{ secrets.TELEGRAM_SESSION_B64 }}" | base64 -d > glossary_session.session 2>/dev/null || true
 
       - name: Collect from Telegram
+        if: steps.guard.outputs.skip != 'true'
         env:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}

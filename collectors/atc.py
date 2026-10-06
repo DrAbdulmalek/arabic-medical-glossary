@@ -30,11 +30,7 @@ class ATCCollector(BaseCollector):
     """
 
     def __init__(self, config: dict = None):
-        super().__init__(
-            "ATC",
-            "https://atcddd.fhi.no/",
-            config
-        )
+        super().__init__("ATC", "https://atcddd.fhi.no/", config)
 
         # مسارات الملفات المحتملة
         self.local_xml = os.path.join("data", "atc", "atc_index.xml")
@@ -112,7 +108,7 @@ class ATCCollector(BaseCollector):
                     source="ATC",
                     language="en",
                     confidence=0.95,
-                    tags=["atc", code, f"level_{level}"]
+                    tags=["atc", code, f"level_{level}"],
                 )
 
                 if self.add_term(entry):
@@ -130,7 +126,7 @@ class ATCCollector(BaseCollector):
         new_count = 0
 
         try:
-            with open(self.local_json, 'r', encoding='utf-8') as f:
+            with open(self.local_json, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
             for item in data:
@@ -147,7 +143,7 @@ class ATCCollector(BaseCollector):
                     source="ATC",
                     language="en",
                     confidence=0.95,
-                    tags=["atc", code, f"level_{level}"]
+                    tags=["atc", code, f"level_{level}"],
                 )
 
                 if self.add_term(entry):
@@ -184,13 +180,15 @@ class ATCCollector(BaseCollector):
                 code = tags[1] if len(tags) > 1 else ""
                 level = tags[2] if len(tags) > 2 else ""
 
-                terms_list.append({
-                    "code": code,
-                    "title": term_data.get("term", ""),
-                    "level": level.replace("level_", "") if level else ""
-                })
+                terms_list.append(
+                    {
+                        "code": code,
+                        "title": term_data.get("term", ""),
+                        "level": level.replace("level_", "") if level else "",
+                    }
+                )
 
-            with open(self.local_json, 'w', encoding='utf-8') as f:
+            with open(self.local_json, "w", encoding="utf-8") as f:
                 json.dump(terms_list, f, ensure_ascii=False, indent=2)
 
             self.logger.info(f"💾 تم حفظ {len(terms_list)} مصطلح كـ JSON")
@@ -231,7 +229,7 @@ class ATCCollector(BaseCollector):
             {"code": "N02AA01", "title": "Morphine", "level": "5"},
         ]
 
-        with open(self.local_json, 'w', encoding='utf-8') as f:
+        with open(self.local_json, "w", encoding="utf-8") as f:
             json.dump(sample_data, f, ensure_ascii=False, indent=2)
 
         self.logger.info(f"✅ تم إنشاء {len(sample_data)} مصطلح نموذجي")

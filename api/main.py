@@ -66,6 +66,7 @@ __version__ = "1.0.0-rc1"
 
 # ─── Root & Health ───────────────────────────────────────────────
 
+
 @app.get("/", tags=["Health"])
 async def root():
     """نقطة البداية — معلومات أساسية عن API."""
@@ -89,6 +90,7 @@ async def health_check():
 
 # ─── البحث ───────────────────────────────────────────────────────
 
+
 @app.get(
     "/search",
     response_model=PaginatedResponse,
@@ -97,10 +99,14 @@ async def health_check():
     tags=["Search"],
 )
 async def search_get(
-    q: str = Query(..., min_length=1, description="نص البحث", examples=["diabetes", "سكري"]),
+    q: str = Query(
+        ..., min_length=1, description="نص البحث", examples=["diabetes", "سكري"]
+    ),
     language: Optional[str] = Query(None, description="تصفية: ar أو en"),
     source: Optional[str] = Query(None, description="تصفية حسب المصدر"),
-    min_confidence: Optional[float] = Query(None, ge=0, le=1, description="الحد الأدنى للثقة"),
+    min_confidence: Optional[float] = Query(
+        None, ge=0, le=1, description="الحد الأدنى للثقة"
+    ),
     tag: Optional[str] = Query(None, description="تصفية حسب وسم (متعدد ممكن)"),
     limit: int = Query(20, ge=1, le=200),
     offset: int = Query(0, ge=0),
@@ -148,6 +154,7 @@ async def search_post(req: SearchRequest):
 
 # ─── التصفح ──────────────────────────────────────────────────────
 
+
 @app.get(
     "/terms",
     response_model=PaginatedResponse,
@@ -185,7 +192,9 @@ async def browse_terms(
     tags=["Browse"],
 )
 async def get_term(
-    term: str = PathParam(..., description="المصطلح المطلوب", examples=["diabetes", "السكري"]),
+    term: str = PathParam(
+        ..., description="المصطلح المطلوب", examples=["diabetes", "السكري"]
+    ),
 ):
     """جلب مصطلح محدد بجميع ترجماته ومصادره."""
     matches = service.get_term(term)
@@ -196,6 +205,7 @@ async def get_term(
 
 # ─── الأزواج ثنائية اللغة ────────────────────────────────────────
 
+
 @app.get(
     "/pairs/{term}",
     response_model=List[TermPair],
@@ -204,7 +214,9 @@ async def get_term(
     tags=["Pairs"],
 )
 async def get_pairs(
-    term: str = PathParam(..., description="المصطلح (EN أو AR)", examples=["diabetes", "السكري"]),
+    term: str = PathParam(
+        ..., description="المصطلح (EN أو AR)", examples=["diabetes", "السكري"]
+    ),
 ):
     """جلب أزواج الترجمة الإنجليزية-العربية."""
     pairs = service.get_bilingual_pairs(term)
@@ -214,6 +226,7 @@ async def get_pairs(
 
 
 # ─── عشوائي ──────────────────────────────────────────────────────
+
 
 @app.get(
     "/random",
@@ -231,6 +244,7 @@ async def random_terms(
 
 
 # ─── الإحصائيات ──────────────────────────────────────────────────
+
 
 @app.get(
     "/stats",
@@ -252,6 +266,7 @@ async def list_sources():
 
 
 # ─── إعادة التحميل ───────────────────────────────────────────────
+
 
 @app.post("/reload", tags=["Admin"])
 async def reload_data():

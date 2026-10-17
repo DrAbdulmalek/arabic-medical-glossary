@@ -148,8 +148,37 @@ jobs:
 
       - name: Restore Telegram session
         if: steps.guard.outputs.skip != 'true'
+        env:
+          TELEGRAM_SESSION_B64: ${{ secrets.TELEGRAM_SESSION_B64 }}
+        # ثلاث مشكلات في الصيغة السابقة:
+        #   1) `${{ secrets.* }}` داخل run يُحقن نصيًّا قبل تنفيذ الصدفة —
+        #      قاعدة 64 طويلة أو أي حرف خاص تكسر السكربت أو تتيح حقن أوامر.
+        #   2) `2>/dev/null || true` يُخفي فشل فك الترميز، فيظهر لاحقًا كعطب
+        #      مصادقة غامض بدل خطأ واضح.
+        #   3) لا تحقق من أن الملف الناتج غير فارغ، ولا تنظيف له.
         run: |
-          echo "${{ secrets.TELEGRAM_SESSION_B64 }}" | base64 -d > glossary_session.session 2>/dev/null || true
+          set -euo pipefail
+          if [ -z "${TELEGRAM_SESSION_B64:-}" ]; then
+            echo "::error::TELEGRAM_SESSION_B64 is empty — cannot restore the session"
+            exit 1
+          fi
+          umask 077
+          # printf (لا echo) حتى لا تُضاف سطرًا جديدًا يفسد base64
+          printf '%s' "$TELEGRAM_SESSION_B64" | base64 -d > glossary_session.session
+          if [ ! -s glossary_session.session ]; then
+            echo "::error::decoded session file is empty — is TELEGRAM_SESSION_B64 valid base64?"
+            exit 1
+          fi
+          chmod 600 glossary_session.session
+          echo "session restored ($(wc -c < glossary_session.session) bytes)"
+
+      - name: Remove Telegram session file
+        if: always()
+        run: |
+          if [ -f glossary_session.session ]; then
+            shred -u glossary_session.session 2>/dev/null || rm -f glossary_session.session
+            echo "session file removed"
+          fi
 
       - name: Collect from Telegram
         if: steps.guard.outputs.skip != 'true'

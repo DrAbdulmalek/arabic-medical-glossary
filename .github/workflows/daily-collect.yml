@@ -41,7 +41,7 @@ jobs:
 
       - name: Upload artifacts on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.source }}-error-logs
           path: data/logs/
@@ -81,7 +81,7 @@ jobs:
 
       - name: Upload artifacts on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.source }}-error-logs
           path: data/logs/
@@ -113,7 +113,7 @@ jobs:
 
       - name: Upload artifacts on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.source }}-error-logs
           path: data/logs/

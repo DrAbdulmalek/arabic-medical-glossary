@@ -1,14 +1,3 @@
-{
-  "sources": {
-    "CustomGlossaries": {
-      "status": "completed",
-      "last_run": "2026-07-16T22:49:41.746001",
-      "terms_collected": 21120,
-      "last_error": null,
-      "consecutive_failures": 0
-    }
-  },
-  "total_terms": 21120,
-  "last_update": "2026-07-16T22:50:00.078484",
-  "errors_log": []
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8717bf453c4158d25595ac7818918f5df3a19570cb1f74183ed6e1ef3fea07fa
+size 312
